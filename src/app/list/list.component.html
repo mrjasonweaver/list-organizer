@@ -2,19 +2,21 @@
 <mat-card>
   <mat-card-title>Tooltip Testing</mat-card-title>
   <mat-card-subtitle>with responsive breakpoints</mat-card-subtitle>
-  <mat-grid-list cols="3" rowHeight="80px">
-    <mat-grid-tile>
-      <span [matTooltip]="id" [matTooltipPosition]="tooltipPosition" [matTooltipDisabled]="!tooltipActive">{{ tooltipActive ? (id | truncate:'start') : id}}</span>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <span [matTooltip]="id" [matTooltipPosition]="tooltipPosition" [matTooltipDisabled]="!tooltipActive">{{ tooltipActive ? (id | truncate:'middle') : id}}</span>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <span [matTooltip]="id" [matTooltipPosition]="tooltipPosition" [matTooltipDisabled]="!tooltipActive">{{ tooltipActive ? (id | truncate:'end') : id}}</span>
-    </mat-grid-tile>
-
-  </mat-grid-list>
-  <ul style="padding-left: 0;">
-    <li style="list-style: none;"><mat-checkbox [(ngModel)]="tooltipActive">Tooltip &amp; Truncate active</mat-checkbox></li>
-  </ul>
+  <div style="display: flex;">
+    <div style="padding: 5px;">
+      <h3>Truncate Start</h3>
+      <div><span [matTooltip]="id" [matTooltipPosition]="tooltipPosition" [matTooltipDisabled]="!tooltipActive">{{ tooltipActive ? (id | truncate:'start') : id}}</span></div>
+    </div>
+    <div style="padding: 5px;">
+      <h3>Truncate middle</h3>
+      <div><span [matTooltip]="id" [matTooltipPosition]="tooltipPosition" [matTooltipDisabled]="!tooltipActive">{{ tooltipActive ? (id | truncate:'middle') : id}}</span></div>
+    </div>
+    <div style="padding: 5px;">
+      <h3>Truncate End</h3>
+      <div><span [matTooltip]="id" [matTooltipPosition]="tooltipPosition" [matTooltipDisabled]="!tooltipActive">{{ tooltipActive ? (id | truncate:'end') : id}}</span></div>
+    </div>
+  </div>
+    <mat-card-footer style="padding: 10px;">
+      <mat-checkbox [(ngModel)]="tooltipActive">Tooltip &amp; Truncate active</mat-checkbox>
+    </mat-card-footer>
 </mat-card>
