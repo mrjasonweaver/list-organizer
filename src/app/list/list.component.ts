@@ -10,14 +10,14 @@ export class ListComponent implements OnInit {
 
   constructor(breakpointObserver: BreakpointObserver) {
     breakpointObserver.observe([
-      Breakpoints.Web
+      Breakpoints.WebLandscape
     ]).subscribe(result => {
       if (result.matches) {
         this.activateWebLayout();
       }
     });
     breakpointObserver.observe([
-      Breakpoints.Tablet
+      Breakpoints.TabletPortrait
     ]).subscribe(result => {
       if (result.matches) {
         this.activateTabletLayout();
