@@ -2,7 +2,7 @@
 <mat-card>
   <mat-card-title>Tooltip Testing</mat-card-title>
   <mat-card-subtitle>Responsive breakpoints</mat-card-subtitle>
-  <span [matTooltip]="id" [matTooltipPosition]="tooltipPosition">{{id}}</span>
+  <span [matTooltip]="id" [matTooltipPosition]="tooltipPosition">{{id | truncate:'end'}}</span>
   <ul style="padding-left: 0;">
     <li style="list-style: none;"><mat-checkbox>Check me!</mat-checkbox></li>
   </ul>
