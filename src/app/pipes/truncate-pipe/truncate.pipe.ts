@@ -7,28 +7,28 @@ import { SlicePipe } from '@angular/common';
 export class TruncatePipe extends SlicePipe implements PipeTransform {
 
   transform(value: any, format?: any): any {
-    let formatteValue;
-    const firstEight = super.transform(value, 0:8);
+    let formattedValue;
+    const firstEight = super.transform(value, 0,8);
     const lastEight = super.transform(value, -8);
-    const firstFour = super.transform(value, 0:4);
+    const firstFour = super.transform(value, 0,4);
     const lastFour = super.transform(value, -4);
-    const truncatedStart = `${firstEight}...`
+    const truncatedStart = `${firstEight}...`;
     const truncatedEnd = `...${lastEight}`;
     const truncatedMiddle = `${firstFour}...${lastFour}`;
     switch (format) {
       case 'start':
-        formatteValue = truncatedStart;
+        formattedValue = truncatedStart;
         break;
       case 'middle':
-        formatteValue = truncatedMiddle;
+        formattedValue = truncatedMiddle;
         break;
       case 'end':
-        formatteValue = truncatedEnd;
+        formattedValue = truncatedEnd;
         break;
       default:
-        formatteValue = truncatedStart;
+        formattedValue = truncatedStart;
     }
-    return formatteValue;
+    return formattedValue;
   }
 
 }

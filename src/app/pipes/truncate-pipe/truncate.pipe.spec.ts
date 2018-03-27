@@ -1,8 +1,11 @@
 import { TruncatePipe } from './truncate.pipe';
 
 describe('TruncatePipe', () => {
-  it('create an instance', () => {
-    const pipe = new TruncatePipe();
-    expect(pipe).toBeTruthy();
+
+  const pipe = new TruncatePipe();
+
+  // truncate start
+  it('transforms "123456789" to "12345678..."', () => {
+    expect(pipe.transform('123456789', 'start')).toBe('12345678...');
   });
 });
