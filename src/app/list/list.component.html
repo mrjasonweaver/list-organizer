@@ -2,8 +2,8 @@
 <mat-card>
   <mat-card-title>Tooltip Testing</mat-card-title>
   <mat-card-subtitle>with responsive breakpoints</mat-card-subtitle>
-  <span [matTooltip]="id" [matTooltipPosition]="tooltipPosition">{{id | truncate:'middle'}}</span>
+  <span [matTooltip]="id" [matTooltipPosition]="tooltipPosition" [matTooltipDisabled]="!tooltipActive">{{id | truncate:'middle'}}</span>
   <ul style="padding-left: 0;">
-    <li style="list-style: none;"><mat-checkbox>Check me!</mat-checkbox></li>
+    <li style="list-style: none;"><mat-checkbox [(ngModel)]="tooltipActive">Tooltip active</mat-checkbox></li>
   </ul>
 </mat-card>

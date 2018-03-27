@@ -11,10 +11,12 @@ export class ListComponent implements OnInit {
 
   public tooltipPosition;
   public id;
+  public tooltipActive: boolean;
 
   ngOnInit() {
     this.tooltipPosition = 'above';
     this.id = '123456789123456789123456789';
+    this.tooltipActive = true;
   }
 
 }
