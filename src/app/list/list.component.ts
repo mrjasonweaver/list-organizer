@@ -31,11 +31,9 @@ export class ListComponent implements OnInit {
 
   activateWebLayout() {
     this.tooltipActive = false;
-    console.log("Web Layout activated");
   }
   activateTabletLayout() {
     this.tooltipActive = true;
-    console.log("Tablet Layout activated");
   }
 
   ngOnInit() {

@@ -8,9 +8,9 @@ export class TruncatePipe extends SlicePipe implements PipeTransform {
 
   transform(value: any, format?: any): any {
     let formattedValue;
-    const firstEight = super.transform(value, 0,8);
+    const firstEight = super.transform(value, 0, 8);
     const lastEight = super.transform(value, -8);
-    const firstFour = super.transform(value, 0,4);
+    const firstFour = super.transform(value, 0, 4);
     const lastFour = super.transform(value, -4);
     const truncatedStart = `...${lastEight}`;
     const truncatedEnd = `${firstEight}...`;
