@@ -12,14 +12,16 @@ export class ListComponent implements OnInit {
 
   public tooltipPosition;
   public id;
+  public dateCreated;
 
   get isTabletScreen() {
-    return this.breakpointObserver.isMatched('(max-width: 900px)');
+    return this.breakpointObserver.isMatched('(max-width: 1024px)');
   }
 
   ngOnInit() {
     this.tooltipPosition = 'above';
     this.id = '123456789123456789123456789';
+    this.dateCreated = 'Aug 14, 2017';
   }
 
 }

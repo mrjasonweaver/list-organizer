@@ -39,4 +39,9 @@ describe('TruncatePipe', () => {
     expect(pipe.transform('1234567', 'start', 7)).toBe('1234567');
   });
 
+  // Trimmed values to account for whitespace
+  it('transforms "Aug 14, 2017" to "Aug...2017"', () => {
+    expect(pipe.transform('Aug 14, 2017', 'middle', 8)).toBe('Aug...2017');
+  });
+
 });
