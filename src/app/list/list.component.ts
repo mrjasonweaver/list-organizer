@@ -15,7 +15,7 @@ export class ListComponent implements OnInit {
   public dateCreated;
 
   get isTabletScreen() {
-    return this.breakpointObserver.isMatched('(max-width: 1024px)');
+    return this.breakpointObserver.isMatched('(max-width: 1040px)');
   }
 
   ngOnInit() {

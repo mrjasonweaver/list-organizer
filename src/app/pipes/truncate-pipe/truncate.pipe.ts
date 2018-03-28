@@ -8,16 +8,17 @@ export class TruncatePipe extends SlicePipe implements PipeTransform {
 
   transform(value: any, format?: any, length?: number): any {
     let formattedValue;
+    const stringValue = typeof value === 'number' ? value.toString() : value;
     const formattedLength = length ? length : 8;
-    if (value.length <= formattedLength) {
-      return value; // return original value if shorter than truncate length
+    if (stringValue.length <= formattedLength) {
+      return stringValue; // return original value if shorter than truncate length
     }
     const isEven = formattedLength % 2 === 0;
     const formattedLengthHalf = isEven ? formattedLength / 2 : (formattedLength - 1) / 2;
-    const firstEight = super.transform(value, 0, formattedLength);
-    const lastEight = super.transform(value, -formattedLength);
-    const firstFour = super.transform(value, 0, formattedLengthHalf);
-    const lastFour = super.transform(value, -formattedLengthHalf);
+    const firstEight = super.transform(stringValue, 0, formattedLength);
+    const lastEight = super.transform(stringValue, -formattedLength);
+    const firstFour = super.transform(stringValue, 0, formattedLengthHalf);
+    const lastFour = super.transform(stringValue, -formattedLengthHalf);
     const truncatedStart = `...${lastEight.trim()}`;
     const truncatedEnd = `${firstEight.trim()}...`;
     const truncatedMiddle = `${firstFour.trim()}...${lastFour.trim()}`;

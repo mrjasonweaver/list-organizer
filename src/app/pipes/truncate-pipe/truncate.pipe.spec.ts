@@ -44,4 +44,9 @@ describe('TruncatePipe', () => {
     expect(pipe.transform('Aug 14, 2017', 'middle', 8)).toBe('Aug...2017');
   });
 
+  // truncate number type
+  it('transforms 123456789 to "...23456789"', () => {
+    expect(pipe.transform(123456789, 'start')).toBe('...23456789');
+  });
+
 });
