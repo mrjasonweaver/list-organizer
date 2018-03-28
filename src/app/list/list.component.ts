@@ -8,22 +8,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 })
 export class ListComponent implements OnInit {
 
-  constructor(breakpointObserver: BreakpointObserver) {
-    breakpointObserver.observe([
-      Breakpoints.WebLandscape
-    ]).subscribe(result => {
-      if (result.matches) {
-        this.activateWebLayout();
-      }
-    });
-    breakpointObserver.observe([
-      Breakpoints.TabletPortrait
-    ]).subscribe(result => {
-      if (result.matches) {
-        this.activateTabletLayout();
-      }
-    });
-  }
+  constructor(private breakpointObserver: BreakpointObserver) {}
 
   public tooltipPosition;
   public id;
@@ -39,6 +24,21 @@ export class ListComponent implements OnInit {
   ngOnInit() {
     this.tooltipPosition = 'above';
     this.id = '123456789123456789123456789';
+
+    this.breakpointObserver.observe([
+      Breakpoints.WebLandscape
+    ]).subscribe(result => {
+      if (result.matches) {
+        this.activateWebLayout();
+      }
+    });
+    this.breakpointObserver.observe([
+      Breakpoints.TabletPortrait
+    ]).subscribe(result => {
+      if (result.matches) {
+        this.activateTabletLayout();
+      }
+    });
   }
 
 }
