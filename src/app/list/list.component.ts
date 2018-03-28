@@ -12,33 +12,14 @@ export class ListComponent implements OnInit {
 
   public tooltipPosition;
   public id;
-  public tooltipActive: boolean;
 
-  activateWebLayout() {
-    this.tooltipActive = false;
-  }
-  activateTabletLayout() {
-    this.tooltipActive = true;
+  get isTabletScreen() {
+    return this.breakpointObserver.isMatched('(max-width: 900px)');
   }
 
   ngOnInit() {
     this.tooltipPosition = 'above';
     this.id = '123456789123456789123456789';
-
-    this.breakpointObserver.observe([
-      Breakpoints.WebLandscape
-    ]).subscribe(result => {
-      if (result.matches) {
-        this.activateWebLayout();
-      }
-    });
-    this.breakpointObserver.observe([
-      Breakpoints.TabletPortrait
-    ]).subscribe(result => {
-      if (result.matches) {
-        this.activateTabletLayout();
-      }
-    });
   }
 
 }
