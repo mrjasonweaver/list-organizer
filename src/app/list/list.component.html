@@ -5,18 +5,18 @@
   <div style="display: flex;">
     <div style="padding: 5px;">
       <h3>Truncate Start</h3>
-      <div><span [matTooltip]="id" [matTooltipPosition]="tooltipPosition" [matTooltipDisabled]="!isTabletScreen">{{ isTabletScreen ? (id | truncate:'start') : id}}</span></div>
+      <div><span [matTooltip]="id" [matTooltipPosition]="tooltipPosition" [matTooltipDisabled]="!isTabletScreen">{{ isTabletScreen ? ('123456' | truncate:'start') : '123456'}}</span></div>
     </div>
     <div style="padding: 5px;">
       <h3>Truncate middle</h3>
-      <div><span [matTooltip]="id" [matTooltipPosition]="tooltipPosition" [matTooltipDisabled]="!isTabletScreen">{{ isTabletScreen ? (id | truncate:'middle') : id}}</span></div>
+      <div><span [matTooltip]="id" [matTooltipPosition]="tooltipPosition" [matTooltipDisabled]="!isTabletScreen">{{ isTabletScreen ? (id | truncate:'middle':4) : id}}</span></div>
     </div>
     <div style="padding: 5px;">
       <h3>Truncate End</h3>
-      <div><span [matTooltip]="id" [matTooltipPosition]="tooltipPosition" [matTooltipDisabled]="!isTabletScreen">{{ isTabletScreen ? (id | truncate:'end') : id}}</span></div>
+      <div><span [matTooltip]="id" [matTooltipPosition]="tooltipPosition" [matTooltipDisabled]="!isTabletScreen">{{ isTabletScreen ? (id | truncate:'end':1) : id}}</span></div>
     </div>
   </div>
-    <mat-card-footer style="padding: 10px;">
-      <mat-checkbox [(ngModel)]="isTabletScreen">Tooltip &amp; Truncate active</mat-checkbox>
+    <mat-card-footer style="padding: 30px;">
+      <span *ngIf="isTabletScreen">Tooltip &amp; Truncate active</span>
     </mat-card-footer>
 </mat-card>
