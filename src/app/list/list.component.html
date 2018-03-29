@@ -17,9 +17,12 @@
       <h3>Truncate Start</h3>
       <div>
         <span 
-        [matTooltip]="id" 
-        [matTooltipPosition]="tooltipPosition" 
-        [matTooltipDisabled]="!isTruncated">{{ isTruncated ? (id | truncate:truncateType) : id}}</span>
+          appBreakpoint="1000px"
+          [matTooltip]="id" 
+          [matTooltipPosition]="tooltipPosition" 
+          [matTooltipDisabled]="!bp">{{ bp ? (id | truncate:truncateType) : id}}
+        </span>
+        <span>bp={{ bp }}</span>
       </div>
     </div>
     <div style="padding: 5px;">

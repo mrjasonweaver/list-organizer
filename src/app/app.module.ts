@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { ListComponent } from './list/list.component';
 import { TruncatePipe } from './pipes/truncate-pipe/truncate.pipe';
 import { TruncatedValueComponent } from './truncated-value/truncated-value.component';
+import { BreakpointDirective } from './breakpoint.directive';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { TruncatedValueComponent } from './truncated-value/truncated-value.compo
     AppComponent,
     ListComponent,
     TruncatePipe,
-    TruncatedValueComponent
+    TruncatedValueComponent,
+    BreakpointDirective
   ],
   imports: [
     BrowserModule,
