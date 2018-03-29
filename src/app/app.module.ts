@@ -8,13 +8,15 @@ import { SlicePipe } from '@angular/common';
 import { AppComponent } from './app.component';
 import { ListComponent } from './list/list.component';
 import { TruncatePipe } from './pipes/truncate-pipe/truncate.pipe';
+import { TruncatedValueComponent } from './truncated-value/truncated-value.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ListComponent,
-    TruncatePipe
+    TruncatePipe,
+    TruncatedValueComponent
   ],
   imports: [
     BrowserModule,

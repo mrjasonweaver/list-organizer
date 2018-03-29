@@ -5,23 +5,34 @@
   <div style="display: flex;">
     <div style="padding: 5px;">
         <h3>No Truncate</h3>
-        <div><span [matTooltip]="id" [matTooltipPosition]="tooltipPosition" [matTooltipDisabled]="!isTabletScreen">{{ isTabletScreen ? ('123456' | truncate:'start') : '123456'}}</span></div>
+        <app-truncated-value 
+          [matTooltip]="123456789" 
+          [matTooltipPosition]="tooltipPosition" 
+          [matTooltipDisabled]="!isTruncated" 
+          [truncatedValue]="123456789" 
+          [isTruncated]="isTruncated" 
+          [truncateType]="middle"></app-truncated-value>
       </div>
     <div style="padding: 5px;">
       <h3>Truncate Start</h3>
-      <div><span [matTooltip]="id" [matTooltipPosition]="tooltipPosition" [matTooltipDisabled]="!isTabletScreen">{{ isTabletScreen ? (id | truncate:'start') : id}}</span></div>
+      <div>
+        <span 
+        [matTooltip]="id" 
+        [matTooltipPosition]="tooltipPosition" 
+        [matTooltipDisabled]="!isTruncated">{{ isTruncated ? (id | truncate:truncateType) : id}}</span>
+      </div>
     </div>
     <div style="padding: 5px;">
       <h3>Truncate middle</h3>
-      <div><span [matTooltip]="id" [matTooltipPosition]="tooltipPosition" [matTooltipDisabled]="!isTabletScreen">{{ isTabletScreen ? (dateCreated | truncate:'middle':8) : dateCreated}}</span></div>
+      <div><span [matTooltip]="dateCreated" [matTooltipPosition]="tooltipPosition" [matTooltipDisabled]="!isTruncated">{{ isTruncated ? (dateCreated | truncate:'middle':truncateLength) : dateCreated}}</span></div>
     </div>
     <div style="padding: 5px;">
       <h3>Truncate End</h3>
-      <div><span [matTooltip]="id" [matTooltipPosition]="tooltipPosition" [matTooltipDisabled]="!isTabletScreen">{{ isTabletScreen ? (id | truncate:'end':9) : id}}</span></div>
+      <div><span [matTooltip]="id" [matTooltipPosition]="tooltipPosition" [matTooltipDisabled]="!isTruncated">{{ isTruncated ? (id | truncate:'end':9) : id}}</span></div>
     </div>
     <div style="padding: 5px;">
         <h3>Truncate Number</h3>
-        <div><span [matTooltip]="id" [matTooltipPosition]="tooltipPosition" [matTooltipDisabled]="!isTabletScreen">{{ isTabletScreen ? (0123456789101112 | truncate:'middle':7) : 0123456789101112}}</span></div>
+        <div><span [matTooltip]="0123456789101112" [matTooltipPosition]="tooltipPosition" [matTooltipDisabled]="!isTruncated">{{ isTruncated ? (0123456789101112 | truncate:'middle':7) : 0123456789101112}}</span></div>
       </div>
   </div>
     <mat-card-footer style="padding: 30px;">
