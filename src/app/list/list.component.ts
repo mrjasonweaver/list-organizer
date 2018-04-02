@@ -8,7 +8,14 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 })
 export class ListComponent implements OnInit {
 
-  constructor() {}
+  constructor(private breakpointObserver: BreakpointObserver) {}
+
+  get isBreakpoint() {
+    return this.breakpointObserver.isMatched('(max-width: 1000px)');
+  }
+  get isTooltipDisabled() {
+    return !this.isBreakpoint;
+  }
 
   public tooltipPosition;
   public id;
