@@ -5,18 +5,30 @@
   <div style="display: flex;">
     <div style="padding: 5px;">
       <h3>Truncate Start</h3>
-      <div><span [matTooltip]="id" [matTooltipPosition]="tooltipPosition" [matTooltipDisabled]="isTooltipDisabled">{{ isBreakpoint ? (id | truncate:'start':9) : id}}</span></div>
+      <div>
+        <span [matTooltip]="id" [matTooltipPosition]="tooltipPosition" [matTooltipDisabled]="isTooltipDisabled">
+          {{ isBreakpoint ? (id | truncate:'start':9) : id}}
+        </span>
+      </div>
     </div>
     <div style="padding: 5px;">
       <h3>Truncate middle</h3>
-      <div><span [matTooltip]="dateCreated" [matTooltipPosition]="tooltipPosition" [matTooltipDisabled]="isTooltipDisabled">{{ isBreakpoint ? (dateCreated | truncate:'middle':truncateLength) : dateCreated}}</span></div>
+      <div>
+        <span [matTooltip]="dateCreated" [matTooltipPosition]="tooltipPosition" [matTooltipDisabled]="isTooltipDisabled">
+          {{ isBreakpoint ? (dateCreated | truncate:'middle':truncateLength) : dateCreated}}
+        </span>
+      </div>
     </div>
     <div style="padding: 5px;">
       <h3>Truncate End</h3>
-      <div><span [matTooltip]="id" [matTooltipPosition]="tooltipPosition" [matTooltipDisabled]="isTooltipDisabled">{{ isBreakpoint ? (id | truncate:'end':9) : id}}</span></div>
+      <div>
+        <span [matTooltip]="id" [matTooltipPosition]="tooltipPosition" [matTooltipDisabled]="isTooltipDisabled">
+          {{ isBreakpoint ? (id | truncate:'end':9) : id}}
+        </span>
+      </div>
     </div>
   </div>
     <mat-card-footer style="padding: 30px;">
-      <span *ngIf="isTabletScreen">Tooltip &amp; Truncate active</span>
+      <span *ngIf="isBreakpoint && !isTooltipDisabled">Tooltip &amp; Truncate active</span>
     </mat-card-footer>
 </mat-card>
