@@ -2,7 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { MatButtonModule, MatCheckboxModule, MatTooltipModule, MatCardModule } from '@angular/material';
+import { 
+        MatButtonModule, 
+        MatCheckboxModule, 
+        MatTooltipModule, 
+        MatCardModule,
+        MatInputModule } from '@angular/material';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { SlicePipe } from '@angular/common';
 import { AppComponent } from './app.component';
@@ -10,6 +15,7 @@ import { ListComponent } from './list/list.component';
 import { TruncatePipe } from './pipes/truncate-pipe/truncate.pipe';
 import { TruncatedValueComponent } from './truncated-value/truncated-value.component';
 import { BreakpointDirective } from './breakpoint.directive';
+import { NgrxTestingComponent } from './ngrx-testing/ngrx-testing.component';
 
 
 @NgModule({
@@ -18,7 +24,8 @@ import { BreakpointDirective } from './breakpoint.directive';
     ListComponent,
     TruncatePipe,
     TruncatedValueComponent,
-    BreakpointDirective
+    BreakpointDirective,
+    NgrxTestingComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,6 +36,7 @@ import { BreakpointDirective } from './breakpoint.directive';
     MatTooltipModule,
     MatCardModule,
     MatGridListModule,
+    MatInputModule,
   ],
   exports: [
     MatButtonModule,

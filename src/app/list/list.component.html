@@ -1,9 +1,11 @@
 
+<app-ngrx-testing></app-ngrx-testing>
+
 <mat-card>
   <mat-card-title>Tooltip Testing</mat-card-title>
   <mat-card-subtitle>with responsive breakpoints</mat-card-subtitle>
   <div style="display: flex;">
-    <div style="padding: 5px;">
+    <div class="pad-sm">
       <h3>Truncate Start</h3>
       <div>
         <span [matTooltip]="id" [matTooltipPosition]="tooltipPosition" [matTooltipDisabled]="isTooltipDisabled">
@@ -11,7 +13,7 @@
         </span>
       </div>
     </div>
-    <div style="padding: 5px;">
+    <div class="pad-sm">
       <h3>Truncate middle</h3>
       <div>
         <span [matTooltip]="dateCreated" [matTooltipPosition]="tooltipPosition" [matTooltipDisabled]="isTooltipDisabled">
@@ -19,7 +21,7 @@
         </span>
       </div>
     </div>
-    <div style="padding: 5px;">
+    <div class="pad-sm">
       <h3>Truncate End</h3>
       <div>
         <span [matTooltip]="id" [matTooltipPosition]="tooltipPosition" [matTooltipDisabled]="isTooltipDisabled">

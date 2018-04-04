@@ -16,7 +16,7 @@ export class ListComponent implements OnInit {
   get isTooltipDisabled() {
     return !this.isBreakpoint;
   }
-
+  public number = 1;
   public tooltipPosition;
   public id;
   public dateCreated;
