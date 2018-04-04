@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { INCREMENT, DECREMENT, RESET } from './counter';
+
+interface AppState {
+  count: number;
+}
 
 @Component({
   selector: 'app-ngrx-testing',
@@ -7,11 +14,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NgrxTestingComponent implements OnInit {
 
-  constructor() { }
+  count$: Observable<number>;
+
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
+    this.count$ = this.store.pipe(select('count'));
   }
 
-  public number = 1;
+  reset() {
+    this.store.dispatch({ type: RESET });
+  }
+
+  changeNumber(direction) {
+    direction === 'up' ?  this.store.dispatch({ type: INCREMENT }) : this.store.dispatch({ type: DECREMENT });
+  }
 
 }

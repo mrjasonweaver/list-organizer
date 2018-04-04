@@ -16,6 +16,8 @@ import { TruncatePipe } from './pipes/truncate-pipe/truncate.pipe';
 import { TruncatedValueComponent } from './truncated-value/truncated-value.component';
 import { BreakpointDirective } from './breakpoint.directive';
 import { NgrxTestingComponent } from './ngrx-testing/ngrx-testing.component';
+import { StoreModule } from '@ngrx/store';
+import { counterReducer } from './ngrx-testing/counter';
 
 
 @NgModule({
@@ -37,6 +39,7 @@ import { NgrxTestingComponent } from './ngrx-testing/ngrx-testing.component';
     MatCardModule,
     MatGridListModule,
     MatInputModule,
+    StoreModule.forRoot({ count: counterReducer })
   ],
   exports: [
     MatButtonModule,
