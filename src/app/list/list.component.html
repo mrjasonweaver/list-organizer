@@ -1,36 +1,4 @@
 
 <app-ngrx-testing></app-ngrx-testing>
 
-<mat-card>
-  <mat-card-title>Tooltip Testing</mat-card-title>
-  <mat-card-subtitle>with responsive breakpoints</mat-card-subtitle>
-  <div style="display: flex;">
-    <div class="pad-sm">
-      <h3>Truncate Start</h3>
-      <div>
-        <span [matTooltip]="id" [matTooltipPosition]="tooltipPosition" [matTooltipDisabled]="isTooltipDisabled">
-          {{ isBreakpoint ? (id | truncate:'start':9) : id}}
-        </span>
-      </div>
-    </div>
-    <div class="pad-sm">
-      <h3>Truncate middle</h3>
-      <div>
-        <span [matTooltip]="dateCreated" [matTooltipPosition]="tooltipPosition" [matTooltipDisabled]="isTooltipDisabled">
-          {{ isBreakpoint ? (dateCreated | truncate:'middle':truncateLength) : dateCreated}}
-        </span>
-      </div>
-    </div>
-    <div class="pad-sm">
-      <h3>Truncate End</h3>
-      <div>
-        <span [matTooltip]="id" [matTooltipPosition]="tooltipPosition" [matTooltipDisabled]="isTooltipDisabled">
-          {{ isBreakpoint ? (id | truncate:'end':9) : id}}
-        </span>
-      </div>
-    </div>
-  </div>
-    <mat-card-footer style="padding: 30px;">
-      <span *ngIf="isBreakpoint && !isTooltipDisabled">Tooltip &amp; Truncate active</span>
-    </mat-card-footer>
-</mat-card>
+<app-truncate-tooltip-test></app-truncate-tooltip-test>

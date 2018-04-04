@@ -18,6 +18,7 @@ import { BreakpointDirective } from './breakpoint.directive';
 import { NgrxTestingComponent } from './ngrx-testing/ngrx-testing.component';
 import { StoreModule } from '@ngrx/store';
 import { counterReducer } from './ngrx-testing/counter';
+import { TruncateTooltipTestComponent } from './truncate-tooltip-test/truncate-tooltip-test.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { counterReducer } from './ngrx-testing/counter';
     TruncatedValueComponent,
     BreakpointDirective,
     NgrxTestingComponent,
+    TruncateTooltipTestComponent,
   ],
   imports: [
     BrowserModule,
