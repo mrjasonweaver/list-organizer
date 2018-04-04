@@ -1,12 +1,10 @@
 <mat-card class="mar-bottom-lg">
     <mat-card-title>NgRx Testing</mat-card-title>
     <mat-card-subtitle>with router invoking reducer</mat-card-subtitle>
+    <div class="pad-sm">
+      <span>Number: {{ count$ | async }}</span>
+    </div>
     <div style="display: flex; align-items: baseline;">
-      <div class="pad-sm">
-        <mat-form-field>
-          <input matInput placeholder="Current Number" value="{{ count$ | async }}">
-        </mat-form-field>
-      </div>
       <div class="pad-sm">
         <button mat-raised-button (click)="changeNumber('up')">Increment</button>
       </div>
@@ -17,18 +15,4 @@
           <button mat-raised-button (click)="reset()">Reset</button>
       </div>
     </div>
-    <!-- <div style="display: flex; align-items: baseline;">
-      <div class="pad-sm">
-        <mat-checkbox>filter</mat-checkbox>
-      </div>
-      <div class="pad-sm">
-        <mat-checkbox>filter</mat-checkbox>
-      </div>
-      <div class="pad-sm">
-        <mat-checkbox>filter</mat-checkbox>
-      </div>
-    </div> -->
-      <mat-card-footer style="padding: 30px;">
-        <span>Number: {{ count$ | async }}</span>
-      </mat-card-footer>
   </mat-card>
