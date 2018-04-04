@@ -39,7 +39,11 @@ import { counterReducer } from './ngrx-testing/counter';
     MatCardModule,
     MatGridListModule,
     MatInputModule,
-    StoreModule.forRoot({ count: counterReducer })
+    StoreModule.forRoot({ count: counterReducer }, {
+      initialState: {
+        count: 1
+      }
+    })
   ],
   exports: [
     MatButtonModule,
