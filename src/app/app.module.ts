@@ -19,6 +19,8 @@ import { NgrxTestingComponent } from './ngrx-testing/ngrx-testing.component';
 import { StoreModule } from '@ngrx/store';
 import { counterReducer } from './ngrx-testing/counter';
 import { TruncateTooltipTestComponent } from './truncate-tooltip-test/truncate-tooltip-test.component';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment'; // Angular CLI environemnt
 
 
 @NgModule({
@@ -43,8 +45,12 @@ import { TruncateTooltipTestComponent } from './truncate-tooltip-test/truncate-t
     MatInputModule,
     StoreModule.forRoot({ count: counterReducer }, {
       initialState: {
-        count: 1
+        count: 0
       }
+    }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production // Restrict extension to log-only mode
     })
   ],
   exports: [
