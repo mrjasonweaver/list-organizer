@@ -1,6 +1,7 @@
-import { Http, URLSearchParams } from "@angular/http";
+import { Http, Response } from "@angular/http";
 import { Observable } from "rxjs/Observable";
 import { Injectable } from "@angular/core";
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class RepoService {
@@ -9,7 +10,7 @@ export class RepoService {
   constructor(private http: Http) {}
 
   getRepoData() {
-    return this.http.get(`${this.url}/repos/angular/angular/issues`);
+    return this.http.get(`${this.url}/repos/angular/angular/issues`).map((res:Response) => res.json());
   }
 
 }

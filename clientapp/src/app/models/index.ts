@@ -5,5 +5,6 @@ export type AppState = { counter: CountState, list: ItemsState };
 export type State = { app: AppState };
 
 export const initialState = {
-  ...InitialCountState
+  ...InitialCountState,
+  ...InitialItemsState
 }

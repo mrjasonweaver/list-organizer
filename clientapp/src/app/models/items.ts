@@ -10,6 +10,10 @@ import { Store, combineReducers } from "@ngrx/store";
 import 'rxjs/add/operator/withLatestFrom';
 import { Watch, Rate } from '../actions/items';
 import { State } from '../models';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/catch';
 
 // state
 export type Item = { id: number, type: string, color: string, description: string, yourRating: number, rating: number };

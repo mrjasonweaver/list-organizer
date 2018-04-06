@@ -4,7 +4,7 @@ export const INCREMENT = 'INCREMENT';
 export const DECREMENT = 'DECREMENT';
 export const RESET = 'RESET';
 
-export const counterReducer = (state: number = 0, action: Action) => {
+export const counterReducer = (state: number, action: Action) => {
   switch (action.type) {
     case INCREMENT:
       console.log("increment");

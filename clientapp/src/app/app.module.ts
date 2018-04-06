@@ -25,6 +25,7 @@ import { TruncateTooltipTestComponent } from './components/truncate-tooltip-test
 import { ItemsComponent } from './components/items/items.component';
 import { ItemComponent } from './components/item/item.component';
 import { initialState } from './models';
+import { ItemsEffects } from './models/items';
 import { appReducer } from './reducers';
 import { counterReducer } from './reducers/count';
 import { ItemsService } from './services/items.service';
@@ -86,7 +87,7 @@ export const metaReducers: MetaReducer<any>[] = [debug];
       { path: 'truncate-tooltip',  pathMatch: 'full', component: TruncateTooltipTestComponent },
     ], {useHash: true}),
     EffectsModule.forRoot([
-      
+      ItemsEffects
     ]),
     StoreRouterConnectingModule
   ],
@@ -101,7 +102,9 @@ export const metaReducers: MetaReducer<any>[] = [debug];
     BrowserAnimationsModule, 
     SlicePipe,
     ItemsService,
-    RepoService
+    RepoService,
+    WatchService,
+    ItemsEffects
   ],
   bootstrap: [AppComponent]
 })

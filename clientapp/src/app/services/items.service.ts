@@ -2,6 +2,7 @@ import { Http, URLSearchParams } from "@angular/http";
 import { Observable } from "rxjs/Observable";
 import { Injectable } from "@angular/core";
 import { Filters, Item } from "../models/items";
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class ItemsService {
