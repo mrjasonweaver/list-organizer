@@ -3,6 +3,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { HttpModule } from '@angular/http';
+import { ReactiveFormsModule } from '@angular/forms';
 import { 
         MatButtonModule, 
         MatCheckboxModule, 
@@ -12,54 +14,81 @@ import {
 import { MatGridListModule } from '@angular/material/grid-list';
 import { SlicePipe } from '@angular/common';
 import { AppComponent } from './app.component';
-import { ListComponent } from './list/list.component';
+import { ListComponent } from './components/list/list.component';
 import { TruncatePipe } from './pipes/truncate-pipe/truncate.pipe';
-import { TruncatedValueComponent } from './truncated-value/truncated-value.component';
-import { BreakpointDirective } from './breakpoint.directive';
-import { NgrxTestingComponent } from './ngrx-testing/ngrx-testing.component';
-import { StoreModule } from '@ngrx/store';
+import { StoreModule, ActionReducer, MetaReducer } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
+import { EffectsModule } from '@ngrx/effects';
 import { environment } from '../environments/environment'; // Angular CLI environemnt
-import { counterReducer } from './ngrx-testing/counter';
-import { TruncateTooltipTestComponent } from './truncate-tooltip-test/truncate-tooltip-test.component';
+import { TruncateTooltipTestComponent } from './components/truncate-tooltip-test/truncate-tooltip-test.component';
+import { ItemsComponent } from './components/items/items.component';
+import { ItemComponent } from './components/item/item.component';
+import { initialState } from './models';
+import { appReducer } from './reducers';
+import { counterReducer } from './reducers/count';
+import { ItemsService } from './services/items.service';
+import { ItemDetailsComponent } from './components/item-details/item-details.component';
+import { WatchService } from './services/watch.service';
+import { FiltersComponent } from './components/filters/filters.component';
+import { CounterComponent } from './components/counter/counter.component';
+import { RepoDataComponent } from './components/repo-data/repo-data.component';
+import { RepoService } from './services/repo.service';
 
+
+// console.log all actions
+export function debug(reducer: ActionReducer<any>): ActionReducer<any> {
+  return function(state, action) {
+    console.log('state', state);
+    console.log('action', action);
+
+    return reducer(state, action);
+  }
+}
+export const metaReducers: MetaReducer<any>[] = [debug];
 
 @NgModule({
   declarations: [
     AppComponent,
     ListComponent,
     TruncatePipe,
-    TruncatedValueComponent,
-    BreakpointDirective,
-    NgrxTestingComponent,
     TruncateTooltipTestComponent,
+    ItemsComponent,
+    ItemComponent,
+    ItemDetailsComponent,
+    FiltersComponent,
+    CounterComponent,
+    RepoDataComponent,
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     FormsModule,
+    HttpModule,
     MatButtonModule,
     MatCheckboxModule,
     MatTooltipModule,
     MatCardModule,
     MatGridListModule,
     MatInputModule,
-    StoreModule.forRoot({ count: counterReducer }, {
-      initialState: {
-        count: 0
-      }
-    }),
+    StoreModule.forRoot(<any>appReducer, { initialState, metaReducers }),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production // Restrict extension to log-only mode
     }),
     RouterModule.forRoot([
       // routes
+      { path: '',  pathMatch: 'full', redirectTo: 'count' },
+      { path: 'count',  pathMatch: 'full', component: CounterComponent },
+      { path: 'list',  pathMatch: 'full', component: ListComponent },
+      { path: 'repo-data',  pathMatch: 'full', component: RepoDataComponent },
+      { path: 'truncate-tooltip',  pathMatch: 'full', component: TruncateTooltipTestComponent },
+    ], {useHash: true}),
+    EffectsModule.forRoot([
+      
     ]),
-    StoreRouterConnectingModule.forRoot({
-      stateKey: 'router' // name of reducer key
-    })
+    StoreRouterConnectingModule
   ],
   exports: [
     MatButtonModule,
@@ -68,7 +97,12 @@ import { TruncateTooltipTestComponent } from './truncate-tooltip-test/truncate-t
     MatCardModule,
     MatGridListModule,
   ],
-  providers: [BrowserAnimationsModule, SlicePipe],
+  providers: [
+    BrowserAnimationsModule, 
+    SlicePipe,
+    ItemsService,
+    RepoService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

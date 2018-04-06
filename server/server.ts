@@ -49,7 +49,7 @@ router.get("/items", (req, res) => {
   const listItems = filteredListItems.reduce((acc, t) => (acc[t.id] = t, acc), {});
   const list = filteredListItems.map(t => t.id);
 
-  res.json({listItems, list});
+  res.json({listItems});
 });
 
 router.get("/item", (req, res) => {

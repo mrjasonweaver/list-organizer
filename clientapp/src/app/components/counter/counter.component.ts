@@ -1,25 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { INCREMENT, DECREMENT, RESET } from './counter';
-
-interface AppState {
-  count: number;
-}
+import { INCREMENT, DECREMENT, RESET } from '../../reducers/count';
+import { CountState } from '../../models/count';
 
 @Component({
-  selector: 'app-ngrx-testing',
-  templateUrl: './ngrx-testing.component.html',
-  styleUrls: ['./ngrx-testing.component.css']
+  selector: 'app-counter',
+  templateUrl: './counter.component.html',
+  styleUrls: ['./counter.component.css']
 })
-export class NgrxTestingComponent implements OnInit {
+export class CounterComponent implements OnInit {
 
   count$: Observable<number>;
 
-  constructor(private store: Store<AppState>) { }
+  constructor(private store: Store<CountState>) { }
 
   ngOnInit() {
-    this.count$ = this.store.pipe(select('count'));
+    this.count$ = this.store.select('count');
   }
 
   reset() {
@@ -29,5 +26,4 @@ export class NgrxTestingComponent implements OnInit {
   changeNumber(direction) {
     direction === 'up' ?  this.store.dispatch({ type: INCREMENT }) : this.store.dispatch({ type: DECREMENT });
   }
-
 }
