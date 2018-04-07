@@ -57,8 +57,7 @@ export class ItemsEffects {
       return {type: 'ITEM_WATCHED', payload: a.payload};
     });
 
-  constructor(private actions: Actions, private store: Store<State>, private itemsService: ItemsService, private watch: WatchService) {
-  }
+  constructor(private actions: Actions, private store: Store<State>, private itemsService: ItemsService, private watch: WatchService) {}
 
   private handleNavigation(segment: string, callback: (a: ActivatedRouteSnapshot, state: State) => Observable<any>) {
     const nav = this.actions.ofType(ROUTER_NAVIGATION).
