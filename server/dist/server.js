@@ -17,7 +17,7 @@ var _listItems = [
     {
         "id": 112,
         "type": "tablet",
-        "speaker": "white",
+        "color": "white",
         "description": "64-bit architecture. Four-core design. Over 3.3 billion transistors. Translation: iPad is incredibly fast. Which comes in handy when you want to edit a 4K video, play graphics-intensive games, or experience the latest augmented reality apps.",
         "yourRating": null,
         "rating": 8.5
@@ -25,12 +25,42 @@ var _listItems = [
     {
         "id": 113,
         "type": "watch",
-        "speaker": "black",
+        "color": "black",
         "description": "Take a call when you’re out on the water. Ask Siri to send a message. Stream your favorite songs on your run. And do it all while leaving your phone behind. Apple Watch Series 3 with cellular. Now you have the freedom to go with just your watch.",
         "yourRating": null,
         "rating": 8.2
     }
 ];
+var _contacts = [
+    {
+        "id": 121,
+        "email": "bruce.wayne@batman.com",
+        "firstName": "Bruce",
+        "lastName": "Wayne"
+    },
+    {
+        "id": 122,
+        "email": "clark.kent@superman.com",
+        "firstName": "Clark",
+        "lastName": "Kent"
+    },
+    {
+        "id": 123,
+        "email": "lex.luther@evil.com",
+        "firstName": "Lex",
+        "lastName": "Luther"
+    }
+];
+router.get("/contacts", function (req, res) {
+    console.log("GET /contacts");
+    res.json({ _contacts: _contacts });
+});
+router.get("/contact", function (req, res) {
+    var id = +req.query.id;
+    console.log("GET /contact", "id:", id);
+    var contact = _contacts.filter(function (t) { return t.id === id; })[0];
+    res.json({ contact: contact });
+});
 router.get("/items", function (req, res) {
     var filters = req.query;
     console.log("GET /items", "filters:", filters);
