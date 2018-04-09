@@ -35,6 +35,7 @@ import { FiltersComponent } from './components/filters/filters.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { RepoDataComponent } from './components/repo-data/repo-data.component';
 import { RepoService } from './services/repo.service';
+import { ContactsComponent } from './components/contacts/contacts.component';
 
 
 // console.log all actions
@@ -60,6 +61,7 @@ export const metaReducers: MetaReducer<any>[] = [debug];
     FiltersComponent,
     CounterComponent,
     RepoDataComponent,
+    ContactsComponent,
   ],
   imports: [
     BrowserModule,
