@@ -1,6 +1,5 @@
 <ul>
   <li *ngFor="let contact of contacts$ | async">
-    <span>{{contact.firstName}} | </span><span>{{contact.lastName}} | </span><span>{{contact.email}}</span>
+    <span>{{contact.lastName}}, </span><span>{{contact.firstName}} | </span><span>{{contact.email}}</span>
   </li>
 </ul>
-{{ contacts$ | async | json }}
