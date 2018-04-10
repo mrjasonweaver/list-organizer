@@ -61,7 +61,8 @@ const _contacts = [
 
 router.get("/contacts", (req, res) => {
   console.log("GET /contacts");
-  res.json({_contacts});
+  const contacts = _contacts;
+  res.json({contacts});
 });
 
 router.get("/contact", (req, res) => {

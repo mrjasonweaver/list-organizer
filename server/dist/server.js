@@ -53,7 +53,8 @@ var _contacts = [
 ];
 router.get("/contacts", function (req, res) {
     console.log("GET /contacts");
-    res.json({ _contacts: _contacts });
+    var contacts = _contacts;
+    res.json({ contacts: contacts });
 });
 router.get("/contact", function (req, res) {
     var id = +req.query.id;
@@ -104,4 +105,4 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/", router);
 app.listen(port);
 console.log("Server port: " + port);
-//# sourceMappingURL=/Users/jamesweaver/Projects/list-organizer/server/server.js.map
+//# sourceMappingURL=/Users/mrjasonweaver/Projects/list-organizer/server/server.js.map
