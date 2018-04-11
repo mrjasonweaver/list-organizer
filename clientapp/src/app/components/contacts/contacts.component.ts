@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, Params } from "@angular/router";
 import { ContactsState, Contact } from "../../models/contacts";
-import { State } from "../../models";
-import { ContactsService } from "../../services/contacts.service";
 import { Store, select } from "@ngrx/store";
 import { Observable } from "rxjs/Observable";
 import 'rxjs/add/operator/map';
@@ -15,13 +12,13 @@ import 'rxjs/add/operator/map';
 export class ContactsComponent implements OnInit {
   private contacts$: Observable<Contact[]>;
 
-  constructor(private contactsService: ContactsService, private router: Router) { }
+  constructor(private store: Store<ContactsState>) { }
 
   ngOnInit() {
     this.loadContacts;
   }
 
   public get loadContacts() {
-    return this.contacts$ = this.contactsService.findContacts();
+    return this.contacts$ = this.store.select('contacts');
   }
 }

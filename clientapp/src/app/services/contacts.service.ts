@@ -2,8 +2,8 @@ import { Http, URLSearchParams } from "@angular/http";
 import { Injectable } from '@angular/core';
 import { Observable } from "rxjs/Observable";
 import { ContactsState, Contact } from "../models/contacts";
-
 import 'rxjs/add/operator/map';
+
 @Injectable()
 export class ContactsService {
   private url = 'http://localhost:4444';
@@ -11,7 +11,8 @@ export class ContactsService {
   constructor(private http: Http) {}
 
   findContacts(): Observable<Contact[]> {
-    return this.http.get(`${this.url}/contacts`).map(r => r.json().contacts);
+    const contacts = this.http.get(`${this.url}/contacts`).map(r => r.json()).map(c => c.contacts);
+    return contacts;
   }
 
   findContact(id: number): Observable<Contact> {

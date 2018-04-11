@@ -10,7 +10,9 @@ import {
         MatCheckboxModule, 
         MatTooltipModule, 
         MatCardModule,
-        MatInputModule } from '@angular/material';
+        MatInputModule,
+        MatTableModule,
+        MatSidenavModule } from '@angular/material';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { SlicePipe } from '@angular/common';
 import { AppComponent } from './app.component';
@@ -25,7 +27,7 @@ import { TruncateTooltipTestComponent } from './components/truncate-tooltip-test
 import { ItemsComponent } from './components/items/items.component';
 import { ItemComponent } from './components/item/item.component';
 import { initialState } from './models';
-import { ItemsEffects } from './models/items';
+import { ContactsEffects } from './effects/contactsEffects';
 import { appReducer } from './reducers';
 import { counterReducer } from './reducers/count';
 import { ItemsService } from './services/items.service';
@@ -76,6 +78,8 @@ export const metaReducers: MetaReducer<any>[] = [debug];
     MatCardModule,
     MatGridListModule,
     MatInputModule,
+    MatTableModule,
+    MatSidenavModule,
     StoreModule.forRoot(<any>appReducer, { initialState, metaReducers }),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
@@ -91,7 +95,7 @@ export const metaReducers: MetaReducer<any>[] = [debug];
       { path: 'contacts',  pathMatch: 'full', component: ContactsComponent },
     ], {useHash: true}),
     EffectsModule.forRoot([
-      ItemsEffects
+      ContactsEffects
     ]),
     StoreRouterConnectingModule
   ],
@@ -101,6 +105,8 @@ export const metaReducers: MetaReducer<any>[] = [debug];
     MatTooltipModule,
     MatCardModule,
     MatGridListModule,
+    MatTableModule,
+    MatSidenavModule,
   ],
   providers: [
     BrowserAnimationsModule, 
@@ -108,7 +114,7 @@ export const metaReducers: MetaReducer<any>[] = [debug];
     ItemsService,
     RepoService,
     WatchService,
-    ItemsEffects,
+    ContactsEffects,
     ContactsService
   ],
   bootstrap: [AppComponent]
