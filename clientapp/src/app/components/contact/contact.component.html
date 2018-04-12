@@ -1,3 +1,6 @@
-<p>
-  contact works!
-</p>
+<mat-card>
+  <mat-card-title>Contact</mat-card-title>
+    <p>First Name: {{ firstName$ | async }}</p>
+    <p>Last Name: {{ lastName$ | async }}</p>
+    <p>email: {{ email$ | async }}</p>
+</mat-card>

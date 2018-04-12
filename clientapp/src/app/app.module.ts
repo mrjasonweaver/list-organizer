@@ -38,6 +38,7 @@ import { CounterComponent } from './components/counter/counter.component';
 import { RepoDataComponent } from './components/repo-data/repo-data.component';
 import { RepoService } from './services/repo.service';
 import { ContactsComponent } from './components/contacts/contacts.component';
+import { ContactComponent } from './components/contact/contact.component';
 import { ContactsService } from './services/contacts.service';
 
 
@@ -65,6 +66,7 @@ export const metaReducers: MetaReducer<any>[] = [debug];
     CounterComponent,
     RepoDataComponent,
     ContactsComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
@@ -92,8 +94,8 @@ export const metaReducers: MetaReducer<any>[] = [debug];
       { path: 'list',  pathMatch: 'full', component: ListComponent },
       { path: 'repo-data',  pathMatch: 'full', component: RepoDataComponent },
       { path: 'truncate-tooltip',  pathMatch: 'full', component: TruncateTooltipTestComponent },
-      { path: 'contacts',  pathMatch: 'full', component: ContactsComponent },
-      { path: 'contact/:id', loadChildren: './contact/contact.module#ContactModule' },
+      { path: 'contacts',  pathMatch: 'full', component: ContactsComponent}, 
+      { path: 'contact/:id', component: ContactComponent }
     ], {useHash: true}),
     EffectsModule.forRoot([
       ContactsEffects

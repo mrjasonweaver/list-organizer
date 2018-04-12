@@ -1,5 +1,20 @@
-<ul>
-  <li *ngFor="let contact of contacts$ | async">
-    <span>{{contact.lastName}}, </span><span>{{contact.firstName}} | </span><span>{{contact.email}}</span>
-  </li>
-</ul>
+<mat-card>
+  <mat-card-title>Contacts</mat-card-title>
+  <mat-table #table [dataSource]="contacts$ | async">
+    <ng-container matColumnDef="lastName">
+      <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
+      <mat-cell *matCellDef="let contact"> {{contact.lastName}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="firstName">
+      <mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>
+      <mat-cell *matCellDef="let contact"> {{contact.firstName}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef> email </mat-header-cell>
+      <mat-cell *matCellDef="let contact"> {{contact.email}} </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
