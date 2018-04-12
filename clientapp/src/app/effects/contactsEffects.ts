@@ -9,7 +9,7 @@ import { Store, combineReducers } from "@ngrx/store";
 import 'rxjs/add/operator/withLatestFrom';
 import { Watch, Rate } from '../actions/items';
 import { AppState } from '../models';
-import { ContactsState } from '../models/contacts';
+import { ContactsState, ContactState } from '../models/contacts';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/switchMap';
@@ -17,11 +17,12 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class ContactsEffects {
-  @Effect() navigateToContacts = this.handleNavigation('contacts', (r: ActivatedRouteSnapshot) => {
+  @Effect() navigateToContacts = this.handleNavigation('contacts', (r: ActivatedRouteSnapshot, state: AppState) => {
+    // if (!state.contacts) {
     return this.contactsService.findContacts().map(resp => ({type: 'CONTACTS_UPDATED', payload: resp}));
   });
 
-  @Effect() navigateToContact = this.handleNavigation('contact/:id', (r: ActivatedRouteSnapshot, state: AppState) => {
+  @Effect() navigateToContact = this.handleNavigation('contacts/:id', (r: ActivatedRouteSnapshot, state: AppState) => {
     const id = +r.paramMap.get('id');
     if (! state.contacts[id]) {
       return this.contactsService.findContact(+r.paramMap.get('id')).map(resp => ({type: 'CONTACT_UPDATED', payload: resp}));

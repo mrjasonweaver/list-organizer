@@ -13,6 +13,10 @@ export class ContactComponent implements OnInit {
   private firstName$: Observable<string>;
   private lastName$: Observable<string>;
   private email$: Observable<string>;
+  private role$: Observable<string>;
+  private organization$: Observable<string>;
+  private phone$: Observable<string>;
+  private status$: Observable<boolean>;
 
   constructor(private store: Store<ContactState>) { }
 
@@ -20,6 +24,10 @@ export class ContactComponent implements OnInit {
     this.firstName$ = this.store.select(fromRoot.selectContactFirstName);
     this.lastName$ = this.store.select(fromRoot.selectContactLastName);
     this.email$ = this.store.select(fromRoot.selectContactEmail);
+    this.role$ = this.store.select(fromRoot.selectContactRole);
+    this.organization$ = this.store.select(fromRoot.selectContactOrganization);
+    this.phone$ = this.store.select(fromRoot.selectContactPhone);
+    this.status$ = this.store.select(fromRoot.selectContactStatus);
   }
 
 }

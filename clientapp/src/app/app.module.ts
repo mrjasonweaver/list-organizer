@@ -94,8 +94,9 @@ export const metaReducers: MetaReducer<any>[] = [debug];
       { path: 'list',  pathMatch: 'full', component: ListComponent },
       { path: 'repo-data',  pathMatch: 'full', component: RepoDataComponent },
       { path: 'truncate-tooltip',  pathMatch: 'full', component: TruncateTooltipTestComponent },
-      { path: 'contacts',  pathMatch: 'full', component: ContactsComponent}, 
-      { path: 'contact/:id', component: ContactComponent }
+      { path: 'contacts', component: ContactsComponent,
+        children: [{ path: ':id', component: ContactComponent }]
+      }
     ], {useHash: true}),
     EffectsModule.forRoot([
       ContactsEffects

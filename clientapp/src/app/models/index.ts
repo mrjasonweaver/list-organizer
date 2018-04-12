@@ -7,7 +7,7 @@ export type State = { app: AppState };
 
 export const initialState = {
   ...InitialCountState,
-  ...InitialItemsState,
+  // ...InitialItemsState,
   ...InitialContactsState,
   ...InitialContactState
 }

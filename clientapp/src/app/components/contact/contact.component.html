@@ -1,6 +1,10 @@
 <mat-card>
-  <mat-card-title>Contact</mat-card-title>
+  <mat-card-title>Selected Contact</mat-card-title>
     <p>First Name: {{ firstName$ | async }}</p>
     <p>Last Name: {{ lastName$ | async }}</p>
     <p>email: {{ email$ | async }}</p>
+    <p>Role: {{ role$ | async }}</p>
+    <p>Organization: {{ organization$ | async }}</p>
+    <p>Phone: {{ phone$ | async }}</p>
+    <p>Status: {{ status$ | async }}</p>
 </mat-card>

@@ -11,7 +11,7 @@ import 'rxjs/add/operator/map';
 })
 export class ContactsComponent implements OnInit {
   private contacts$: Observable<Contact[]>;
-  displayedColumns = ['lastName', 'firstName', 'email'];
+  displayedColumns = ['lastName', 'firstName', 'email', 'role', 'organization', 'phone', 'status'];
 
   constructor(private store: Store<ContactsState>) { }
 
