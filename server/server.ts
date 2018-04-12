@@ -40,21 +40,33 @@ const _contacts = [
     "id": 121,
     "email": "bruce.wayne@batman.com",
     "firstName": "Bruce",
-    "lastName": "Wayne"
+    "lastName": "Wayne",
+    "role": "Super Hero",
+    "organization": "Wayne Enterprise",
+    "phone": "555-5555",
+    "status": true
     
   },
   {
     "id": 122,
     "email": "clark.kent@superman.com",
     "firstName": "Clark",
-    "lastName": "Kent"
+    "lastName": "Kent",
+    "role": "Super Hero",
+    "organization": "Justice League",
+    "phone": "555-5555",
+    "status": true
    
   },
   {
     "id": 123,
-    "email": "lex.luther@evil.com",
+    "email": "lex.luthor@evil.com",
     "firstName": "Lex",
-    "lastName": "Luther"
+    "lastName": "Luthor",
+    "role": "Super Villan",
+    "organization": "LexCorp",
+    "phone": "555-5555",
+    "status": true
    
   }
 ];
