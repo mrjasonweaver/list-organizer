@@ -9,8 +9,8 @@ export function contactsReducer(state: ContactsState, action: Action): ContactsS
       return action.payload;
     }
     case  'CONTACT_UPDATED': {
-      const contacts = state;
-      return contacts;
+      console.log(action.payload.id);
+      return state;
       // return contacts.filter(x => x.id === action.payload.id);
     }
     default: {
