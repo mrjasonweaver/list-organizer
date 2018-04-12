@@ -15,10 +15,6 @@ export class ContactsComponent implements OnInit {
   constructor(private store: Store<ContactsState>) { }
 
   ngOnInit() {
-    this.loadContacts;
-  }
-
-  public get loadContacts() {
-    return this.contacts$ = this.store.select('contacts');
+    return this.contacts$ = this.store.select(state => state.contacts);
   }
 }
