@@ -93,7 +93,7 @@ export const metaReducers: MetaReducer<any>[] = [debug];
       { path: 'repo-data',  pathMatch: 'full', component: RepoDataComponent },
       { path: 'truncate-tooltip',  pathMatch: 'full', component: TruncateTooltipTestComponent },
       { path: 'contacts',  pathMatch: 'full', component: ContactsComponent },
-      { path: 'contact/:id', component: ContactsComponent },
+      { path: 'contact/:id', loadChildren: './contact/contact.module#ContactModule' },
     ], {useHash: true}),
     EffectsModule.forRoot([
       ContactsEffects
