@@ -1,7 +1,7 @@
 import { RouterAction, ROUTER_NAVIGATION, RouterNavigationAction } from '@ngrx/router-store';
 import { Injectable } from "@angular/core";
 import { Actions, Effect } from '@ngrx/effects';
-import { Params, ActivatedRouteSnapshot } from "@angular/router";
+import { Params, ActivatedRouteSnapshot, RouteConfigLoadEnd } from "@angular/router";
 import { ContactsService } from "../services/contacts.service";
 import { of } from "rxjs/observable/of";
 import { Observable } from "rxjs/Observable";
@@ -14,11 +14,11 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/catch';
+import { first } from 'rxjs/operators';
 
 @Injectable()
 export class ContactsEffects {
   @Effect() navigateToContacts = this.handleNavigation('contacts', (r: ActivatedRouteSnapshot, state: AppState) => {
-    // if (!state.contacts) {
     return this.contactsService.findContacts().map(resp => ({type: 'CONTACTS_UPDATED', payload: resp}));
   });
 
@@ -34,7 +34,8 @@ export class ContactsEffects {
   constructor(private actions: Actions, private store: Store<AppState>, private contactsService: ContactsService) {}
 
   private handleNavigation(segment: string, callback: (a: ActivatedRouteSnapshot, state: AppState) => Observable<any>) {
-    const nav = this.actions.ofType(ROUTER_NAVIGATION).map(firstSegment).filter(s => s.routeConfig.path === segment);
+    const nav = this.actions.ofType(ROUTER_NAVIGATION).map(firstSegment);
+    nav.filter(s => s.routeConfig.path === segment);
 
     return nav.withLatestFrom(this.store).switchMap(a => callback(a[0], a[1])).catch(e => {
       console.log('Network error', e);
@@ -43,6 +44,6 @@ export class ContactsEffects {
   }
 }
 
-function firstSegment(r: RouterNavigationAction) {
-  return r.payload.routerState.root.firstChild;
-}
+const firstSegment = (r: RouterNavigationAction) => r.payload.routerState.root.firstChild;
+
+const secondSegment = (r: RouterNavigationAction) => r.payload.routerState.root.children[1];
