@@ -21,10 +21,7 @@ import 'rxjs/add/operator/do';
 @Injectable()
 export class ContactsEffects {
 
-  @Effect() navigateToContacts = this.handleNavigation('contacts', (r: ActivatedRouteSnapshot) => {
-    const getContactsPayload = this.contactsService.findContacts().map(resp => ({type: 'CONTACTS_UPDATED', payload: resp}));
-    return getContactsPayload;
-  });
+  @Effect() navigateToContacts = this.handleNavigation('contacts', (r: ActivatedRouteSnapshot) => this.getContactsPayload);
 
   @Effect() navigateToContact = this.handleNavigation('contact/:id', (r: ActivatedRouteSnapshot) => {
     const id = +r.paramMap.get('id');
@@ -35,13 +32,16 @@ export class ContactsEffects {
   constructor(private actions: Actions, private store: Store<AppState>, private contactsService: ContactsService) {}
 
   private handleNavigation(segment: string, callback: (a: ActivatedRouteSnapshot, state: AppState) => Observable<any>) {
-    const first = this.actions.ofType(ROUTER_NAVIGATION).map(firstSegment);
+    const first = this.actions.ofType(ROUTER_NAVIGATION).map(firstSegment)
+      .do(res => console.log("params", res.queryParams.id)); // log query params
     const nav = first.filter(s => s.routeConfig.path === segment);
     return nav.withLatestFrom(this.store).switchMap(a => callback(a[0], a[1])).catch(e => {
       console.log('Network error', e);
       return of();
     });
   }
+
+  private getContactsPayload = this.contactsService.findContacts().map(resp => ({type: 'CONTACTS_UPDATED', payload: resp}));
 }
 
 const firstSegment = (r: RouterNavigationAction) => r.payload.routerState.root.firstChild;

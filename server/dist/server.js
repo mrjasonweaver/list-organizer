@@ -57,7 +57,7 @@ var _contacts = [
         "email": "lex.luthor@evil.com",
         "firstName": "Lex",
         "lastName": "Luthor",
-        "role": "Super Villan",
+        "role": "Super Villain",
         "organization": "LexCorp",
         "phone": "555-5555",
         "status": true
@@ -117,4 +117,4 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/", router);
 app.listen(port);
 console.log("Server port: " + port);
-//# sourceMappingURL=/Users/mrjasonweaver/Projects/list-organizer/server/server.js.map
+//# sourceMappingURL=/Users/jamesweaver/Projects/list-organizer/server/server.js.map
