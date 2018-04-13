@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ContactsState, Contact } from "../../models/contacts";
 import { Store, select } from "@ngrx/store";
 import { Observable } from "rxjs/Observable";
-import 'rxjs/add/operator/map';
+import * as fromRoot from '../../selectors/contact';
 
 @Component({
   selector: 'app-contacts',
@@ -16,6 +16,6 @@ export class ContactsComponent implements OnInit {
   constructor(private store: Store<ContactsState>) { }
 
   ngOnInit() {
-    return this.contacts$ = this.store.select(state => state.contacts);
+    this.contacts$ = this.store.select(state => state.contacts);
   }
 }

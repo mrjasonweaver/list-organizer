@@ -23,6 +23,13 @@ export class ContactsEffects {
 
   @Effect() navigateToContacts = this.handleNavigation('contacts', (r: ActivatedRouteSnapshot) => this.getContactsPayload);
 
+  @Effect() showSelectedContact = this.handleNavigation('contacts', (r: ActivatedRouteSnapshot) => {
+    const selected = r.queryParamMap.get('selected');
+    const getContactPayload = this.contactsService.findContact(+r.queryParamMap.get('selected')).map(resp => ({type: 'CONTACT_UPDATED', payload: resp}));
+    const resetContactPayload = {type: 'CONTACT_UPDATED', payload: {}};
+    return selected ? getContactPayload : of(resetContactPayload);
+  });
+
   @Effect() navigateToContact = this.handleNavigation('contact/:id', (r: ActivatedRouteSnapshot) => {
     const id = +r.paramMap.get('id');
     const getContactPayload = this.contactsService.findContact(+r.paramMap.get('id')).map(resp => ({type: 'CONTACT_UPDATED', payload: resp}));
@@ -33,7 +40,6 @@ export class ContactsEffects {
 
   private handleNavigation(segment: string, callback: (a: ActivatedRouteSnapshot, state: AppState) => Observable<any>) {
     const first = this.actions.ofType(ROUTER_NAVIGATION).map(firstSegment)
-      .do(res => console.log("params", res.queryParams.id)); // log query params
     const nav = first.filter(s => s.routeConfig.path === segment);
     return nav.withLatestFrom(this.store).switchMap(a => callback(a[0], a[1])).catch(e => {
       console.log('Network error', e);

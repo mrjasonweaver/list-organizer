@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { ContactState, Contact } from "../../models/contacts";
+import { Component, OnInit, Input } from '@angular/core';
+import { ContactsState, Contact } from "../../models/contacts";
 import { Store, select } from "@ngrx/store";
 import { Observable } from "rxjs/Observable";
+import 'rxjs/add/operator/map';
 import * as fromRoot from '../../selectors/contact';
 
 @Component({
@@ -18,7 +19,7 @@ export class ContactComponent implements OnInit {
   private phone$: Observable<string>;
   private status$: Observable<boolean>;
 
-  constructor(private store: Store<ContactState>) { }
+  constructor(private store: Store<ContactsState>) { }
 
   ngOnInit() {
     this.firstName$ = this.store.select(fromRoot.selectContactFirstName);
@@ -30,4 +31,11 @@ export class ContactComponent implements OnInit {
     this.status$ = this.store.select(fromRoot.selectContactStatus);
   }
 
+  // @Input() firstName = this.firstName$;
+  // @Input() lastName = this.lastName$; 
+  // @Input() email = this.email$; 
+  // @Input() role = this.role$; 
+  // @Input() organization = this.organization$; 
+  // @Input() phone = this.phone$; 
+  // @Input() status = this.status$;
 }
