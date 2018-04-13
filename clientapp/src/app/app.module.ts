@@ -89,14 +89,17 @@ export const metaReducers: MetaReducer<any>[] = [debug];
     }),
     RouterModule.forRoot([
       // routes
-      { path: '',  pathMatch: 'full', redirectTo: 'contacts' },
-      { path: 'count',  pathMatch: 'full', component: CounterComponent },
-      { path: 'list',  pathMatch: 'full', component: ListComponent },
-      { path: 'repo-data',  pathMatch: 'full', component: RepoDataComponent },
-      { path: 'truncate-tooltip',  pathMatch: 'full', component: TruncateTooltipTestComponent },
+      { path: '', pathMatch: 'full', redirectTo: 'contacts' },
+      { path: 'count', pathMatch: 'full', component: CounterComponent },
+      { path: 'list', pathMatch: 'full', component: ListComponent },
+      { path: 'repo-data', pathMatch: 'full', component: RepoDataComponent },
+      { path: 'truncate-tooltip', pathMatch: 'full', component: TruncateTooltipTestComponent },
       { path: 'contacts', component: ContactsComponent,
-        children: [{ path: ':id', component: ContactComponent }]
-      }
+        children: [
+          { path: 'contact/:id', component: ContactComponent }
+        ]
+      },
+      { path: 'contact/:id', component: ContactComponent }
     ], {useHash: true}),
     EffectsModule.forRoot([
       ContactsEffects

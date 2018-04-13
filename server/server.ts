@@ -63,7 +63,7 @@ const _contacts = [
     "email": "lex.luthor@evil.com",
     "firstName": "Lex",
     "lastName": "Luthor",
-    "role": "Super Villan",
+    "role": "Super Villain",
     "organization": "LexCorp",
     "phone": "555-5555",
     "status": true
