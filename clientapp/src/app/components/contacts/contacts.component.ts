@@ -39,7 +39,7 @@ export class ContactsComponent implements OnInit {
     this.router.navigate(['/contacts'], { queryParams: { selected: id } });  // change route query params so we can load selected contact with ngrx effects
   }
 
-  routeToContactList($event) {
+  routeToContactList() {
     this.router.navigate(['/contacts']);  // change route to contacts list
   }
 }
