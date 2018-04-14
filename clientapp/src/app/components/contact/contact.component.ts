@@ -1,41 +1,16 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ContactsState, Contact } from "../../models/contacts";
-import { Store, select } from "@ngrx/store";
-import { Observable } from "rxjs/Observable";
-import 'rxjs/add/operator/map';
-import * as fromRoot from '../../selectors/contact';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css']
 })
-export class ContactComponent implements OnInit {
-  private firstName$: Observable<string>;
-  private lastName$: Observable<string>;
-  private email$: Observable<string>;
-  private role$: Observable<string>;
-  private organization$: Observable<string>;
-  private phone$: Observable<string>;
-  private status$: Observable<boolean>;
-
-  constructor(private store: Store<ContactsState>) { }
-
-  ngOnInit() {
-    this.firstName$ = this.store.select(fromRoot.selectContactFirstName);
-    this.lastName$ = this.store.select(fromRoot.selectContactLastName);
-    this.email$ = this.store.select(fromRoot.selectContactEmail);
-    this.role$ = this.store.select(fromRoot.selectContactRole);
-    this.organization$ = this.store.select(fromRoot.selectContactOrganization);
-    this.phone$ = this.store.select(fromRoot.selectContactPhone);
-    this.status$ = this.store.select(fromRoot.selectContactStatus);
-  }
-
-  // @Input() firstName = this.firstName$;
-  // @Input() lastName = this.lastName$; 
-  // @Input() email = this.email$; 
-  // @Input() role = this.role$; 
-  // @Input() organization = this.organization$; 
-  // @Input() phone = this.phone$; 
-  // @Input() status = this.status$;
+export class ContactComponent {
+  @Input() firstName: string;
+  @Input() lastName: string; 
+  @Input() email: string; 
+  @Input() role: string; 
+  @Input() organization: string; 
+  @Input() phone: string; 
+  @Input() status: boolean;
 }

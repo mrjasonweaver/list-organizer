@@ -30,12 +30,6 @@ export class ContactsEffects {
     return selected ? getContactPayload : of(resetContactPayload);
   });
 
-  @Effect() navigateToContact = this.handleNavigation('contact/:id', (r: ActivatedRouteSnapshot) => {
-    const id = +r.paramMap.get('id');
-    const getContactPayload = this.contactsService.findContact(+r.paramMap.get('id')).map(resp => ({type: 'CONTACT_UPDATED', payload: resp}));
-    return getContactPayload;
-  });
-
   constructor(private actions: Actions, private store: Store<AppState>, private contactsService: ContactsService) {}
 
   private handleNavigation(segment: string, callback: (a: ActivatedRouteSnapshot, state: AppState) => Observable<any>) {

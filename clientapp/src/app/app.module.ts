@@ -12,6 +12,7 @@ import {
         MatCardModule,
         MatInputModule,
         MatTableModule,
+        MatIconModule,
         MatSidenavModule } from '@angular/material';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { SlicePipe } from '@angular/common';
@@ -81,6 +82,7 @@ export const metaReducers: MetaReducer<any>[] = [debug];
     MatGridListModule,
     MatInputModule,
     MatTableModule,
+    MatIconModule,
     MatSidenavModule,
     StoreModule.forRoot(<any>appReducer, { initialState, metaReducers }),
     StoreDevtoolsModule.instrument({
@@ -95,7 +97,6 @@ export const metaReducers: MetaReducer<any>[] = [debug];
       { path: 'repo-data', pathMatch: 'full', component: RepoDataComponent },
       { path: 'truncate-tooltip', pathMatch: 'full', component: TruncateTooltipTestComponent },
       { path: 'contacts', component: ContactsComponent },
-      { path: 'contact/:id', component: ContactComponent }
     ], {useHash: true}),
     EffectsModule.forRoot([
       ContactsEffects
@@ -109,6 +110,7 @@ export const metaReducers: MetaReducer<any>[] = [debug];
     MatCardModule,
     MatGridListModule,
     MatTableModule,
+    MatIconModule,
     MatSidenavModule,
   ],
   providers: [
