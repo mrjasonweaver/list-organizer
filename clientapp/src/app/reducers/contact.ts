@@ -5,7 +5,7 @@ import { Action } from '../actions/contacts';
 export function contactReducer(state: Contact, action: Action): Contact {
   switch (action.type) {
     case  'CONTACT_UPDATED': {
-      return action.payload;
+      return {...action.payload};
     }
     default: {
       return state;
