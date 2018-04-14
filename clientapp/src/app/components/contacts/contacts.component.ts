@@ -20,6 +20,7 @@ export class ContactsComponent implements OnInit {
   private phone$: Observable<string>;
   private status$: Observable<boolean>;
   private contactSelected: Observable<boolean>;
+  private id: string;
   private displayedColumns = ['lastName', 'firstName', 'role', 'organization', 'phone', 'action'];
 
   constructor(private store: Store<ContactsState>, private router: Router) { }
@@ -35,7 +36,7 @@ export class ContactsComponent implements OnInit {
     this.status$ = this.store.select(fromRoot.selectContactStatus);
   }
 
-  showContact(id) {
+  getContact(id) {
     this.router.navigate(['/contacts'], { queryParams: { selected: id } });  // change route query params so we can load selected contact with ngrx effects
   }
 

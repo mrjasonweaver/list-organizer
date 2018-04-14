@@ -41,6 +41,7 @@ import { RepoService } from './services/repo.service';
 import { ContactsComponent } from './components/contacts/contacts.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { ContactsService } from './services/contacts.service';
+import { ContactsTableComponent } from './components/contacts-table/contacts-table.component';
 
 
 // console.log all actions
@@ -68,6 +69,7 @@ export const metaReducers: MetaReducer<any>[] = [debug];
     RepoDataComponent,
     ContactsComponent,
     ContactComponent,
+    ContactsTableComponent,
   ],
   imports: [
     BrowserModule,

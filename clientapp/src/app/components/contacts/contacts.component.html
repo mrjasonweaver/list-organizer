@@ -12,50 +12,11 @@
     ></app-contact>
   </mat-sidenav>
   <div class="app-container">
-    <mat-card style="margin-bottom: 30px;">
-      <mat-card-title>Contacts</mat-card-title>
-
-      <mat-card>
-        <mat-table #table [dataSource]="contacts$ | async">
-          <ng-container matColumnDef="lastName">
-            <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
-            <mat-cell *matCellDef="let contact"> {{contact.lastName}} </mat-cell>
-          </ng-container>
-
-          <ng-container matColumnDef="firstName">
-            <mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>
-            <mat-cell *matCellDef="let contact"> {{contact.firstName}} </mat-cell>
-          </ng-container>
-
-          <ng-container matColumnDef="role">
-            <mat-header-cell *matHeaderCellDef> Role </mat-header-cell>
-            <mat-cell *matCellDef="let contact"> {{contact.role}} </mat-cell>
-          </ng-container>
-        
-          <ng-container matColumnDef="organization">
-            <mat-header-cell *matHeaderCellDef> Organization </mat-header-cell>
-            <mat-cell *matCellDef="let contact"> {{contact.organization}} </mat-cell>
-          </ng-container>
-
-          <ng-container matColumnDef="phone">
-              <mat-header-cell *matHeaderCellDef> Phone </mat-header-cell>
-              <mat-cell *matCellDef="let contact"> {{contact.phone}} </mat-cell>
-            </ng-container>
-          
-            <ng-container matColumnDef="status">
-              <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
-              <mat-cell *matCellDef="let contact"> {{contact.status}} </mat-cell>
-            </ng-container>
-
-            <ng-container matColumnDef="action">
-              <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
-              <mat-cell *matCellDef="let contact"> <button mat-icon-button (click)="showContact(contact.id)"><mat-icon>edit</mat-icon></button> </mat-cell>
-            </ng-container>
-
-          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-        </mat-table>
-      </mat-card>
-    </mat-card>
+    <app-contacts-table
+      *ngIf="contacts$ | async"
+      [displayedColumns]="displayedColumns"
+      [contacts]="contacts$ | async"
+      (showContact)="getContact($event)"
+    ></app-contacts-table>
   </div>
 </mat-sidenav-container>
