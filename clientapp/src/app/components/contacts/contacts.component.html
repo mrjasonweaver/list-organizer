@@ -1,22 +1,21 @@
 <mat-sidenav-container (backdropClick)="routeToContactList()">
-  <mat-sidenav position="end" [opened]="firstName$ | async"  mode="over">
-    <app-contact 
-      *ngIf="firstName$ | async"
+  <mat-sidenav position="end" mode="over"
+    [opened]="firstName$ | async">
+    <app-contact *ngIf="firstName$ | async"
       [firstName]="firstName$ | async"
       [lastName]="lastName$ | async"
       [email]="email$ | async"
       [role]="role$ | async"
       [organization]="organization$ | async"
       [phone]="phone$ | async"
-      [status]="status$ | async"
-    ></app-contact>
+      [status]="status$ | async">
+    </app-contact>
   </mat-sidenav>
   <div class="app-container">
-    <app-contacts-table
-      *ngIf="contacts$ | async"
+    <app-contacts-table *ngIf="contacts$ | async"
       [displayedColumns]="displayedColumns"
       [contacts]="contacts$ | async"
-      (showContact)="getContact($event)"
-    ></app-contacts-table>
+      (showContact)="getContact($event)">
+    </app-contacts-table>
   </div>
 </mat-sidenav-container>

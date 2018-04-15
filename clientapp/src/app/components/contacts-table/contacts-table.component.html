@@ -1,6 +1,5 @@
 <mat-card style="margin-bottom: 30px;">
   <mat-card-title>Contacts</mat-card-title>
-
   <mat-card>
     <mat-table #table [dataSource]="contacts">
       <ng-container matColumnDef="lastName">
@@ -24,19 +23,24 @@
       </ng-container>
 
       <ng-container matColumnDef="phone">
-          <mat-header-cell *matHeaderCellDef> Phone </mat-header-cell>
-          <mat-cell *matCellDef="let contact"> {{contact.phone}} </mat-cell>
-        </ng-container>
+        <mat-header-cell *matHeaderCellDef> Phone </mat-header-cell>
+        <mat-cell *matCellDef="let contact"> {{contact.phone}} </mat-cell>
+      </ng-container>
       
-        <ng-container matColumnDef="status">
-          <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
-          <mat-cell *matCellDef="let contact"> {{contact.status}} </mat-cell>
-        </ng-container>
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+        <mat-cell *matCellDef="let contact"> {{contact.status}} </mat-cell>
+      </ng-container>
 
-        <ng-container matColumnDef="action">
-          <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
-          <mat-cell *matCellDef="let contact"> <button mat-icon-button (click)="onShowContact(contact.id)"><mat-icon>edit</mat-icon></button> </mat-cell>
-        </ng-container>
+      <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+        <mat-cell *matCellDef="let contact"> 
+          <button mat-icon-button 
+            (click)="onShowContact(contact.id)">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
