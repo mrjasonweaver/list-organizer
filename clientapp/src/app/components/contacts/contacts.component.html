@@ -13,9 +13,11 @@
   </mat-sidenav>
   <div class="app-container">
     <app-contacts-table *ngIf="contacts$ | async"
+      [pageEvent]="pageEvent"
       [displayedColumns]="displayedColumns"
       [contacts]="contacts$ | async"
-      (showContact)="getContact($event)">
+      (showContact)="getContact($event)"
+      (routeToPage)="getPage($event)">
     </app-contacts-table>
   </div>
 </mat-sidenav-container>

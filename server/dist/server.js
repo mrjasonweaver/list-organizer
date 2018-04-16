@@ -5,32 +5,6 @@ var bodyParser = require("body-parser");
 var app = express();
 var port = 4444;
 var router = express.Router();
-var _listItems = [
-    {
-        "id": 111,
-        "type": "phone",
-        "color": "black",
-        "description": "The display employs new techniques and technology to precisely follow the curves of the design, all the way to the elegantly rounded corners.",
-        "yourRating": null,
-        "rating": 9.1
-    },
-    {
-        "id": 112,
-        "type": "tablet",
-        "color": "white",
-        "description": "64-bit architecture. Four-core design. Over 3.3 billion transistors. Translation: iPad is incredibly fast. Which comes in handy when you want to edit a 4K video, play graphics-intensive games, or experience the latest augmented reality apps.",
-        "yourRating": null,
-        "rating": 8.5
-    },
-    {
-        "id": 113,
-        "type": "watch",
-        "color": "black",
-        "description": "Take a call when you’re out on the water. Ask Siri to send a message. Stream your favorite songs on your run. And do it all while leaving your phone behind. Apple Watch Series 3 with cellular. Now you have the freedom to go with just your watch.",
-        "yourRating": null,
-        "rating": 8.2
-    }
-];
 var _contacts = [
     {
         "id": 121,
@@ -61,11 +35,67 @@ var _contacts = [
         "organization": "LexCorp",
         "phone": "555-5555",
         "status": true
-    }
+    },
+    {
+        "id": 124,
+        "email": "barry.allen@flash.com",
+        "firstName": "Barry",
+        "lastName": "Allen",
+        "role": "Super Hero",
+        "organization": "Justice League",
+        "phone": "555-5555",
+        "status": true
+    },
+    {
+        "id": 125,
+        "email": "hal.jordan@greenlantern.com",
+        "firstName": "Hal",
+        "lastName": "Jordan",
+        "role": "Super Hero",
+        "organization": "Justice League",
+        "phone": "555-5555",
+        "status": true
+    },
+    {
+        "id": 126,
+        "email": "diana.prince@wonderwoman.com",
+        "firstName": "Diana",
+        "lastName": "Prince",
+        "role": "Super Hero",
+        "organization": "Justice League",
+        "phone": "555-5555",
+        "status": true
+    },
+    {
+        "id": 127,
+        "email": "victor.stone@cyborg.com",
+        "firstName": "Victor",
+        "lastName": "Stone",
+        "role": "Super Hero",
+        "organization": "Justice League",
+        "phone": "555-5555",
+        "status": true
+    },
+    {
+        "id": 128,
+        "email": "arthur.curry@auqaman.com",
+        "firstName": "Arthur",
+        "lastName": "Curry",
+        "role": "Super Hero",
+        "organization": "Justice League",
+        "phone": "555-5555",
+        "status": true
+    },
 ];
 router.get("/contacts", function (req, res) {
-    console.log("GET /contacts");
-    var contacts = _contacts;
+    var perPage = 4;
+    var page = +req.query.page;
+    var contactsLength = _contacts.length;
+    console.log("GET /contacts", "page:", page);
+    var filteredContacts = _contacts.filter(function (c, i) {
+        return (page >= 2) ? i >= 4 : i < 4;
+    });
+    var contacts = filteredContacts;
     res.json({ contacts: contacts });
 });
 router.get("/contact", function (req, res) {
@@ -74,38 +104,13 @@ router.get("/contact", function (req, res) {
     var contact = _contacts.filter(function (t) { return t.id === id; })[0];
     res.json({ contact: contact });
 });
-router.get("/items", function (req, res) {
-    var filters = req.query;
-    console.log("GET /items", "filters:", filters);
-    var filteredListItems = _listItems.filter(function (t) {
-        var typePass = filters.type ? t.type.indexOf(filters.type) > -1 : true;
-        var colorPass = filters.color ? t.color.indexOf(filters.color) > -1 : true;
-        var ratingPass = filters.minRating ? t.rating >= filters.minRating : true;
-        return typePass && colorPass && ratingPass;
-    });
-    var listItems = filteredListItems.reduce(function (acc, t) { return (acc[t.id] = t, acc); }, {});
-    var list = filteredListItems.map(function (t) { return t.id; });
-    res.json({ listItems: listItems, list: list });
-});
-router.get("/item", function (req, res) {
-    var id = +req.query.id;
-    console.log("GET /item", "id:", id);
-    var item = _listItems.filter(function (t) { return t.id === id; })[0];
-    res.json({ item: item });
-});
-router.post("/rate", function (req, res) {
+router.post("/status", function (req, res) {
     var id = req.body.id;
-    var yourRating = req.body.yourRating;
-    console.log("POST  /rate", "id:", id, "yourRating:", yourRating);
-    if (yourRating > 10) {
-        res.status(500);
-        res.json({ status: 'ERROR', message: "Rating cannot be > 10" });
-    }
-    else {
-        var item = _listItems.filter(function (t) { return t.id === id; })[0];
-        item.yourRating = yourRating;
-        res.json({ status: 'OK' });
-    }
+    var status = req.body.status;
+    console.log("POST  /status", "id:", id, "status:", status);
+    var contact = _contacts.filter(function (t) { return t.id === id; })[0];
+    contact.status = status;
+    res.json({ status: 'OK' });
 });
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");

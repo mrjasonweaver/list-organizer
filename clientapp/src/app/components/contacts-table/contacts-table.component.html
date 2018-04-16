@@ -45,5 +45,10 @@
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
+    <mat-paginator 
+      (page)="pageEvent = onRouteToPage($event.pageIndex + 1)"
+      [length]="8"
+      [pageSize]="4">
+    </mat-paginator>
   </mat-card>
 </mat-card>

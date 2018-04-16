@@ -4,6 +4,7 @@ import { ContactsState, Contact } from "../../models/contacts";
 import { Store, select } from "@ngrx/store";
 import { Observable } from "rxjs/Observable";
 import * as fromRoot from '../../selectors/contact';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-contacts',
@@ -19,8 +20,10 @@ export class ContactsComponent implements OnInit {
   private organization$: Observable<string>;
   private phone$: Observable<string>;
   private status$: Observable<boolean>;
-  private contactSelected: Observable<boolean>;
-  private displayedColumns = ['lastName', 'firstName', 'role', 'organization', 'phone', 'action'];
+  private pageEvent: PageEvent = { pageSize: 4, pageIndex: 0, length: 8};
+  id: string;
+  page: number;
+  displayedColumns = ['lastName', 'firstName', 'role', 'organization', 'phone', 'action'];
 
   constructor(private store: Store<ContactsState>, private router: Router) { }
 
@@ -41,5 +44,8 @@ export class ContactsComponent implements OnInit {
 
   routeToContactList() {
     this.router.navigate(['/contacts']);  // change route to contacts list
+  }
+  getPage(page: number) {
+    this.router.navigate(['/contacts'], { queryParams: { page } });  // change route query params so we can load paginated page with ngrx effects
   }
 }

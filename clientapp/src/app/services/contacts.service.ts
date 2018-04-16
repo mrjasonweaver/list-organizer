@@ -11,8 +11,10 @@ export class ContactsService {
 
   constructor(private http: Http) {}
 
-  findContacts(): Observable<Contact[]> {
-    const contacts = this.http.get(`${this.url}/contacts`).map(r => r.json()).map(c => c.contacts);
+  findContacts(page: number): Observable<Contact[]> {
+    const params = new URLSearchParams();
+    params.set("page", page.toString());
+    const contacts = this.http.get(`${this.url}/contacts`, {search: params}).map(r => r.json()).map(c => c.contacts);
     return contacts;
   }
 

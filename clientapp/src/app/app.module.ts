@@ -12,6 +12,7 @@ import {
         MatCardModule,
         MatInputModule,
         MatTableModule,
+        MatPaginatorModule,
         MatIconModule,
         MatSidenavModule } from '@angular/material';
 import { SlicePipe } from '@angular/common';
@@ -55,6 +56,7 @@ import { ContactsTableComponent } from './components/contacts-table/contacts-tab
     MatCardModule,
     MatInputModule,
     MatTableModule,
+    MatPaginatorModule,
     MatIconModule,
     MatSidenavModule,
     StoreModule.forRoot(<any>appReducer, { initialState }),
@@ -80,6 +82,7 @@ import { ContactsTableComponent } from './components/contacts-table/contacts-tab
     MatTooltipModule,
     MatCardModule,
     MatTableModule,
+    MatPaginatorModule,
     MatIconModule,
     MatSidenavModule,
   ],

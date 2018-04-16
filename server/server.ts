@@ -41,12 +41,72 @@ const _contacts = [
     "phone": "555-5555",
     "status": true
    
-  }
+  },
+  {
+    "id": 124,
+    "email": "barry.allen@flash.com",
+    "firstName": "Barry",
+    "lastName": "Allen",
+    "role": "Super Hero",
+    "organization": "Justice League",
+    "phone": "555-5555",
+    "status": true
+    
+  },
+  {
+    "id": 125,
+    "email": "hal.jordan@greenlantern.com",
+    "firstName": "Hal",
+    "lastName": "Jordan",
+    "role": "Super Hero",
+    "organization": "Justice League",
+    "phone": "555-5555",
+    "status": true
+   
+  },
+  {
+    "id": 126,
+    "email": "diana.prince@wonderwoman.com",
+    "firstName": "Diana",
+    "lastName": "Prince",
+    "role": "Super Hero",
+    "organization": "Justice League",
+    "phone": "555-5555",
+    "status": true
+   
+  },
+  {
+    "id": 127,
+    "email": "victor.stone@cyborg.com",
+    "firstName": "Victor",
+    "lastName": "Stone",
+    "role": "Super Hero",
+    "organization": "Justice League",
+    "phone": "555-5555",
+    "status": true
+    
+  },
+  {
+    "id": 128,
+    "email": "arthur.curry@auqaman.com",
+    "firstName": "Arthur",
+    "lastName": "Curry",
+    "role": "Super Hero",
+    "organization": "Justice League",
+    "phone": "555-5555",
+    "status": true
+   
+  },
 ];
 
 router.get("/contacts", (req, res) => {
-  console.log("GET /contacts");
-  const contacts = _contacts;
+  const perPage = 4;
+  const page = +req.query.page;
+  const contactsLength = _contacts.length;
+  console.log("GET /contacts", "page:", page);
+  const filteredContacts = _contacts.filter((c, i) => (page >= 2) ? i >= 4 : i < 4);
+
+  const contacts = filteredContacts;
   res.json({contacts});
 });
 
