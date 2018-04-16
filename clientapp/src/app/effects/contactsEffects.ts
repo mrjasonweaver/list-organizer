@@ -18,13 +18,15 @@ import 'rxjs/add/operator/catch';
 export class ContactsEffects {
 
   @Effect() navigateToContacts = this.handleNavigation('contacts', (r: ActivatedRouteSnapshot) => {
-    const getContactsPayload = this.contactsService.findContacts(+r.queryParamMap.get('page')).map(resp => ({type: 'CONTACTS_UPDATED', payload: resp}));
+    const getContactsPayload = this.contactsService.findContacts(+r.queryParamMap.get('page'))
+      .map(resp => ({type: 'CONTACTS_UPDATED', payload: resp}));
     return getContactsPayload;
   });
 
   @Effect() showSelectedContact = this.handleNavigation('contacts', (r: ActivatedRouteSnapshot) => {
     const selected = r.queryParamMap.get('selected');
-    const getContactPayload = this.contactsService.findContact(+r.queryParamMap.get('selected')).map(resp => ({type: 'CONTACT_UPDATED', payload: resp}));
+    const getContactPayload = this.contactsService.findContact(+r.queryParamMap.get('selected'))
+      .map(resp => ({type: 'CONTACT_UPDATED', payload: resp}));
     const resetContactPayload = {type: 'CONTACT_UPDATED', payload: {}};
     return selected ? getContactPayload : of(resetContactPayload);
   });
