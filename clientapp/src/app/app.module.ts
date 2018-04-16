@@ -5,15 +5,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import {
-        MatButtonModule,
-        MatCheckboxModule,
-        MatTooltipModule,
-        MatCardModule,
-        MatInputModule,
-        MatTableModule,
-        MatPaginatorModule,
-        MatIconModule,
+import { MatButtonModule, MatCheckboxModule, MatTooltipModule, MatCardModule,
+        MatInputModule, MatTableModule, MatPaginatorModule, MatIconModule,
         MatSidenavModule } from '@angular/material';
 import { SlicePipe } from '@angular/common';
 import { AppComponent } from './app.component';
@@ -27,8 +20,6 @@ import { TruncateTooltipTestComponent } from './components/truncate-tooltip-test
 import { initialState } from './models';
 import { ContactsEffects } from './effects/contactsEffects';
 import { appReducer } from './reducers';
-import { counterReducer } from './reducers/count';
-import { CounterComponent } from './components/counter/counter.component';
 import { ContactsComponent } from './components/contacts/contacts.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { ContactsService } from './services/contacts.service';
@@ -39,7 +30,6 @@ import { ContactsTableComponent } from './components/contacts-table/contacts-tab
     AppComponent,
     TruncatePipe,
     TruncateTooltipTestComponent,
-    CounterComponent,
     ContactsComponent,
     ContactComponent,
     ContactsTableComponent,
@@ -67,7 +57,6 @@ import { ContactsTableComponent } from './components/contacts-table/contacts-tab
     RouterModule.forRoot([
       // routes
       { path: '', pathMatch: 'full', redirectTo: 'contacts' },
-      { path: 'count', pathMatch: 'full', component: CounterComponent },
       { path: 'truncate-tooltip', pathMatch: 'full', component: TruncateTooltipTestComponent },
       { path: 'contacts', component: ContactsComponent },
     ], {useHash: true}),

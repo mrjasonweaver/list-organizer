@@ -22,7 +22,7 @@ export class ContactsComponent implements OnInit {
   private status$: Observable<boolean>;
   private pageEvent: PageEvent = { pageSize: 4, pageIndex: 0, length: 8};
 
-  page: number;
+  page = 1;
   id: string;
   displayedColumns = ['lastName', 'firstName', 'role', 'organization', 'phone', 'action'];
 
@@ -50,7 +50,7 @@ export class ContactsComponent implements OnInit {
   }
 
   getPage(page: number) {
-    //  keep page in sync by storing in component state
+    // keep page in sync by storing in component state
     this.page > 0 ? this.page = page : this.page = 1;
     // change route query params so we can load paginated page with ngrx effects
     this.router.navigate(['/contacts'], { queryParams: { page } });
