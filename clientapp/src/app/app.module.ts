@@ -3,7 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
         MatButtonModule,
@@ -49,7 +49,7 @@ import { ContactsTableComponent } from './components/contacts-table/contacts-tab
     ReactiveFormsModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpModule,
+    HttpClientModule,
     MatButtonModule,
     MatCheckboxModule,
     MatTooltipModule,
