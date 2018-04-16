@@ -12,6 +12,7 @@ import { PageEvent } from '@angular/material/paginator';
   styleUrls: ['./contacts.component.css']
 })
 export class ContactsComponent implements OnInit {
+  /* --- Data ---- */
   private contacts$: Observable<Contact[]>;
   private firstName$: Observable<string>;
   private lastName$: Observable<string>;
@@ -20,7 +21,9 @@ export class ContactsComponent implements OnInit {
   private organization$: Observable<string>;
   private phone$: Observable<string>;
   private status$: Observable<boolean>;
-  private pageEvent: PageEvent = { pageSize: 4, pageIndex: 0, length: 8};
+
+  /* --- Translation ---- */
+  // labels
   firstNameLabel: string = 'First Name';
   lastNameLabel: string = 'Last Name';
   emailLabel: string = 'Email';
@@ -28,6 +31,11 @@ export class ContactsComponent implements OnInit {
   statusLabel: string = 'Status';
   roleLabel: string = 'Role';
   organizationLabel: string = 'Organization';
+  // Titles
+  selectedContactTitleText: string = 'Selected Contact';
+
+  /* --- Component container state ---- */
+  private pageEvent: PageEvent = { pageSize: 4, pageIndex: 0, length: 8};
   page = 1;
   id: string;
   displayedColumns = ['lastName', 'firstName', 'role', 'organization', 'phone', 'action'];
