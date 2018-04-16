@@ -22,8 +22,8 @@ export class ContactsComponent implements OnInit {
   private status$: Observable<boolean>;
   private pageEvent: PageEvent = { pageSize: 4, pageIndex: 0, length: 8};
 
-  id: string;
   page: number;
+  id: string;
   displayedColumns = ['lastName', 'firstName', 'role', 'organization', 'phone', 'action'];
 
   constructor(private store: Store<ContactsState>, private router: Router) { }
@@ -41,15 +41,17 @@ export class ContactsComponent implements OnInit {
 
   getContact(id: string) {
     // change route query params so we can load selected contact with ngrx effects
-    this.router.navigate(['/contacts'], { queryParams: { selected: id } });
+    this.router.navigate(['/contacts'], { queryParams: { selected: id, page: this.page } });
   }
 
   routeToContactList() {
     // change route to contacts list
-    this.router.navigate(['/contacts']);
+    this.router.navigate(['/contacts'], { queryParams: { page: this.page } });
   }
 
   getPage(page: number) {
+    //  keep page in sync by storing in component state
+    this.page > 0 ? this.page = page : this.page = 1;
     // change route query params so we can load paginated page with ngrx effects
     this.router.navigate(['/contacts'], { queryParams: { page } });
   }
