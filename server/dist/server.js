@@ -92,9 +92,7 @@ router.get("/contacts", function (req, res) {
     var page = +req.query.page;
     var contactsLength = _contacts.length;
     console.log("GET /contacts", "page:", page);
-    var filteredContacts = _contacts.filter(function (c, i) {
-        return (page >= 2) ? i >= 4 : i < 4;
-    });
+    var filteredContacts = _contacts.filter(function (c, i) { return (page >= 2) ? i >= 4 : i < 4; });
     var contacts = filteredContacts;
     res.json({ contacts: contacts });
 });
@@ -122,4 +120,4 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/", router);
 app.listen(port);
 console.log("Server port: " + port);
-//# sourceMappingURL=/Users/mrjasonweaver/Projects/list-organizer/server/server.js.map
+//# sourceMappingURL=/Users/jamesweaver/Projects/list-organizer/server/server.js.map
