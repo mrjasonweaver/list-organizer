@@ -4,8 +4,8 @@
     <app-field-edit [labelText]="lastNameLabel" [fieldText]="lastName"></app-field-edit>
     <app-field-edit [labelText]="emailLabel" [fieldText]="email"></app-field-edit>
     <app-field-edit [labelText]="phoneLabel" [fieldText]="phone"></app-field-edit>
-    <app-status-toggle [status]="status"></app-status-toggle>
+    <app-status-toggle [statusLabel]="statusLabel" [status]="status"></app-status-toggle>
     <mat-divider></mat-divider>
-    <p>Role: {{ role }}</p>
-    <p>Organization: {{ organization }}</p>
+    <p>{{ roleLabel }} {{ role }}</p>
+    <p>{{ organizationLabel }} {{ organization }}</p>
 </mat-card>

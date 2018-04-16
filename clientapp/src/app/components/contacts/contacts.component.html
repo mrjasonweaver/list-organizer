@@ -3,12 +3,12 @@
     [opened]="firstName$ | async">
     <app-contact *ngIf="firstName$ | async"
       [firstNameLabel]="firstNameLabel" [firstName]="firstName$ | async"
-      [firstNameLabel]="firstNameLabel" [lastName]="lastName$ | async"
-      [firstNameLabel]="firstNameLabel" [email]="email$ | async"
-      [firstNameLabel]="firstNameLabel" [role]="role$ | async"
-      [firstNameLabel]="firstNameLabel" [organization]="organization$ | async"
-      [firstNameLabel]="firstNameLabel" [phone]="phone$ | async"
-      [firstNameLabel]="firstNameLabel" [status]="status$ | async">
+      [lastNameLabel]="lastNameLabel" [lastName]="lastName$ | async"
+      [emailLabel]="emailLabel" [email]="email$ | async"
+      [roleLabel]="roleLabel" [role]="role$ | async"
+      [organizationLabel]="organizationLabel" [organization]="organization$ | async"
+      [phoneLabel]="phoneLabel" [phone]="phone$ | async"
+      [statusLabel]="statusLabel" [status]="status$ | async">
     </app-contact>
   </mat-sidenav>
   <div class="app-container">

@@ -6,6 +6,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent {
+  // data
   @Input() firstName: string;
   @Input() lastName: string;
   @Input() email: string;
@@ -13,5 +14,13 @@ export class ContactComponent {
   @Input() organization: string;
   @Input() phone: string;
   @Input() status: boolean;
+
+  // labels
   @Input() firstNameLabel: string;
+  @Input() lastNameLabel: string;
+  @Input() emailLabel: string;
+  @Input() phoneLabel: string;
+  @Input() statusLabel: string;
+  @Input() roleLabel: string;
+  @Input() organizationLabel: string;
 }

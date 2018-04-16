@@ -7,6 +7,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class StatusToggleComponent {
   @Input() status: boolean;
+  @Input() statusLabel: string;
   @Output() statusToggle: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   onStatusToggle(status: boolean) {
