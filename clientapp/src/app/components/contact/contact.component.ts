@@ -13,4 +13,5 @@ export class ContactComponent {
   @Input() organization: string;
   @Input() phone: string;
   @Input() status: boolean;
+  @Input() firstNameLabel: string;
 }

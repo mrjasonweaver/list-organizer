@@ -1,9 +1,9 @@
 <mat-card>
   <mat-card-title>Selected Contact</mat-card-title>
-    <p>First Name: {{ firstName }}</p>
-    <p>Last Name: {{ lastName }}</p>
-    <p>email: {{ email }}</p>
-    <p>Phone: {{ phone }}</p>
+    <app-field-edit [labelText]="firstNameLabel" [fieldText]="firstName"></app-field-edit>
+    <app-field-edit [labelText]="lastNameLabel" [fieldText]="lastName"></app-field-edit>
+    <app-field-edit [labelText]="emailLabel" [fieldText]="email"></app-field-edit>
+    <app-field-edit [labelText]="phoneLabel" [fieldText]="phone"></app-field-edit>
     <app-status-toggle [status]="status"></app-status-toggle>
     <mat-divider></mat-divider>
     <p>Role: {{ role }}</p>

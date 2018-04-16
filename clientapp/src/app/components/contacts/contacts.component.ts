@@ -21,7 +21,7 @@ export class ContactsComponent implements OnInit {
   private phone$: Observable<string>;
   private status$: Observable<boolean>;
   private pageEvent: PageEvent = { pageSize: 4, pageIndex: 0, length: 8};
-
+  firstNameLabel: string = 'First Name';
   page = 1;
   id: string;
   displayedColumns = ['lastName', 'firstName', 'role', 'organization', 'phone', 'action'];

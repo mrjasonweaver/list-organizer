@@ -2,13 +2,13 @@
   <mat-sidenav position="end" mode="over"
     [opened]="firstName$ | async">
     <app-contact *ngIf="firstName$ | async"
-      [firstName]="firstName$ | async"
-      [lastName]="lastName$ | async"
-      [email]="email$ | async"
-      [role]="role$ | async"
-      [organization]="organization$ | async"
-      [phone]="phone$ | async"
-      [status]="status$ | async">
+      [firstNameLabel]="firstNameLabel" [firstName]="firstName$ | async"
+      [firstNameLabel]="firstNameLabel" [lastName]="lastName$ | async"
+      [firstNameLabel]="firstNameLabel" [email]="email$ | async"
+      [firstNameLabel]="firstNameLabel" [role]="role$ | async"
+      [firstNameLabel]="firstNameLabel" [organization]="organization$ | async"
+      [firstNameLabel]="firstNameLabel" [phone]="phone$ | async"
+      [firstNameLabel]="firstNameLabel" [status]="status$ | async">
     </app-contact>
   </mat-sidenav>
   <div class="app-container">

@@ -25,6 +25,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { ContactsService } from './services/contacts.service';
 import { ContactsTableComponent } from './components/contacts-table/contacts-table.component';
 import { StatusToggleComponent } from './components/status-toggle/status-toggle.component';
+import { FieldEditComponent } from './components/field-edit/field-edit.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { StatusToggleComponent } from './components/status-toggle/status-toggle.
     ContactComponent,
     ContactsTableComponent,
     StatusToggleComponent,
+    FieldEditComponent,
   ],
   imports: [
     BrowserModule,
