@@ -5,10 +5,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import { 
-        MatButtonModule, 
-        MatCheckboxModule, 
-        MatTooltipModule, 
+import {
+        MatButtonModule,
+        MatCheckboxModule,
+        MatTooltipModule,
         MatCardModule,
         MatInputModule,
         MatTableModule,
@@ -87,7 +87,7 @@ import { ContactsTableComponent } from './components/contacts-table/contacts-tab
     MatSidenavModule,
   ],
   providers: [
-    BrowserAnimationsModule, 
+    BrowserAnimationsModule,
     SlicePipe,
     ContactsEffects,
     ContactsService

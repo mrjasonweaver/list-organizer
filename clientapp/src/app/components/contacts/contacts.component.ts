@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router } from "@angular/router";
-import { ContactsState, Contact } from "../../models/contacts";
-import { Store, select } from "@ngrx/store";
-import { Observable } from "rxjs/Observable";
+import { Router } from '@angular/router';
+import { ContactsState, Contact } from '../../models/contacts';
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
 import * as fromRoot from '../../selectors/contact';
 import { PageEvent } from '@angular/material/paginator';
 
@@ -21,6 +21,7 @@ export class ContactsComponent implements OnInit {
   private phone$: Observable<string>;
   private status$: Observable<boolean>;
   private pageEvent: PageEvent = { pageSize: 4, pageIndex: 0, length: 8};
+
   id: string;
   page: number;
   displayedColumns = ['lastName', 'firstName', 'role', 'organization', 'phone', 'action'];
@@ -39,13 +40,17 @@ export class ContactsComponent implements OnInit {
   }
 
   getContact(id: string) {
-    this.router.navigate(['/contacts'], { queryParams: { selected: id } });  // change route query params so we can load selected contact with ngrx effects
+    // change route query params so we can load selected contact with ngrx effects
+    this.router.navigate(['/contacts'], { queryParams: { selected: id } });
   }
 
   routeToContactList() {
-    this.router.navigate(['/contacts']);  // change route to contacts list
+    // change route to contacts list
+    this.router.navigate(['/contacts']);
   }
+
   getPage(page: number) {
-    this.router.navigate(['/contacts'], { queryParams: { page } });  // change route query params so we can load paginated page with ngrx effects
+    // change route query params so we can load paginated page with ngrx effects
+    this.router.navigate(['/contacts'], { queryParams: { page } });
   }
 }

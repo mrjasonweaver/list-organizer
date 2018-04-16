@@ -1,5 +1,12 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
-import { Contact, FirstNameState, LastNameState, EmailState, RoleState, OrganizationState, PhoneState, StatusState } from '../models/contacts';
+import { Contact,
+  FirstNameState,
+  LastNameState,
+  EmailState,
+  RoleState,
+  OrganizationState,
+  PhoneState,
+  StatusState } from '../models/contacts';
 
 export const selectContact = createFeatureSelector<Contact>('contact');
 export const selectContactFirstName = createSelector(selectContact, (state: FirstNameState) => state.firstName);

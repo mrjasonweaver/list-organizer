@@ -7,10 +7,10 @@ import { Component, Input } from '@angular/core';
 })
 export class ContactComponent {
   @Input() firstName: string;
-  @Input() lastName: string; 
-  @Input() email: string; 
-  @Input() role: string; 
-  @Input() organization: string; 
-  @Input() phone: string; 
+  @Input() lastName: string;
+  @Input() email: string;
+  @Input() role: string;
+  @Input() organization: string;
+  @Input() phone: string;
   @Input() status: boolean;
 }

@@ -6,4 +6,4 @@ export const appReducer = {
   count: counterReducer,
   contacts: contactsReducer,
   contact: contactReducer
-}
+};
