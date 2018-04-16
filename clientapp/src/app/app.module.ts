@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule, MatCheckboxModule, MatTooltipModule, MatCardModule,
         MatInputModule, MatTableModule, MatPaginatorModule, MatIconModule,
-        MatSidenavModule, MatSlideToggleModule } from '@angular/material';
+        MatSidenavModule, MatSlideToggleModule, MatDividerModule } from '@angular/material';
 import { SlicePipe } from '@angular/common';
 import { AppComponent } from './app.component';
 import { TruncatePipe } from './pipes/truncate-pipe/truncate.pipe';
@@ -52,6 +52,7 @@ import { StatusToggleComponent } from './components/status-toggle/status-toggle.
     MatIconModule,
     MatSidenavModule,
     MatSlideToggleModule,
+    MatDividerModule,
     StoreModule.forRoot(<any>appReducer, { initialState }),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
@@ -78,6 +79,7 @@ import { StatusToggleComponent } from './components/status-toggle/status-toggle.
     MatIconModule,
     MatSidenavModule,
     MatSlideToggleModule,
+    MatDividerModule,
   ],
   providers: [
     BrowserAnimationsModule,
