@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule, MatCheckboxModule, MatTooltipModule, MatCardModule,
         MatInputModule, MatTableModule, MatPaginatorModule, MatIconModule,
-        MatSidenavModule } from '@angular/material';
+        MatSidenavModule, MatSlideToggleModule } from '@angular/material';
 import { SlicePipe } from '@angular/common';
 import { AppComponent } from './app.component';
 import { TruncatePipe } from './pipes/truncate-pipe/truncate.pipe';
@@ -24,6 +24,7 @@ import { ContactsComponent } from './components/contacts/contacts.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { ContactsService } from './services/contacts.service';
 import { ContactsTableComponent } from './components/contacts-table/contacts-table.component';
+import { StatusToggleComponent } from './components/status-toggle/status-toggle.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ContactsTableComponent } from './components/contacts-table/contacts-tab
     ContactsComponent,
     ContactComponent,
     ContactsTableComponent,
+    StatusToggleComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +51,7 @@ import { ContactsTableComponent } from './components/contacts-table/contacts-tab
     MatPaginatorModule,
     MatIconModule,
     MatSidenavModule,
+    MatSlideToggleModule,
     StoreModule.forRoot(<any>appReducer, { initialState }),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
@@ -74,6 +77,7 @@ import { ContactsTableComponent } from './components/contacts-table/contacts-tab
     MatPaginatorModule,
     MatIconModule,
     MatSidenavModule,
+    MatSlideToggleModule,
   ],
   providers: [
     BrowserAnimationsModule,

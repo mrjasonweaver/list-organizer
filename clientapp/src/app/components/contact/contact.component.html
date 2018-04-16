@@ -6,5 +6,5 @@
     <p>Role: {{ role }}</p>
     <p>Organization: {{ organization }}</p>
     <p>Phone: {{ phone }}</p>
-    <p>Status: {{ status }}</p>
+    <app-status-toggle [status]="status"></app-status-toggle>
 </mat-card>
