@@ -1,6 +1,5 @@
 /* 
  * This is the state container for contacts
- * All state is managed in this container
  * Application State, UI Constants, and local state is passed down to the dumb stateless presenter components (@Input)
  * UI events are passed back up via event emitters (@Output)
  */
