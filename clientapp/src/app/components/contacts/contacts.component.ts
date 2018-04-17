@@ -1,3 +1,11 @@
+/* 
+ * This is the state container for contacts
+ * All state is managed in this container
+ * State is feed down to the dumb stateless presenter components (@Input)
+ * UI events are passed back up via event emitters (@Output)
+ */
+
+
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ContactsState, Contact } from '../../models/contacts';
