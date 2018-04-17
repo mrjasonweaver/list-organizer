@@ -2,20 +2,20 @@
 
   <mat-card-title>{{ selectedContactTitleText }}</mat-card-title>
 
-    <app-field-edit [labelText]="firstNameLabel" [fieldText]="firstName"></app-field-edit>
+    <app-field-edit [labelText]="firstNameLabel" [fieldText]="firstName" fieldDisabled="false"></app-field-edit>
 
-    <app-field-edit [labelText]="lastNameLabel" [fieldText]="lastName"></app-field-edit>
+    <app-field-edit [labelText]="lastNameLabel" [fieldText]="lastName" fieldDisabled="false"></app-field-edit>
 
-    <app-field-edit [labelText]="emailLabel" [fieldText]="email"></app-field-edit>
+    <app-field-edit [labelText]="emailLabel" [fieldText]="email" fieldDisabled="false"></app-field-edit>
 
-    <app-field-edit [labelText]="phoneLabel" [fieldText]="phone"></app-field-edit>
+    <app-field-edit [labelText]="phoneLabel" [fieldText]="phone" fieldDisabled="false"></app-field-edit>
 
-    <app-status-toggle [statusLabel]="statusLabel" [status]="status"></app-status-toggle>
+    <app-status-toggle [statusLabel]="statusLabel" [status]="status" fieldDisabled="false"></app-status-toggle>
 
     <mat-divider></mat-divider>
 
-    <p>{{ roleLabel }} {{ role }}</p>
+    <app-field-edit [labelText]="roleLabel" [fieldText]="role" fieldDisabled="true"></app-field-edit>
 
-    <p>{{ organizationLabel }} {{ organization }}</p>
+    <app-field-edit [labelText]="organizationLabel" [fieldText]="organization" fieldDisabled="true"></app-field-edit>
 
 </mat-card>

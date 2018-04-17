@@ -8,4 +8,5 @@ import { Component, Input, Output } from '@angular/core';
 export class FieldEditComponent {
   @Input() fieldText: string;
   @Input() labelText: string;
+  @Input() fieldDisabled: boolean;
 }
