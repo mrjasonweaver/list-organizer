@@ -1,54 +1,60 @@
 <mat-card style="margin-bottom: 30px;">
-  <mat-card-title>Contacts</mat-card-title>
+
+  <mat-card-title>{{ contactsTableTitleText }}</mat-card-title>
+
   <mat-card>
     <mat-table #table [dataSource]="contacts">
       <ng-container matColumnDef="lastName">
-        <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> {{ lastNameLabel }} </mat-header-cell>
         <mat-cell *matCellDef="let contact"> {{contact.lastName}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="firstName">
-        <mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> {{ firstNameLabel }} </mat-header-cell>
         <mat-cell *matCellDef="let contact"> {{contact.firstName}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="role">
-        <mat-header-cell *matHeaderCellDef> Role </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> {{ roleLabel }} </mat-header-cell>
         <mat-cell *matCellDef="let contact"> {{contact.role}} </mat-cell>
       </ng-container>
     
       <ng-container matColumnDef="organization">
-        <mat-header-cell *matHeaderCellDef> Organization </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> {{ organizationLabel }} </mat-header-cell>
         <mat-cell *matCellDef="let contact"> {{contact.organization}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="phone">
-        <mat-header-cell *matHeaderCellDef> Phone </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> {{ phoneLabel }} </mat-header-cell>
         <mat-cell *matCellDef="let contact"> {{contact.phone}} </mat-cell>
       </ng-container>
       
       <ng-container matColumnDef="status">
-        <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> {{ statusLabel }} </mat-header-cell>
         <mat-cell *matCellDef="let contact"> {{contact.status}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="action">
-        <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> {{ actionLabel }} </mat-header-cell>
         <mat-cell *matCellDef="let contact"> 
           <button mat-icon-button 
             (click)="onShowContact(contact.id)">
-            <mat-icon>edit</mat-icon>
+            <mat-icon>{{ editLabel }}</mat-icon>
           </button>
         </mat-cell>
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
     </mat-table>
+
     <mat-paginator 
       (page)="pageEvent = onRouteToPage($event.pageIndex + 1)"
       [length]="8"
       [pageSize]="4">
     </mat-paginator>
+
   </mat-card>
+
 </mat-card>

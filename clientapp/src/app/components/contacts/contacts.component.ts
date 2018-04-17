@@ -12,7 +12,7 @@ import { PageEvent } from '@angular/material/paginator';
   styleUrls: ['./contacts.component.css']
 })
 export class ContactsComponent implements OnInit {
-  /* --- Data ---- */
+  /* ---- State ---- */
   private contacts$: Observable<Contact[]>;
   private firstName$: Observable<string>;
   private lastName$: Observable<string>;
@@ -22,27 +22,31 @@ export class ContactsComponent implements OnInit {
   private phone$: Observable<string>;
   private status$: Observable<boolean>;
 
-  /* --- Translation ---- */
+  /* ---- UI Constants | Translation ---- */
   // labels
-  firstNameLabel: string = 'First Name';
-  lastNameLabel: string = 'Last Name';
-  emailLabel: string = 'Email';
-  phoneLabel: string = 'Phone Number';
-  statusLabel: string = 'Status';
-  roleLabel: string = 'Role';
-  organizationLabel: string = 'Organization';
+  private firstNameLabel = 'First Name';
+  private lastNameLabel = 'Last Name';
+  private emailLabel = 'Email';
+  private phoneLabel = 'Phone Number';
+  private statusLabel = 'Status';
+  private roleLabel = 'Role';
+  private organizationLabel = 'Organization';
+  private actionLabel = 'Action';
+  private editLabel = 'edit';
   // Titles
-  selectedContactTitleText: string = 'Selected Contact';
+  private selectedContactTitleText = 'Selected Contact';
+  private contactsTableTitleText = 'Contacts';
 
-  /* --- Component container state ---- */
+  /* ---- Local container state ---- */
   private pageEvent: PageEvent = { pageSize: 4, pageIndex: 0, length: 8};
-  page = 1;
-  id: string;
-  displayedColumns = ['lastName', 'firstName', 'role', 'organization', 'phone', 'action'];
+  private page = 1;
+  private id: string;
+  private displayedColumns = ['lastName', 'firstName', 'role', 'organization', 'phone', 'action'];
 
   constructor(private store: Store<ContactsState>, private router: Router) { }
 
   ngOnInit() {
+    // get state from store
     this.contacts$ = this.store.select(state => state.contacts);
     this.firstName$ = this.store.select(fromRoot.selectContactFirstName);
     this.lastName$ = this.store.select(fromRoot.selectContactLastName);

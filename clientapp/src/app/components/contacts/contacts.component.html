@@ -1,6 +1,8 @@
 <mat-sidenav-container (backdropClick)="routeToContactList()">
+
   <mat-sidenav position="end" mode="over"
     [opened]="firstName$ | async">
+
     <app-contact *ngIf="firstName$ | async"
       [firstNameLabel]="firstNameLabel" [firstName]="firstName$ | async"
       [lastNameLabel]="lastNameLabel" [lastName]="lastName$ | async"
@@ -11,14 +13,27 @@
       [statusLabel]="statusLabel" [status]="status$ | async"
       [selectedContactTitleText]="selectedContactTitleText">
     </app-contact>
+
   </mat-sidenav>
+
   <div class="app-container">
+
     <app-contacts-table *ngIf="contacts$ | async"
       [pageEvent]="pageEvent"
       [displayedColumns]="displayedColumns"
       [contacts]="contacts$ | async"
       (showContact)="getContact($event)"
-      (routeToPage)="getPage($event)">
+      (routeToPage)="getPage($event)"
+      [firstNameLabel]="firstNameLabel"
+      [lastNameLabel]="lastNameLabel"
+      [roleLabel]="roleLabel"
+      [organizationLabel]="organizationLabel"
+      [phoneLabel]="phoneLabel"
+      [actionLabel]="actionLabel"
+      [editLabel]="editLabel"
+      [contactsTableTitleText]="contactsTableTitleText">
     </app-contacts-table>
+
   </div>
+
 </mat-sidenav-container>

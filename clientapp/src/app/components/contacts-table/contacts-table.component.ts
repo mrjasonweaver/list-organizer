@@ -9,11 +9,25 @@ import { PageEvent } from '@angular/material';
 })
 export class ContactsTableComponent {
 
+  /* ----- State ---- */
   @Input() contacts: Contact[];
   @Input() displayedColumns: String[];
   @Input() pageEvent: PageEvent;
+  // events
   @Output() showContact: EventEmitter<string> = new EventEmitter<string>();
   @Output() routeToPage: EventEmitter<number> = new EventEmitter<number>();
+
+  /* ----- Translation ---- */
+  // labels
+  @Input() firstNameLabel: string;
+  @Input() lastNameLabel: string;
+  @Input() phoneLabel: string;
+  @Input() roleLabel: string;
+  @Input() organizationLabel: string;
+  @Input() actionLabel: string;
+  @Input() editLabel: string;
+  // Titles
+  @Input() contactsTableTitleText: string;
 
   onShowContact(id: string) {
     this.showContact.emit(id);
