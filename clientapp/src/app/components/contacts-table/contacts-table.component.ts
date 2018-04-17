@@ -17,7 +17,7 @@ export class ContactsTableComponent {
   @Output() showContact: EventEmitter<string> = new EventEmitter<string>();
   @Output() routeToPage: EventEmitter<number> = new EventEmitter<number>();
 
-  /* ----- Translation ---- */
+  /* ----- UI Constants | Translation ---- */
   // labels
   @Input() firstNameLabel: string;
   @Input() lastNameLabel: string;
