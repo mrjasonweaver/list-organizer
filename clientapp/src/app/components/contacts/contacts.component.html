@@ -22,8 +22,6 @@
       [pageEvent]="pageEvent"
       [displayedColumns]="displayedColumns"
       [contacts]="contacts$ | async"
-      (showContact)="getContact($event)"
-      (routeToPage)="getPage($event)"
       [firstNameLabel]="firstNameLabel"
       [lastNameLabel]="lastNameLabel"
       [roleLabel]="roleLabel"
@@ -31,7 +29,9 @@
       [phoneLabel]="phoneLabel"
       [actionLabel]="actionLabel"
       [editLabel]="editLabel"
-      [contactsTableTitleText]="contactsTableTitleText">
+      [contactsTableTitleText]="contactsTableTitleText"
+      (showContact)="getContact($event)"
+      (routeToPage)="getPage($event)">
     </app-contacts-table>
 
   </div>

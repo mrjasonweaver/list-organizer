@@ -5,8 +5,14 @@ import { Component, Input } from '@angular/core';
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css']
 })
+
+/**This is the stateless component for a single contact.
+ * Application State, UI Constants, and local state is
+ * passed down to dumb, stateless presenter components (@Input).
+ * UI events are passed back up via event emitters (@Output).
+ */
 export class ContactComponent {
-  /* ----- Data ---- */
+  /**State */
   @Input() firstName: string;
   @Input() lastName: string;
   @Input() email: string;
@@ -15,7 +21,7 @@ export class ContactComponent {
   @Input() phone: string;
   @Input() status: boolean;
 
-  /* ----- UI Constants | Translation ---- */
+  /**UI Constants | Translation */
   // labels
   @Input() firstNameLabel: string;
   @Input() lastNameLabel: string;

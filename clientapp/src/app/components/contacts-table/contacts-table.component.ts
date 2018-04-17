@@ -7,9 +7,15 @@ import { PageEvent } from '@angular/material';
   templateUrl: './contacts-table.component.html',
   styleUrls: ['./contacts-table.component.css']
 })
+
+/**This is the stateless component for contacts data table.
+ * Application State, UI Constants, and local state is
+ * passed down to dumb, stateless presenter components (@Input).
+ * UI events are passed back up via event emitters (@Output).
+ */
 export class ContactsTableComponent {
 
-  /* ----- State ---- */
+  /**State */
   @Input() contacts: Contact[];
   @Input() displayedColumns: String[];
   @Input() pageEvent: PageEvent;
@@ -17,7 +23,7 @@ export class ContactsTableComponent {
   @Output() showContact: EventEmitter<string> = new EventEmitter<string>();
   @Output() routeToPage: EventEmitter<number> = new EventEmitter<number>();
 
-  /* ----- UI Constants | Translation ---- */
+  /**UI Constants | Translation */
   // labels
   @Input() firstNameLabel: string;
   @Input() lastNameLabel: string;
@@ -29,12 +35,20 @@ export class ContactsTableComponent {
   // Titles
   @Input() contactsTableTitleText: string;
 
+  /**Change route query params so we can load paginated page with ngrx effects
+   * @param {string} id The id of a single contact.
+   * @return Event emitted for showing a single contact.
+   */
   onShowContact(id: string) {
-    this.showContact.emit(id);
+    return this.showContact.emit(id);
   }
 
-  onRouteToPage(page) {
-    this.routeToPage.emit(page);
+  /**Change route query params so we can load paginated page with ngrx effects
+   * @param {number} page The current page in data table.
+   * @return Event emitted for pagination.
+   */
+  onRouteToPage(page: number) {
+    return this.routeToPage.emit(page);
   }
 
 }
