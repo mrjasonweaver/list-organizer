@@ -1,6 +1,6 @@
 /* 
  * This is the state container for contacts
- * Application State, UI Constants, and local state is passed down to the dumb stateless presenter components (@Input)
+ * Application State, UI Constants, and local state is passed down to dumb, stateless presenter components (@Input)
  * UI events are passed back up via event emitters (@Output)
  */
 
@@ -40,7 +40,7 @@ export class ContactsComponent implements OnInit {
   private actionLabel = 'Action';
   private editLabel = 'edit';
   // Titles
-  private selectedContactTitleText = 'Selected Contact';
+  private selectedContactTitleText = 'Edit Contact';
   private contactsTableTitleText = 'Contacts';
 
   /* ---- Local container state ---- */
