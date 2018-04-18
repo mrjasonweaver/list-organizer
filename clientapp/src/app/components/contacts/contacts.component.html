@@ -4,6 +4,8 @@
     [opened]="firstName$ | async">
 
     <app-contact *ngIf="firstName$ | async"
+      [editContact]="editContact"
+      [contact]="contact$ | async"
       [firstNameLabel]="firstNameLabel" [firstName]="firstName$ | async"
       [lastNameLabel]="lastNameLabel" [lastName]="lastName$ | async"
       [emailLabel]="emailLabel" [email]="email$ | async"

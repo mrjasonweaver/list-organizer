@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Contact } from '../../models/contacts';
 
 @Component({
   selector: 'app-contact',
@@ -20,6 +21,8 @@ export class ContactComponent {
   @Input() organization: string;
   @Input() phone: string;
   @Input() status: boolean;
+  @Input() contact: Contact;
+  @Input() editContact: Contact;
 
   /**UI Constants | Translation */
   // labels

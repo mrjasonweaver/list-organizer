@@ -2,20 +2,48 @@
 
   <mat-card-title>{{ selectedContactTitleText }}</mat-card-title>
 
-    <app-field-edit [labelText]="firstNameLabel" [fieldText]="firstName" fieldDisabled="false"></app-field-edit>
+  <form [formGroup]="editContact">
 
-    <app-field-edit [labelText]="lastNameLabel" [fieldText]="lastName" fieldDisabled="false"></app-field-edit>
+    <mat-form-field>
+      <mat-label>{{ firstNameLabel }}</mat-label>
+      <input matInput formControlName="firstName">
+    </mat-form-field>
 
-    <app-field-edit [labelText]="emailLabel" [fieldText]="email" fieldDisabled="false"></app-field-edit>
+    <mat-form-field>
+      <mat-label>{{ lastNameLabel }}</mat-label>
+      <input matInput formControlName="lastName">
+    </mat-form-field>
 
-    <app-field-edit [labelText]="phoneLabel" [fieldText]="phone" fieldDisabled="false"></app-field-edit>
+    <mat-form-field>
+      <mat-label>{{ emailLabel }}</mat-label>
+      <input matInput formControlName="email">
+    </mat-form-field>
 
-    <app-status-toggle [statusLabel]="statusLabel" [status]="status" fieldDisabled="false"></app-status-toggle>
+    <mat-form-field>
+      <mat-label>{{ phoneLabel }}</mat-label>
+      <input matInput formControlName="phone">
+    </mat-form-field>
+  
+    <mat-slide-toggle
+      formControlName="status"
+      [labelPosition]="'before'">
+      {{ statusLabel }}
+    </mat-slide-toggle>
 
     <mat-divider></mat-divider>
 
-    <app-field-edit [labelText]="roleLabel" [fieldText]="role" fieldDisabled="true"></app-field-edit>
+    <mat-form-field>
+      <mat-label>{{ roleLabel }}</mat-label>
+      <input matInput formControlName="role">
+    </mat-form-field>
 
-    <app-field-edit [labelText]="organizationLabel" [fieldText]="organization" fieldDisabled="true"></app-field-edit>
+    <mat-form-field>
+      <mat-label>{{ organizationLabel }}</mat-label>
+      <input matInput formControlName="organization">
+    </mat-form-field>
+
+  </form>
+
+  <pre>Form value: {{ editContact.value | json }}</pre>
 
 </mat-card>

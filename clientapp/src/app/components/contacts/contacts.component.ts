@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ContactsState, Contact } from '../../models/contacts';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
@@ -20,6 +21,7 @@ import { PageEvent } from '@angular/material/paginator';
 export class ContactsComponent implements OnInit {
   /**State */
   private contacts$: Observable<Contact[]>;
+  private contact$: Observable<Contact>;
   private firstName$: Observable<string>;
   private lastName$: Observable<string>;
   private email$: Observable<string>;
@@ -29,7 +31,7 @@ export class ContactsComponent implements OnInit {
   private status$: Observable<boolean>;
 
   /**UI Constants | Translation */
-  // labels
+  // Labels
   private firstNameLabel = 'First Name';
   private lastNameLabel = 'Last Name';
   private emailLabel = 'Email';
@@ -48,15 +50,18 @@ export class ContactsComponent implements OnInit {
   private page = 1;
   private id: string;
   private displayedColumns = ['lastName', 'firstName', 'role', 'organization', 'phone', 'action'];
+  private editContact: FormGroup;
 
   constructor(
     private store: Store<ContactsState>,
-    private router: Router
+    private router: Router,
+    private formBuilder: FormBuilder
   ) {/**NOOP*/}
 
   /**Get state from store */
   ngOnInit() {
     this.contacts$ = this.store.select(state => state.contacts);
+    this.contact$ = this.store.select(fromRoot.selectContact);
     this.firstName$ = this.store.select(fromRoot.selectContactFirstName);
     this.lastName$ = this.store.select(fromRoot.selectContactLastName);
     this.email$ = this.store.select(fromRoot.selectContactEmail);
@@ -64,6 +69,18 @@ export class ContactsComponent implements OnInit {
     this.organization$ = this.store.select(fromRoot.selectContactOrganization);
     this.phone$ = this.store.select(fromRoot.selectContactPhone);
     this.status$ = this.store.select(fromRoot.selectContactStatus);
+
+    this.editContact = this.formBuilder.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', Validators.required],
+      phone: ['', Validators.required],
+      status: ['', Validators.required],
+      role: [{value: '', disabled: true}, Validators.required],
+      organization: [{value: '', disabled: true}, Validators.required]
+    });
+
+    this.contact$.subscribe(data => this.editContact.patchValue(data));
   }
 
   /**Change route query params so we can load selected contact with ngrx effects.

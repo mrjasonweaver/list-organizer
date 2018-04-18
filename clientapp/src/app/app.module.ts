@@ -25,6 +25,7 @@ import { ContactsService } from './services/contacts.service';
 import { ContactsTableComponent } from './components/contacts-table/contacts-table.component';
 import { StatusToggleComponent } from './components/status-toggle/status-toggle.component';
 import { FieldEditComponent } from './components/field-edit/field-edit.component';
+import { ConnectFormDirective } from './directives/connectForm.directive'
 
 @NgModule({
   declarations: [
@@ -86,7 +87,8 @@ import { FieldEditComponent } from './components/field-edit/field-edit.component
     BrowserAnimationsModule,
     SlicePipe,
     ContactsEffects,
-    ContactsService
+    ContactsService,
+    ConnectFormDirective
   ],
   bootstrap: [AppComponent]
 })

@@ -3,3 +3,6 @@
   position: relative;
   margin: 20px 0;
 }
+.mat-form-field {
+  display: block;
+}
