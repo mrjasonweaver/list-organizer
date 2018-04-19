@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule, MatCheckboxModule, MatTooltipModule, MatCardModule,
-        MatInputModule, MatTableModule, MatPaginatorModule, MatIconModule,
+        MatInputModule, MatTableModule, MatPaginatorModule, MatIconModule, MatProgressBarModule,
         MatSidenavModule, MatSlideToggleModule, MatDividerModule } from '@angular/material';
 import { SlicePipe } from '@angular/common';
 import { AppComponent } from './app.component';
@@ -55,6 +55,7 @@ import { ConnectFormDirective } from './directives/connectForm.directive'
     MatSidenavModule,
     MatSlideToggleModule,
     MatDividerModule,
+    MatProgressBarModule,
     StoreModule.forRoot(<any>appReducer, { initialState }),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
@@ -82,6 +83,7 @@ import { ConnectFormDirective } from './directives/connectForm.directive'
     MatSidenavModule,
     MatSlideToggleModule,
     MatDividerModule,
+    MatProgressBarModule,
   ],
   providers: [
     BrowserAnimationsModule,

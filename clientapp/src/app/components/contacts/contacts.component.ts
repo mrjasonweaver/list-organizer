@@ -23,12 +23,6 @@ export class ContactsComponent implements OnInit {
   private contacts$: Observable<Contact[]>;
   private contact$: Observable<Contact>;
   private firstName$: Observable<string>;
-  private lastName$: Observable<string>;
-  private email$: Observable<string>;
-  private role$: Observable<string>;
-  private organization$: Observable<string>;
-  private phone$: Observable<string>;
-  private status$: Observable<boolean>;
 
   /**UI Constants | Translation */
   // Labels
@@ -51,6 +45,7 @@ export class ContactsComponent implements OnInit {
   private id: string;
   private displayedColumns = ['lastName', 'firstName', 'role', 'organization', 'phone', 'action'];
   private editContact: FormGroup;
+  private progressState: boolean;
 
   constructor(
     private store: Store<ContactsState>,
@@ -63,12 +58,6 @@ export class ContactsComponent implements OnInit {
     this.contacts$ = this.store.select(state => state.contacts);
     this.contact$ = this.store.select(fromRoot.selectContact);
     this.firstName$ = this.store.select(fromRoot.selectContactFirstName);
-    this.lastName$ = this.store.select(fromRoot.selectContactLastName);
-    this.email$ = this.store.select(fromRoot.selectContactEmail);
-    this.role$ = this.store.select(fromRoot.selectContactRole);
-    this.organization$ = this.store.select(fromRoot.selectContactOrganization);
-    this.phone$ = this.store.select(fromRoot.selectContactPhone);
-    this.status$ = this.store.select(fromRoot.selectContactStatus);
 
     this.editContact = this.formBuilder.group({
       firstName: ['', Validators.required],
@@ -81,6 +70,16 @@ export class ContactsComponent implements OnInit {
     });
 
     this.contact$.subscribe(data => this.editContact.patchValue(data));
+  }
+
+  submitContact() {
+    this.progressState = true;
+    setTimeout( () => {
+      console.log("Saved object", this.editContact.value, this.editContact.valid);
+      console.log("Valid", this.editContact.valid);
+      this.progressState = false;
+      return this.routeToContactList();
+    }, 1500);
   }
 
   /**Change route query params so we can load selected contact with ngrx effects.

@@ -2,7 +2,7 @@
 
   <mat-card-title>{{ selectedContactTitleText }}</mat-card-title>
 
-  <form [formGroup]="editContact">
+  <form [formGroup]="editContact" (submit)="onSubmitContact(editContact)">
 
     <mat-form-field>
       <mat-label>{{ firstNameLabel }}</mat-label>
@@ -41,6 +41,8 @@
       <mat-label>{{ organizationLabel }}</mat-label>
       <input matInput formControlName="organization">
     </mat-form-field>
+
+    <button type="submit" mat-raised-button color="primary" [disabled]="editContact.pristine">Save</button>
 
   </form>
 

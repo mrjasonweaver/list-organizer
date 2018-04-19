@@ -1,19 +1,20 @@
 <mat-sidenav-container (backdropClick)="routeToContactList()">
 
-  <mat-sidenav position="end" mode="over"
-    [opened]="firstName$ | async">
+  <mat-sidenav position="end" mode="over" [opened]="firstName$ | async">
+    <mat-progress-bar *ngIf="progressState" mode="indeterminate"></mat-progress-bar>
 
     <app-contact *ngIf="firstName$ | async"
       [editContact]="editContact"
       [contact]="contact$ | async"
-      [firstNameLabel]="firstNameLabel" [firstName]="firstName$ | async"
-      [lastNameLabel]="lastNameLabel" [lastName]="lastName$ | async"
-      [emailLabel]="emailLabel" [email]="email$ | async"
-      [roleLabel]="roleLabel" [role]="role$ | async"
-      [organizationLabel]="organizationLabel" [organization]="organization$ | async"
-      [phoneLabel]="phoneLabel" [phone]="phone$ | async"
-      [statusLabel]="statusLabel" [status]="status$ | async"
-      [selectedContactTitleText]="selectedContactTitleText">
+      [firstNameLabel]="firstNameLabel"
+      [lastNameLabel]="lastNameLabel"
+      [emailLabel]="emailLabel"
+      [roleLabel]="roleLabel"
+      [organizationLabel]="organizationLabel"
+      [phoneLabel]="phoneLabel"
+      [statusLabel]="statusLabel"
+      [selectedContactTitleText]="selectedContactTitleText"
+      (submitContact)="submitContact($event)">
     </app-contact>
 
   </mat-sidenav>

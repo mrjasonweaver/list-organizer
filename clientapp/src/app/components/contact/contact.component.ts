@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Contact } from '../../models/contacts';
 
 @Component({
@@ -14,15 +14,10 @@ import { Contact } from '../../models/contacts';
  */
 export class ContactComponent {
   /**State */
-  @Input() firstName: string;
-  @Input() lastName: string;
-  @Input() email: string;
-  @Input() role: string;
-  @Input() organization: string;
-  @Input() phone: string;
-  @Input() status: boolean;
   @Input() contact: Contact;
   @Input() editContact: Contact;
+  // events
+  @Output() submitContact = new EventEmitter();
 
   /**UI Constants | Translation */
   // labels
@@ -35,4 +30,8 @@ export class ContactComponent {
   @Input() organizationLabel: string;
   // Titles
   @Input() selectedContactTitleText: string;
+
+  onSubmitContact(formValue) {
+    return this.submitContact.emit(formValue);
+  }
 }
