@@ -91,7 +91,7 @@ export class ContactsComponent implements OnInit, OnDestroy {
   submitContact() {
     this.progressState = true;
     setTimeout( () => {
-      console.log("Saved object", this.editContact.value, this.editContact.valid);
+      console.table(this.editContact.value);
       console.log("Valid", this.editContact.valid);
       this.snackBar.open('Contact Saved', null, {
         duration: 2000,
@@ -106,7 +106,6 @@ export class ContactsComponent implements OnInit, OnDestroy {
    * @return Router navigates to /contacts?selected={id}?page={this.page}.
    */
   getContact(id: string) {
-    console.log(this.isSelected);
     return this.router.navigate(['/contacts'], { queryParams: { selected: id, page: this.page } });
   }
 

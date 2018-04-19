@@ -10,6 +10,7 @@ export interface Contact {
   status: boolean;
 }
 export interface ContactsState { contacts: Contact[]; }
+export interface ContactsPageState { pageNumber: number }
 export interface ContactState { contact: Contact; }
 export interface FirstNameState { firstName: string; }
 export interface LastNameState { lastName: string; }
@@ -20,7 +21,10 @@ export interface PhoneState { phone: string; }
 export interface StatusState { status: boolean; }
 
 export const InitialContactsState: ContactsState = {
-  contacts: [{ id: 0, firstName: '', lastName: '', email: '', role: '', organization: '', phone: '', status: false}]
+  contacts: [{ id: 0, firstName: '', lastName: '', email: '', role: '', organization: '', phone: '', status: false }]
+};
+export const InitialContactsPageState: ContactsPageState = {
+  pageNumber: 1
 };
 export const InitialContactState: ContactState = {
   contact: { id: 0, firstName: '', lastName: '', email: '', role: '', organization: '', phone: '', status: false}
