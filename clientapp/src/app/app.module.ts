@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { MatButtonModule, MatCheckboxModule, MatTooltipModule, MatCardModule,
+import { MatButtonModule, MatCheckboxModule, MatTooltipModule, MatCardModule, MatSnackBarModule,
         MatInputModule, MatTableModule, MatPaginatorModule, MatIconModule, MatProgressBarModule,
         MatSidenavModule, MatSlideToggleModule, MatDividerModule } from '@angular/material';
 import { SlicePipe } from '@angular/common';
@@ -23,8 +23,6 @@ import { ContactsComponent } from './components/contacts/contacts.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { ContactsService } from './services/contacts.service';
 import { ContactsTableComponent } from './components/contacts-table/contacts-table.component';
-import { StatusToggleComponent } from './components/status-toggle/status-toggle.component';
-import { FieldEditComponent } from './components/field-edit/field-edit.component';
 
 @NgModule({
   declarations: [
@@ -33,9 +31,7 @@ import { FieldEditComponent } from './components/field-edit/field-edit.component
     TruncateTooltipTestComponent,
     ContactsComponent,
     ContactComponent,
-    ContactsTableComponent,
-    StatusToggleComponent,
-    FieldEditComponent,
+    ContactsTableComponent
   ],
   imports: [
     BrowserModule,
@@ -55,6 +51,7 @@ import { FieldEditComponent } from './components/field-edit/field-edit.component
     MatSlideToggleModule,
     MatDividerModule,
     MatProgressBarModule,
+    MatSnackBarModule,
     StoreModule.forRoot(<any>appReducer, { initialState }),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
@@ -83,6 +80,7 @@ import { FieldEditComponent } from './components/field-edit/field-edit.component
     MatSlideToggleModule,
     MatDividerModule,
     MatProgressBarModule,
+    MatSnackBarModule,
   ],
   providers: [
     BrowserAnimationsModule,

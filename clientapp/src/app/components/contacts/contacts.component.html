@@ -1,6 +1,6 @@
 <mat-sidenav-container (backdropClick)="routeToContactList()">
 
-  <mat-sidenav position="end" mode="over" [opened]="firstName$ | async">
+  <mat-sidenav position="end" mode="over" [opened]="isSelected">
     <mat-progress-bar *ngIf="progressState" mode="indeterminate"></mat-progress-bar>
 
     <app-contact *ngIf="firstName$ | async"

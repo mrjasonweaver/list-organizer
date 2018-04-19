@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ContactsState, Contact } from '../../models/contacts';
@@ -6,6 +6,8 @@ import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import * as fromRoot from '../../selectors/contact';
 import { PageEvent } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar'
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-contacts',
@@ -18,7 +20,7 @@ import { PageEvent } from '@angular/material/paginator';
  * passed down to dumb, stateless presenter components (@Input).
  * UI events are passed back up via event emitters (@Output).
  */
-export class ContactsComponent implements OnInit {
+export class ContactsComponent implements OnInit, OnDestroy {
   /**State */
   private contacts$: Observable<Contact[]>;
   private contact$: Observable<Contact>;
@@ -46,11 +48,16 @@ export class ContactsComponent implements OnInit {
   private displayedColumns = ['lastName', 'firstName', 'role', 'organization', 'phone', 'action'];
   private editContact: FormGroup;
   private progressState: boolean;
+  private isSelected: boolean;
+  // subscriptions
+  private contactSubscription: Subscription;
+  private firstNameSubscription: Subscription;
 
   constructor(
     private store: Store<ContactsState>,
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private snackBar: MatSnackBar
   ) {/**NOOP*/}
 
   /**Get state from store */
@@ -68,8 +75,17 @@ export class ContactsComponent implements OnInit {
       role: [{value: '', disabled: true}, Validators.required],
       organization: [{value: '', disabled: true}, Validators.required]
     });
+    this.firstNameSubscription = this.firstName$.subscribe(data => {
+      const firstName: any = data;
+      const value: boolean = firstName !== undefined ? true : false;
+      return this.isSelected = value;
+    });
+    this.contactSubscription = this.contact$.subscribe(data => this.editContact.patchValue(data));
+  }
 
-    this.contact$.subscribe(data => this.editContact.patchValue(data));
+  ngOnDestroy() {
+    this.firstNameSubscription.unsubscribe();
+    this.contactSubscription.unsubscribe();
   }
 
   submitContact() {
@@ -77,6 +93,9 @@ export class ContactsComponent implements OnInit {
     setTimeout( () => {
       console.log("Saved object", this.editContact.value, this.editContact.valid);
       console.log("Valid", this.editContact.valid);
+      this.snackBar.open('Contact Saved', null, {
+        duration: 2000,
+      });
       this.progressState = false;
       return this.routeToContactList();
     }, 1500);
@@ -87,6 +106,7 @@ export class ContactsComponent implements OnInit {
    * @return Router navigates to /contacts?selected={id}?page={this.page}.
    */
   getContact(id: string) {
+    console.log(this.isSelected);
     return this.router.navigate(['/contacts'], { queryParams: { selected: id, page: this.page } });
   }
 
