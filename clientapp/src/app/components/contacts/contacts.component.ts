@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ContactsState, Contact } from '../../models/contacts';
@@ -23,7 +23,7 @@ import 'rxjs/add/operator/do';
  * passed down to dumb, stateless presenter components (@Input).
  * UI events are passed back up via event emitters (@Output).
  */
-export class ContactsComponent implements OnInit, OnDestroy, AfterViewInit {
+export class ContactsComponent implements OnInit, OnDestroy {
   /**State */
   private contactsObject$: Observable<ContactsState>;
   private contacts$: Observable<Contact[]>;
@@ -95,10 +95,6 @@ export class ContactsComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnDestroy() {
     this.firstNameSubscription.unsubscribe();
     this.contactSubscription.unsubscribe();
-  }
-
-  ngAfterViewInit() {
-
   }
 
   submitContact() {
