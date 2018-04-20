@@ -10,9 +10,9 @@ export class ContactsService {
 
   constructor(private http: HttpClient) {}
 
-  findContacts(page: number): Observable<Contact[]> {
+  findContacts(page: number): Observable<{contacts: Contact[], pageNumber: number}> {
     const options = page ? { params: new HttpParams().set('page', page.toString()) } : {};
-    const contacts = this.http.get<ContactsState>(`${this.url}/contacts`, options).map(r => r.contacts);
+    const contacts = this.http.get<ContactsState>(`${this.url}/contacts`, options);
     return contacts;
   }
 

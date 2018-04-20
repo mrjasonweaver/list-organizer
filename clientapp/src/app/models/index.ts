@@ -1,10 +1,9 @@
-import { InitialContactsState, InitialContactsPageState, InitialContactState, ContactsState, ContactsPageState, Contact } from './contacts';
+import { InitialContactsState, InitialContactState, ContactsState, Contact } from './contacts';
 
-export interface AppState { contacts: ContactsState; pageNumber: ContactsPageState; contact: Contact}
+export interface AppState { contacts: ContactsState; contact: Contact}
 export interface State { app: AppState; }
 
 export const initialState = {
   InitialContactsState,
-  InitialContactsPageState,
   InitialContactState
 };

@@ -20,8 +20,9 @@ const firstSegment = (r: RouterNavigationAction) => r.payload.routerState.root.f
 export class ContactsEffects {
 
   @Effect() navigateToContacts = this.handleNavigation('contacts', (r: ActivatedRouteSnapshot) => {
-    const getContactsPayload = this.contactsService.findContacts(+r.queryParamMap.get('page'))
-      .map(resp => ({type: 'CONTACTS_UPDATED', payload: resp}));
+    const pageNumber = +r.queryParamMap.get('page');
+    const getContactsPayload = this.contactsService.findContacts(pageNumber)
+      .map(resp => ( { type: 'CONTACTS_UPDATED', payload: resp } ) );
     return getContactsPayload;
   });
 

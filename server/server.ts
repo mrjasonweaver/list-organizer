@@ -107,7 +107,7 @@ router.get("/contacts", (req, res) => {
   const filteredContacts = _contacts.filter((c, i) => (page >= 2) ? i >= 4 : i < 4);
 
   const contacts = filteredContacts;
-  res.json({contacts});
+  res.json({contacts, page});
 });
 
 router.get("/contact", (req, res) => {

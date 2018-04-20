@@ -94,7 +94,7 @@ router.get("/contacts", function (req, res) {
     console.log("GET /contacts", "page:", page);
     var filteredContacts = _contacts.filter(function (c, i) { return (page >= 2) ? i >= 4 : i < 4; });
     var contacts = filteredContacts;
-    res.json({ contacts: contacts });
+    res.json({ contacts: contacts, page: page });
 });
 router.get("/contact", function (req, res) {
     var id = +req.query.id;

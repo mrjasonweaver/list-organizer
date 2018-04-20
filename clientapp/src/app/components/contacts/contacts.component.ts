@@ -4,10 +4,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ContactsState, Contact } from '../../models/contacts';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import * as fromRoot from '../../selectors/contact';
+import * as contactSelector from '../../selectors/contact';
+import * as contactsSelector from '../../selectors/contacts';
 import { PageEvent } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar'
 import { Subscription } from 'rxjs/Subscription';
+import 'rxjs/add/operator/do';
 
 @Component({
   selector: 'app-contacts',
@@ -23,6 +25,7 @@ import { Subscription } from 'rxjs/Subscription';
 export class ContactsComponent implements OnInit, OnDestroy {
   /**State */
   private contacts$: Observable<Contact[]>;
+  private pageNumber$: Observable<number>;
   private contact$: Observable<Contact>;
   private firstName$: Observable<string>;
 
@@ -62,9 +65,12 @@ export class ContactsComponent implements OnInit, OnDestroy {
 
   /**Get state from store */
   ngOnInit() {
-    this.contacts$ = this.store.select(state => state.contacts);
-    this.contact$ = this.store.select(fromRoot.selectContact);
-    this.firstName$ = this.store.select(fromRoot.selectContactFirstName);
+    this.contacts$ = this.store.select(contactsSelector.selectContactsList);
+    this.pageNumber$ = this.store.select(contactsSelector.selectContactsPageNumber);
+    this.contact$ = this.store.select(contactSelector.selectContact);
+    this.firstName$ = this.store.select(contactSelector.selectContactFirstName);
+
+    this.contacts$.subscribe(c => console.log("Contacts subscription", c));
 
     this.editContact = this.formBuilder.group({
       firstName: ['', Validators.required],

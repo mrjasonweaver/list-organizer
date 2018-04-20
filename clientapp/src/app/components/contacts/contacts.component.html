@@ -3,7 +3,7 @@
   <mat-sidenav position="end" mode="over" [opened]="isSelected">
     <mat-progress-bar *ngIf="progressState" mode="indeterminate"></mat-progress-bar>
 
-    <app-contact *ngIf="firstName$ | async"
+    <app-contact *ngIf="isSelected"
       [editContact]="editContact"
       [contact]="contact$ | async"
       [firstNameLabel]="firstNameLabel"
