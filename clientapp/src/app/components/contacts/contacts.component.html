@@ -1,11 +1,12 @@
+<ng-template #loading><mat-progress-bar mode="indeterminate" class="sticky-top"></mat-progress-bar></ng-template>
 <mat-sidenav-container (backdropClick)="routeToContactList()">
 
   <mat-sidenav position="end" mode="over" [opened]="isSelected">
     <mat-progress-bar *ngIf="progressState" mode="indeterminate"></mat-progress-bar>
 
-    <app-contact *ngIf="isSelected"
+    <app-contact *ngIf="(contactsObject$ | async) as contacts; else loading"
       [editContact]="editContact"
-      [contact]="contacts?.contact"
+      [contact]="contacts.contact"
       [firstNameLabel]="firstNameLabel"
       [lastNameLabel]="lastNameLabel"
       [emailLabel]="emailLabel"
@@ -20,23 +21,23 @@
   </mat-sidenav>
 
   <div class="app-container">
-
-    <app-contacts-table
-      [pageEvent]="pageEvent"
-      [displayedColumns]="displayedColumns"
-      [contacts]="contacts?.contacts"
-      [firstNameLabel]="firstNameLabel"
-      [lastNameLabel]="lastNameLabel"
-      [roleLabel]="roleLabel"
-      [organizationLabel]="organizationLabel"
-      [phoneLabel]="phoneLabel"
-      [actionLabel]="actionLabel"
-      [editLabel]="editLabel"
-      [contactsTableTitleText]="contactsTableTitleText"
-      (showContact)="getContact($event)"
-      (routeToPage)="getPage($event)">
-    </app-contacts-table>
-
+    <mat-card style="margin-bottom: 30px;">
+      <mat-card-title>{{ contactsTableTitleText }}</mat-card-title>
+      <app-contacts-table *ngIf="(contactsObject$ | async) as contacts; else loading"
+        [pageEvent]="pageEvent"
+        [displayedColumns]="displayedColumns"
+        [contacts]="contacts.contacts"
+        [firstNameLabel]="firstNameLabel"
+        [lastNameLabel]="lastNameLabel"
+        [roleLabel]="roleLabel"
+        [organizationLabel]="organizationLabel"
+        [phoneLabel]="phoneLabel"
+        [actionLabel]="actionLabel"
+        [editLabel]="editLabel"
+        (showContact)="getContact($event)"
+        (routeToPage)="getPage($event)">
+      </app-contacts-table>
+    </mat-card>
   </div>
 
 </mat-sidenav-container>

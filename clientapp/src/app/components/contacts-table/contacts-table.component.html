@@ -1,60 +1,54 @@
-<mat-card style="margin-bottom: 30px;">
+<mat-card>
+  <mat-table #table [dataSource]="contacts">
+    <ng-container matColumnDef="lastName">
+      <mat-header-cell *matHeaderCellDef> {{ lastNameLabel }} </mat-header-cell>
+      <mat-cell *matCellDef="let contact"> {{contact.lastName}} </mat-cell>
+    </ng-container>
 
-  <mat-card-title>{{ contactsTableTitleText }}</mat-card-title>
+    <ng-container matColumnDef="firstName">
+      <mat-header-cell *matHeaderCellDef> {{ firstNameLabel }} </mat-header-cell>
+      <mat-cell *matCellDef="let contact"> {{contact.firstName}} </mat-cell>
+    </ng-container>
 
-  <mat-card>
-    <mat-table #table [dataSource]="contacts">
-      <ng-container matColumnDef="lastName">
-        <mat-header-cell *matHeaderCellDef> {{ lastNameLabel }} </mat-header-cell>
-        <mat-cell *matCellDef="let contact"> {{contact.lastName}} </mat-cell>
-      </ng-container>
+    <ng-container matColumnDef="role">
+      <mat-header-cell *matHeaderCellDef> {{ roleLabel }} </mat-header-cell>
+      <mat-cell *matCellDef="let contact"> {{contact.role}} </mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="organization">
+      <mat-header-cell *matHeaderCellDef> {{ organizationLabel }} </mat-header-cell>
+      <mat-cell *matCellDef="let contact"> {{contact.organization}} </mat-cell>
+    </ng-container>
 
-      <ng-container matColumnDef="firstName">
-        <mat-header-cell *matHeaderCellDef> {{ firstNameLabel }} </mat-header-cell>
-        <mat-cell *matCellDef="let contact"> {{contact.firstName}} </mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="role">
-        <mat-header-cell *matHeaderCellDef> {{ roleLabel }} </mat-header-cell>
-        <mat-cell *matCellDef="let contact"> {{contact.role}} </mat-cell>
-      </ng-container>
+    <ng-container matColumnDef="phone">
+      <mat-header-cell *matHeaderCellDef> {{ phoneLabel }} </mat-header-cell>
+      <mat-cell *matCellDef="let contact"> {{contact.phone}} </mat-cell>
+    </ng-container>
     
-      <ng-container matColumnDef="organization">
-        <mat-header-cell *matHeaderCellDef> {{ organizationLabel }} </mat-header-cell>
-        <mat-cell *matCellDef="let contact"> {{contact.organization}} </mat-cell>
-      </ng-container>
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef> {{ statusLabel }} </mat-header-cell>
+      <mat-cell *matCellDef="let contact"> {{contact.status}} </mat-cell>
+    </ng-container>
 
-      <ng-container matColumnDef="phone">
-        <mat-header-cell *matHeaderCellDef> {{ phoneLabel }} </mat-header-cell>
-        <mat-cell *matCellDef="let contact"> {{contact.phone}} </mat-cell>
-      </ng-container>
-      
-      <ng-container matColumnDef="status">
-        <mat-header-cell *matHeaderCellDef> {{ statusLabel }} </mat-header-cell>
-        <mat-cell *matCellDef="let contact"> {{contact.status}} </mat-cell>
-      </ng-container>
+    <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef> {{ actionLabel }} </mat-header-cell>
+      <mat-cell *matCellDef="let contact"> 
+        <button mat-icon-button 
+          (click)="onShowContact(contact.id)">
+          <mat-icon>{{ editLabel }}</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
 
-      <ng-container matColumnDef="action">
-        <mat-header-cell *matHeaderCellDef> {{ actionLabel }} </mat-header-cell>
-        <mat-cell *matCellDef="let contact"> 
-          <button mat-icon-button 
-            (click)="onShowContact(contact.id)">
-            <mat-icon>{{ editLabel }}</mat-icon>
-          </button>
-        </mat-cell>
-      </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
 
-    </mat-table>
-
-    <mat-paginator 
-      (page)="pageEvent = onRouteToPage($event.pageIndex + 1)"
-      [length]="8"
-      [pageSize]="4">
-    </mat-paginator>
-
-  </mat-card>
+  <mat-paginator 
+    (page)="pageEvent = onRouteToPage($event.pageIndex + 1)"
+    [length]="8"
+    [pageSize]="4">
+  </mat-paginator>
 
 </mat-card>

@@ -68,8 +68,8 @@ export class ContactsComponent implements OnInit, OnDestroy {
 
   /**Get state from store */
   ngOnInit() {
+    this.contactsObject$ = this.store.select(contactsSelector.selectContacts);
     this.contacts$ = this.store.select(contactsSelector.selectContactsList);
-    this.store.select(contactsSelector.selectContacts).subscribe(data => this.contacts = data);
     this.pageNumber$ = this.store.select(contactsSelector.selectContactsPageNumber);
     this.contact$ = this.store.select(contactSelector.selectContact);
     this.firstName$ = this.store.select(contactSelector.selectContactFirstName);
@@ -89,7 +89,6 @@ export class ContactsComponent implements OnInit, OnDestroy {
       return this.isSelected = value;
     });
     this.contactSubscription = this.contact$.subscribe(data => this.editContact.patchValue(data));
-    this.store.subscribe(data => console.log("Store", data));
   }
 
   ngOnDestroy() {
