@@ -5,7 +5,7 @@
 
     <app-contact *ngIf="isSelected"
       [editContact]="editContact"
-      [contact]="contact$ | async"
+      [contact]="contacts?.contact"
       [firstNameLabel]="firstNameLabel"
       [lastNameLabel]="lastNameLabel"
       [emailLabel]="emailLabel"
@@ -21,10 +21,10 @@
 
   <div class="app-container">
 
-    <app-contacts-table *ngIf="contacts$ | async"
+    <app-contacts-table
       [pageEvent]="pageEvent"
       [displayedColumns]="displayedColumns"
-      [contacts]="contacts$ | async"
+      [contacts]="contacts?.contacts"
       [firstNameLabel]="firstNameLabel"
       [lastNameLabel]="lastNameLabel"
       [roleLabel]="roleLabel"

@@ -9,7 +9,9 @@ export interface Contact {
   phone: string;
   status: boolean;
 }
-export interface ContactsState { pageNumber: number; contacts: Contact[]; }
+export interface ContactsState { page: number; contacts: Contact[]; }
+export interface ContactsListState { contacts: Contact[]; }
+export interface ContactsPageState { page: number; }
 export interface ContactState { contact: Contact; }
 export interface FirstNameState { firstName: string; }
 export interface LastNameState { lastName: string; }
@@ -20,7 +22,7 @@ export interface PhoneState { phone: string; }
 export interface StatusState { status: boolean; }
 
 export const InitialContactsState: ContactsState = {
-  pageNumber: 1,
+  page: 1,
   contacts: [{ id: 0, firstName: '', lastName: '', email: '', role: '', organization: '', phone: '', status: false }]
 };
 export const InitialContactState: ContactState = {

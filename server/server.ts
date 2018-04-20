@@ -101,7 +101,7 @@ const _contacts = [
 
 router.get("/contacts", (req, res) => {
   const perPage = 4;
-  const page = +req.query.page;
+  const page = +req.query.page ? +req.query.page : 1;
   const contactsLength = _contacts.length;
   console.log("GET /contacts", "page:", page);
   const filteredContacts = _contacts.filter((c, i) => (page >= 2) ? i >= 4 : i < 4);

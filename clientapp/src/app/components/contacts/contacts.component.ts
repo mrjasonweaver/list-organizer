@@ -1,7 +1,8 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ContactsState, Contact } from '../../models/contacts';
+import { AppState } from '../../models';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import * as contactSelector from '../../selectors/contact';
@@ -22,9 +23,11 @@ import 'rxjs/add/operator/do';
  * passed down to dumb, stateless presenter components (@Input).
  * UI events are passed back up via event emitters (@Output).
  */
-export class ContactsComponent implements OnInit, OnDestroy {
+export class ContactsComponent implements OnInit, OnDestroy, AfterViewInit {
   /**State */
+  private contactsObject$: Observable<ContactsState>;
   private contacts$: Observable<Contact[]>;
+  private contacts: ContactsState;
   private pageNumber$: Observable<number>;
   private contact$: Observable<Contact>;
   private firstName$: Observable<string>;
@@ -57,20 +60,19 @@ export class ContactsComponent implements OnInit, OnDestroy {
   private firstNameSubscription: Subscription;
 
   constructor(
-    private store: Store<ContactsState>,
+    private store: Store<AppState>,
     private router: Router,
     private formBuilder: FormBuilder,
     private snackBar: MatSnackBar
-  ) {/**NOOP*/}
+  ) {}
 
   /**Get state from store */
   ngOnInit() {
     this.contacts$ = this.store.select(contactsSelector.selectContactsList);
+    this.store.select(contactsSelector.selectContacts).subscribe(data => this.contacts = data);
     this.pageNumber$ = this.store.select(contactsSelector.selectContactsPageNumber);
     this.contact$ = this.store.select(contactSelector.selectContact);
     this.firstName$ = this.store.select(contactSelector.selectContactFirstName);
-
-    this.contacts$.subscribe(c => console.log("Contacts subscription", c));
 
     this.editContact = this.formBuilder.group({
       firstName: ['', Validators.required],
@@ -87,11 +89,16 @@ export class ContactsComponent implements OnInit, OnDestroy {
       return this.isSelected = value;
     });
     this.contactSubscription = this.contact$.subscribe(data => this.editContact.patchValue(data));
+    this.store.subscribe(data => console.log("Store", data));
   }
 
   ngOnDestroy() {
     this.firstNameSubscription.unsubscribe();
     this.contactSubscription.unsubscribe();
+  }
+
+  ngAfterViewInit() {
+
   }
 
   submitContact() {
