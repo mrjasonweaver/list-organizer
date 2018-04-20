@@ -1,43 +1,45 @@
 <ng-template #loading><mat-progress-bar mode="indeterminate" class="sticky-top"></mat-progress-bar></ng-template>
-<mat-sidenav-container (backdropClick)="routeToContactList()">
+<div *ngIf="(contactsObject$ | async) as contacts; else loading" class="container">
+  <mat-sidenav-container (backdropClick)="routeToContactList(contacts.page)">
 
-  <mat-sidenav position="end" mode="over" [opened]="isSelected">
-    <mat-progress-bar *ngIf="progressState" mode="indeterminate"></mat-progress-bar>
+    <mat-sidenav position="end" mode="over" [opened]="isSelected">
+      <mat-progress-bar *ngIf="progressState" mode="indeterminate"></mat-progress-bar>
 
-    <app-contact *ngIf="(contactsObject$ | async) as contacts; else loading"
-      [editContact]="editContact"
-      [contact]="contacts.contact"
-      [firstNameLabel]="firstNameLabel"
-      [lastNameLabel]="lastNameLabel"
-      [emailLabel]="emailLabel"
-      [roleLabel]="roleLabel"
-      [organizationLabel]="organizationLabel"
-      [phoneLabel]="phoneLabel"
-      [statusLabel]="statusLabel"
-      [selectedContactTitleText]="selectedContactTitleText"
-      (submitContact)="submitContact($event)">
-    </app-contact>
-
-  </mat-sidenav>
-
-  <div class="app-container">
-    <mat-card style="margin-bottom: 30px;">
-      <mat-card-title>{{ contactsTableTitleText }}</mat-card-title>
-      <app-contacts-table *ngIf="(contactsObject$ | async) as contacts; else loading"
-        [pageEvent]="pageEvent"
-        [displayedColumns]="displayedColumns"
-        [contacts]="contacts.contacts"
+      <app-contact
+        [editContact]="editContact"
+        [contact]="contacts.contact"
         [firstNameLabel]="firstNameLabel"
         [lastNameLabel]="lastNameLabel"
+        [emailLabel]="emailLabel"
         [roleLabel]="roleLabel"
         [organizationLabel]="organizationLabel"
         [phoneLabel]="phoneLabel"
-        [actionLabel]="actionLabel"
-        [editLabel]="editLabel"
-        (showContact)="getContact($event)"
-        (routeToPage)="getPage($event)">
-      </app-contacts-table>
-    </mat-card>
-  </div>
+        [statusLabel]="statusLabel"
+        [selectedContactTitleText]="selectedContactTitleText"
+        (submitContact)="submitContact($event)">
+      </app-contact>
 
-</mat-sidenav-container>
+    </mat-sidenav>
+
+    <div class="app-container">
+      <mat-card style="margin-bottom: 30px;">
+        <mat-card-title>{{ contactsTableTitleText }}</mat-card-title>
+        <app-contacts-table
+          [pageEvent]="pageEvent"
+          [displayedColumns]="displayedColumns"
+          [contacts]="contacts.contacts"
+          [firstNameLabel]="firstNameLabel"
+          [lastNameLabel]="lastNameLabel"
+          [roleLabel]="roleLabel"
+          [organizationLabel]="organizationLabel"
+          [phoneLabel]="phoneLabel"
+          [actionLabel]="actionLabel"
+          [editLabel]="editLabel"
+          (showContact)="getContact($event)"
+          (routeToPage)="getPage($event)">
+        </app-contacts-table>
+      </mat-card>
+    </div>
+
+  </mat-sidenav-container>
+</div>

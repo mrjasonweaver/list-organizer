@@ -49,8 +49,8 @@ export class ContactsComponent implements OnInit, OnDestroy {
 
   /**Local container state */
   private pageEvent: PageEvent = { pageSize: 4, pageIndex: 0, length: 8 };
-  private page = 1;
   private id: string;
+  private page: number;
   private displayedColumns = ['lastName', 'firstName', 'role', 'organization', 'phone', 'action'];
   private editContact: FormGroup;
   private progressState: boolean;
@@ -58,6 +58,7 @@ export class ContactsComponent implements OnInit, OnDestroy {
   // subscriptions
   private contactSubscription: Subscription;
   private firstNameSubscription: Subscription;
+  private pageSubscription: Subscription;
 
   constructor(
     private store: Store<AppState>,
@@ -89,11 +90,13 @@ export class ContactsComponent implements OnInit, OnDestroy {
       return this.isSelected = value;
     });
     this.contactSubscription = this.contact$.subscribe(data => this.editContact.patchValue(data));
+    this.pageSubscription = this.pageNumber$.subscribe(resp => this.page = resp);
   }
 
   ngOnDestroy() {
     this.firstNameSubscription.unsubscribe();
     this.contactSubscription.unsubscribe();
+    this.pageSubscription.unsubscribe();
   }
 
   submitContact() {
@@ -105,16 +108,16 @@ export class ContactsComponent implements OnInit, OnDestroy {
         duration: 2000,
       });
       this.progressState = false;
-      return this.routeToContactList();
+      return this.routeToContactList(this.page);
     }, 1500);
   }
 
   /**Change route query params so we can load selected contact with ngrx effects.
    * @param {string} id The id of a single contact.
-   * @return Router navigates to /contacts?selected={id}?page={this.page}.
+   * @return Router navigates to /contacts?selected={id}?page={page}.
    */
-  getContact(id: string) {
-    return this.router.navigate(['/contacts'], { queryParams: { selected: id, page: this.page } });
+  getContact(id: string, page: number) {
+    return this.router.navigate(['/contacts'], { queryParams: { selected: id, page } });
   }
 
   /**Keep page in sync by storing in component state
@@ -123,14 +126,13 @@ export class ContactsComponent implements OnInit, OnDestroy {
    * @return Router navigates to /contacts?page={page}.
    */
   getPage(page: number) {
-    this.page > 0 ? this.page = page : this.page = 1;
     return this.router.navigate(['/contacts'], { queryParams: { page } });
   }
 
   /**Change route to contacts list and current page.
    * @return Router navigates to /contacts?page={this.page}.
    */
-  routeToContactList() {
-    return this.router.navigate(['/contacts'], { queryParams: { page: this.page } });
+  routeToContactList(page: number) {
+    return this.router.navigate(['/contacts'], { queryParams: { page } });
   }
 }
