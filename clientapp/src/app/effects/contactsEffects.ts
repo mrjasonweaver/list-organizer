@@ -5,8 +5,7 @@ import { Params, ActivatedRouteSnapshot, RouteConfigLoadEnd } from '@angular/rou
 import { ContactsService } from '../services/contacts.service';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
-import { AppState } from '../models';
-import { ContactsState, ContactState } from '../models/contacts';
+import { IAppState } from '../models';
 import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/withLatestFrom';
 import 'rxjs/add/operator/map';
@@ -36,9 +35,9 @@ export class ContactsEffects {
     return selected ? getContactPayload : of(resetContactPayload);
   });
 
-  constructor(private actions: Actions, private store: Store<AppState>, private contactsService: ContactsService) {}
+  constructor(private actions: Actions, private store: Store<IAppState>, private contactsService: ContactsService) {}
 
-  private handleNavigation(segment: string, callback: (a: ActivatedRouteSnapshot, state: AppState) => Observable<any>) {
+  private handleNavigation(segment: string, callback: (a: ActivatedRouteSnapshot, state: IAppState) => Observable<any>) {
     const first = this.actions.ofType(ROUTER_NAVIGATION).map(firstSegment);
     const nav = first.filter(s => s.routeConfig.path === segment);
     return nav.withLatestFrom(this.store).switchMap(a => callback(a[0], a[1])).catch(e => {

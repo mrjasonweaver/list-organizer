@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, OnChanges, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IContactsState, IContact } from '../../models/contacts';
-import { AppState } from '../../models';
+import { IAppState } from '../../models';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import * as contactSelector from '../../selectors/contact';
@@ -61,7 +61,7 @@ export class ContactsComponent implements OnInit, OnDestroy, OnChanges {
   private pageSubscription: Subscription;
 
   constructor(
-    private store: Store<AppState>,
+    private store: Store<IAppState>,
     private router: Router,
     private formBuilder: FormBuilder,
     private snackBar: MatSnackBar

@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Contact } from '../../models/contacts';
+import { IContact } from '../../models/contacts';
 import { PageEvent } from '@angular/material';
 
 @Component({
@@ -16,7 +16,7 @@ import { PageEvent } from '@angular/material';
 export class ContactsTableComponent {
 
   /**State */
-  @Input() contacts: Contact[];
+  @Input() contacts: IContact[];
   @Input() displayedColumns: String[];
   @Input() pageEvent: PageEvent;
   // events
