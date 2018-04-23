@@ -16,12 +16,12 @@ export class TruncateTooltipTestComponent implements OnInit {
   get isTooltipDisabled() {
     return !this.isBreakpoint;
   }
-  public number = 1;
-  public tooltipPosition;
-  public id;
-  public dateCreated;
-  public truncateType;
-  public truncateLength;
+  private number = 1;
+  private tooltipPosition;
+  private id;
+  private dateCreated;
+  private truncateType;
+  private truncateLength;
 
   ngOnInit() {
     this.tooltipPosition = 'above';
