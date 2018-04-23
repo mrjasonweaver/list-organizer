@@ -1,7 +1,7 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, OnChanges, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ContactsState, Contact } from '../../models/contacts';
+import { IContactsState, IContact } from '../../models/contacts';
 import { AppState } from '../../models';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
@@ -23,13 +23,13 @@ import 'rxjs/add/operator/do';
  * passed down to dumb, stateless presenter components (@Input).
  * UI events are passed back up via event emitters (@Output).
  */
-export class ContactsComponent implements OnInit, OnDestroy {
+export class ContactsComponent implements OnInit, OnDestroy, OnChanges {
   /**State */
-  private contactsObject$: Observable<ContactsState>;
-  private contacts$: Observable<Contact[]>;
-  private contacts: ContactsState;
+  private contactsObject$: Observable<IContactsState>;
+  private contacts$: Observable<IContact[]>;
+  private contacts: IContactsState;
   private pageNumber$: Observable<number>;
-  private contact$: Observable<Contact>;
+  private contact$: Observable<IContact>;
   private firstName$: Observable<string>;
 
   /**UI Constants | Translation */
@@ -91,6 +91,10 @@ export class ContactsComponent implements OnInit, OnDestroy {
     });
     this.contactSubscription = this.contact$.subscribe(data => this.editContact.patchValue(data));
     //this.pageSubscription = this.pageNumber$.subscribe(resp => this.page = resp);
+  }
+
+  ngOnChanges() {
+    
   }
 
   ngOnDestroy() {

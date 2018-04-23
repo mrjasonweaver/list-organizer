@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Contact } from '../../models/contacts';
+import { IContact } from '../../models/contacts';
 
 @Component({
   selector: 'app-contact',
@@ -14,8 +14,8 @@ import { Contact } from '../../models/contacts';
  */
 export class ContactComponent {
   /**State */
-  @Input() contact: Contact;
-  @Input() editContact: Contact;
+  @Input() contact: IContact;
+  @Input() editContact: IContact;
   // events
   @Output() submitContact = new EventEmitter();
 
