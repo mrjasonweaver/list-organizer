@@ -12,3 +12,12 @@ html, body {
 .app-container {
   padding: 25px;
 }
+
+.sticky-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: block;
+  height: 5px;
+}

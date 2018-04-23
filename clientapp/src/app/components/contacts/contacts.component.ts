@@ -90,7 +90,7 @@ export class ContactsComponent implements OnInit, OnDestroy {
       return this.isSelected = value;
     });
     this.contactSubscription = this.contact$.subscribe(data => this.editContact.patchValue(data));
-    this.pageSubscription = this.pageNumber$.subscribe(resp => this.page = resp);
+    //this.pageSubscription = this.pageNumber$.subscribe(resp => this.page = resp);
   }
 
   ngOnDestroy() {

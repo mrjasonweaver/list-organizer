@@ -5,7 +5,7 @@ import { Action } from '../actions/contacts';
 export function contactsReducer(state: ContactsState, action: Action): ContactsState {
   switch (action.type) {
     case 'CONTACTS_UPDATED': {
-      console.log('Contacts Reducer', {...action.payload});
+      // console.log('Contacts Reducer', {...action.payload});
       return {...action.payload};
     }
     default: {

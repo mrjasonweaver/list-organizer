@@ -89,7 +89,7 @@ var _contacts = [
 ];
 router.get("/contacts", function (req, res) {
     var perPage = 4;
-    var page = +req.query.page;
+    var page = +req.query.page ? +req.query.page : 1;
     var contactsLength = _contacts.length;
     console.log("GET /contacts", "page:", page);
     var filteredContacts = _contacts.filter(function (c, i) { return (page >= 2) ? i >= 4 : i < 4; });
@@ -120,4 +120,4 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/", router);
 app.listen(port);
 console.log("Server port: " + port);
-//# sourceMappingURL=/Users/jamesweaver/Projects/list-organizer/server/server.js.map
+//# sourceMappingURL=/Users/mrjasonweaver/Projects/list-organizer/server/server.js.map
