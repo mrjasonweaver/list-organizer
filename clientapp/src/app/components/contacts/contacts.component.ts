@@ -100,7 +100,7 @@ export class ContactsComponent implements OnInit, OnDestroy, OnChanges {
   ngOnDestroy() {
     this.firstNameSubscription.unsubscribe();
     this.contactSubscription.unsubscribe();
-    this.pageSubscription.unsubscribe();
+    // this.pageSubscription.unsubscribe();
   }
 
   submitContact() {

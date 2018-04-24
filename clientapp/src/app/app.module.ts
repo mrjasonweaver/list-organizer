@@ -23,6 +23,7 @@ import { ContactsComponent } from './components/contacts/contacts.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { ContactsService } from './services/contacts.service';
 import { ContactsTableComponent } from './components/contacts-table/contacts-table.component';
+import { TsImmutableComponent } from './components/ts-immutable/ts-immutable.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ContactsTableComponent } from './components/contacts-table/contacts-tab
     TruncateTooltipTestComponent,
     ContactsComponent,
     ContactComponent,
-    ContactsTableComponent
+    ContactsTableComponent,
+    TsImmutableComponent
   ],
   imports: [
     BrowserModule,
@@ -60,6 +62,7 @@ import { ContactsTableComponent } from './components/contacts-table/contacts-tab
     RouterModule.forRoot([
       // routes
       { path: '', pathMatch: 'full', redirectTo: 'contacts' },
+      { path: 'ts-immutable', pathMatch: 'full', component: TsImmutableComponent },
       { path: 'truncate-tooltip', pathMatch: 'full', component: TruncateTooltipTestComponent },
       { path: 'contacts', component: ContactsComponent },
     ], {useHash: true}),
