@@ -73,8 +73,10 @@ export class TsImmutableComponent implements OnInit {
 
     /** using both spread and rest operators */
 
-    // change properties
+    // change 'brands' property to 'carBrands'
+    // first, add new 'carBrands' object and copy the array from 'brands'
     const addCarBrands = { ...this.initialPayload, carBrands: [ ...this.initialPayload.brands ] };
+    // second, pull out brands and assign the rest to allExceptBrands
     const { brands: theBrands, ...allExceptBrands } = addCarBrands;
     this.newchangedToCarBrands = allExceptBrands;
   }
