@@ -49,7 +49,10 @@ export class TsImmutableComponent implements OnInit {
   brands: Object;
   cars: Object;
   newWithMotorcycles: Object;
-  newchangedToCarBrands: Object;
+  newChangedToCarBrands: Object;
+  newBrandAdded: Object;
+  newCarAdded: Object;
+  newColorAdded: Object;
 
   ngOnInit() {
 
@@ -71,6 +74,16 @@ export class TsImmutableComponent implements OnInit {
     const withMotorcyles = { ...this.initialPayload, ...this.motorcycles };
     this.newWithMotorcycles = withMotorcyles;
 
+    // add new car object to nested cars array
+    // use object and array spread to add a new array item to an array nested in an object
+    const addNewCar = { ...this.initialPayload, cars: [ ...this.initialPayload.cars, this.newCar ] };
+    this.newCarAdded = addNewCar;
+
+    // add 'Audi' to brands
+    // use object and array spread to add a new array item to an array nested in an object
+    const addNewBrand = { ...this.initialPayload, brands: [ ...this.initialPayload.brands, this.newBrand ] };
+    this.newBrandAdded = addNewBrand;
+
     /** using both spread and rest operators */
 
     // change 'brands' property to 'carBrands'
@@ -78,7 +91,8 @@ export class TsImmutableComponent implements OnInit {
     const addCarBrands = { ...this.initialPayload, carBrands: [ ...this.initialPayload.brands ] };
     // second, pull out brands and assign the rest to allExceptBrands
     const { brands: theBrands, ...allExceptBrands } = addCarBrands;
-    this.newchangedToCarBrands = allExceptBrands;
+    this.newChangedToCarBrands = allExceptBrands;
+
   }
 
 }
