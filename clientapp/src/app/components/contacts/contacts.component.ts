@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, OnChanges, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IContactsState, IContact } from '../../models/contacts';
@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Observable';
 import * as contactSelector from '../../selectors/contact';
 import * as contactsSelector from '../../selectors/contacts';
 import { PageEvent } from '@angular/material/paginator';
-import { MatSnackBar } from '@angular/material/snack-bar'
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/do';
 
@@ -23,7 +23,7 @@ import 'rxjs/add/operator/do';
  * passed down to dumb, stateless presenter components (@Input).
  * UI events are passed back up via event emitters (@Output).
  */
-export class ContactsComponent implements OnInit, OnDestroy, OnChanges {
+export class ContactsComponent implements OnInit, OnDestroy {
   /**State */
   private contactsObject$: Observable<IContactsState>;
   private contacts$: Observable<IContact[]>;
@@ -90,24 +90,18 @@ export class ContactsComponent implements OnInit, OnDestroy, OnChanges {
       return this.isSelected = value;
     });
     this.contactSubscription = this.contact$.subscribe(data => this.editContact.patchValue(data));
-    //this.pageSubscription = this.pageNumber$.subscribe(resp => this.page = resp);
-  }
-
-  ngOnChanges() {
-    
   }
 
   ngOnDestroy() {
     this.firstNameSubscription.unsubscribe();
     this.contactSubscription.unsubscribe();
-    // this.pageSubscription.unsubscribe();
   }
 
   submitContact() {
     this.progressState = true;
     setTimeout( () => {
       console.table(this.editContact.value);
-      console.log("Valid", this.editContact.valid);
+      console.log('Valid', this.editContact.valid);
       this.snackBar.open('Contact Saved', null, {
         duration: 2000,
       });

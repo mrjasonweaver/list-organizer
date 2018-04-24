@@ -13,34 +13,38 @@ export class TsImmutableComponent implements OnInit {
         {
           'make': 'BMW',
           'model': 'X5',
-          'colors': ['red', 'black', 'white', 'silver'],
+          'colors': ['red', 'black', 'white', 'silver']
         },
         {
           'make': 'Cheverolet',
           'model': 'Bolt',
-          'colors': ['blue', 'black', 'white', 'silver'],
+          'colors': ['blue', 'black', 'white', 'silver']
         },
         {
           'make': 'Dodge',
           'model': 'Charger',
-          'colors': ['orange', 'black', 'white', 'silver'],
+          'colors': ['orange', 'black', 'white', 'silver']
         },
         {
           'make': 'Ford',
           'model': 'Fiesta',
-          'colors': ['red', 'green', 'white', 'silver'],
+          'colors': ['red', 'green', 'white', 'silver']
         },
         {
           'make': 'Jeep',
           'model': 'Wrangler',
-          'colors': ['rhino', 'black', 'white', 'silver'],
+          'colors': ['rhino', 'black', 'white', 'silver']
         },
       ]
-  }
+  };
   motorcycles: Object = { motorcycleBrands: ['Honda', 'Harley Davidson', 'Kawasaki'] };
   copiedPayload: Object;
-  newBrand: string = 'Audi';
-  newCar: Object = { }
+  newBrand = 'Audi';
+  newCar: Object = {
+    'make': 'Audi',
+    'model': 'A6',
+    'colors': ['red', 'black', 'white', 'silver']
+  };
   data: Object | Array<any>;
   brands: Object;
   cars: Object;
@@ -70,8 +74,8 @@ export class TsImmutableComponent implements OnInit {
     /** using both spread and rest operators */
 
     // change properties
-    const addCarBrands = { ...this.initialPayload, carBrands: [...this.initialPayload.brands] };
-    const { brands: theBrands, ...allExceptBrands} = addCarBrands;
+    const addCarBrands = { ...this.initialPayload, carBrands: [ ...this.initialPayload.brands ] };
+    const { brands: theBrands, ...allExceptBrands } = addCarBrands;
     this.newchangedToCarBrands = allExceptBrands;
   }
 
