@@ -54,6 +54,7 @@ export class TsImmutableComponent implements OnInit {
   newCarAdded: Object;
   newColorAdded: Object;
   newJeepColorAdded: Object;
+  newFordColorAdded: Object;
 
   ngOnInit() {
 
@@ -112,7 +113,15 @@ export class TsImmutableComponent implements OnInit {
     this.newJeepColorAdded = addNewJeepColor;
 
     // replace 'red' with 'saphire' in Ford Fiesta colors array
-    
+    const fordArray = theCars.filter(x => x.make === 'Ford'); // array with ford car object
+    const withoutFordArray = theCars.filter(x => x.make !== 'Ford');
+    const { [0]: ford } = fordArray; // pull out ford object
+    const { colors } = ford; // pull out colors array
+    const withoutRed = colors.filter(x => x !== 'red'); // make new colors array without 'red'
+    const withNewSaphireColor = { ...ford, colors: ['saphire', ...withoutRed] }; // add new 'saphire' color
+    const carsWithNewFordColor = [ ...withoutFordArray, withNewSaphireColor ]; // merge new cars array
+    const addNewFordColor = { ...this.initialPayload, cars: carsWithNewFordColor }; // add new cars array
+    this.newFordColorAdded = addNewFordColor;
   }
 
 }
