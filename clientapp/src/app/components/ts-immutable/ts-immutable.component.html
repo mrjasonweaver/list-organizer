@@ -1,3 +1,72 @@
 <div class="app-container">
-  <pre> {{ newFordColorAdded | json }} </pre>
+  <mat-card>
+    <mat-card-title>Using Spread and Rest operators for immutable data manipulation</mat-card-title>
+    <mat-card-content>See <a target="_blank" href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-1.html#object-spread-and-rest">TypeScript docs</a></mat-card-content>
+  </mat-card>
+
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>Shallow copy with spread</mat-expansion-panel-header>
+      <h3>Code</h3>
+      <pre>
+  const copy = {{ '{ ...this.initialPayload }' }};
+      </pre>
+      <h3>Output</h3>
+      <pre> {{ copiedPayload | json }} </pre>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>Returning new filtered objects with rest</mat-expansion-panel-header>
+      <h3>Code</h3>
+      <pre>
+  const {{ '{ cars, ...brandsOnly}' }} = this.initialPayload;
+      </pre>
+      <h3>Output</h3>
+      <pre> {{ brands | json }} </pre>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>Merge objects</mat-expansion-panel-header>
+      <h3>Code</h3>
+      <pre>
+  const withMotorcyles = {{ '{ ...this.initialPayload, ...this.motorcycles }' }};
+      </pre>
+      <h3>Output</h3>
+      <pre> {{ newWithMotorcycles | json }} </pre>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>Add new car object to nested cars array</mat-expansion-panel-header>
+      <h3>Code</h3>
+      <pre>
+  // use object and array spread to add a new array item to an array nested in an object
+  const addNewCar = {{ '{ ...this.initialPayload, cars: [ ...this.initialPayload.cars, this.newCar ] }' }};
+      </pre>
+      <h3>Output</h3>
+      <pre> {{ newCarAdded | json }} </pre>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>Add 'Audi' to brands</mat-expansion-panel-header>
+      <h3>Code</h3>
+      <pre>
+  // use object and array spread to add a new array item to an array nested in an object
+  const addNewBrand = {{ '{ ...this.initialPayload, brands: [ ...this.initialPayload.brands, this.newBrand ] }' }};
+      </pre>
+      <h3>Output</h3>
+      <pre> {{ newBrandAdded | json }} </pre>
+    </mat-expansion-panel>
+
+      <!-- <mat-expansion-panel>
+        <mat-expansion-panel-header>Add 'Audi' to brands</mat-expansion-panel-header>
+        <h3>Code</h3>
+        <pre>
+  // use object and array spread to add a new array item to an array nested in an object
+  const addNewBrand = {{ '{ ...this.initialPayload, brands: [ ...this.initialPayload.brands, this.newBrand ] }' }};
+        </pre>
+        <h3>Output</h3>
+        <pre> {{ newBrandAdded | json }} </pre>
+      </mat-expansion-panel> -->
+  
+  </mat-accordion>
 </div>

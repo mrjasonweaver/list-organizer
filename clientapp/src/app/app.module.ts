@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule, MatCheckboxModule, MatTooltipModule, MatCardModule, MatSnackBarModule,
         MatInputModule, MatTableModule, MatPaginatorModule, MatIconModule, MatProgressBarModule,
-        MatSidenavModule, MatSlideToggleModule, MatDividerModule } from '@angular/material';
+        MatSidenavModule, MatSlideToggleModule, MatDividerModule, MatExpansionModule } from '@angular/material';
 import { SlicePipe } from '@angular/common';
 import { AppComponent } from './app.component';
 import { TruncatePipe } from './pipes/truncate-pipe/truncate.pipe';
@@ -52,6 +52,7 @@ import { TsImmutableComponent } from './components/ts-immutable/ts-immutable.com
     MatSidenavModule,
     MatSlideToggleModule,
     MatDividerModule,
+    MatExpansionModule,
     MatProgressBarModule,
     MatSnackBarModule,
     StoreModule.forRoot(<any>appReducer, { initialState }),
@@ -82,6 +83,7 @@ import { TsImmutableComponent } from './components/ts-immutable/ts-immutable.com
     MatSidenavModule,
     MatSlideToggleModule,
     MatDividerModule,
+    MatExpansionModule,
     MatProgressBarModule,
     MatSnackBarModule,
   ],
