@@ -106,10 +106,13 @@ export class TsImmutableComponent implements OnInit {
     const carsObj = { ...theCars }; // transform cars array into object with object keys
     const { "4": jeep, ...withoutJeep } = carsObj; // jeep and the rest assignment
     const withoutJeepArray = Object.keys(withoutJeep).map(x => withoutJeep[x]); // turn back into array
-    const jeepWithArmyGreen =  { ...jeep, colors: [ ...jeep.colors, 'army green' ] }; // new bmw object with blue color addded
+    const jeepWithArmyGreen =  { ...jeep, colors: [ ...jeep.colors, 'army green' ] }; // new jeep object with army green color addded
     const carsWithNewJeepColor = [ ...withoutJeepArray, jeepWithArmyGreen ]; // merge new cars array
     const addNewJeepColor = { ...this.initialPayload, cars: carsWithNewJeepColor }; // add new cars array
     this.newJeepColorAdded = addNewJeepColor;
+
+    // replace 'red' with 'saphire' in Ford Fiesta colors array
+    
   }
 
 }
