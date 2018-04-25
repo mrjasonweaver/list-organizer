@@ -103,6 +103,8 @@ export class TsImmutableComponent implements OnInit {
     const addNewColor = { ...this.initialPayload, cars: newCars }; // add new cars array
     this.newColorAdded = addNewColor;
 
+    /** using built in Object and Array methods with spread and rest operators */
+
     // add a new color to Jeep colors array
     const carsObj = { ...theCars }; // transform cars array into object with object keys
     const { "4": jeep, ...withoutJeep } = carsObj; // jeep and the rest assignment
