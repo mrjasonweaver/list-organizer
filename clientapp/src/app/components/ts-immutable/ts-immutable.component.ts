@@ -93,6 +93,14 @@ export class TsImmutableComponent implements OnInit {
     const { brands: theBrands, ...allExceptBrands } = addCarBrands;
     this.newChangedToCarBrands = allExceptBrands;
 
+    // add a new color to BMW colors array
+    const { cars: theCars } = this.initialPayload; // grab cars array
+    const [ bmw, ...withoutBmw ] = theCars; // bmw and the rest assignment
+    const bmwWithBlue =  { ...bmw, colors: [ ...bmw.colors, 'blue' ] }; // new bmw object with blue color addded
+    const newCars = [ bmwWithBlue, ...withoutBmw ]; // merge new cars array
+    const addNewColor = { ...this.initialPayload, cars: newCars }; // add new cars array
+    this.newColorAdded = addNewColor;
+
   }
 
 }
