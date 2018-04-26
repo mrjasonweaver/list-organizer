@@ -1,0 +1,19 @@
+<div class="app-container">
+  <mat-card style="margin-bottom: 30px;">
+    <mat-card-title>Contacts</mat-card-title>
+    <app-contacts-table *ngIf="(contactsStore.contacts$ | async) as contacts; else loading"
+      [pageEvent]="pageEvent"
+      [displayedColumns]="displayedColumns"
+      [contacts]="contacts"
+      [firstNameLabel]="firstNameLabel"
+      [lastNameLabel]="lastNameLabel"
+      [roleLabel]="roleLabel"
+      [organizationLabel]="organizationLabel"
+      [phoneLabel]="phoneLabel"
+      [actionLabel]="actionLabel"
+      [editLabel]="editLabel"
+      (showContact)="getContact($event)"
+      (routeToPage)="getPage($event)">
+    </app-contacts-table>
+  </mat-card>
+</div>

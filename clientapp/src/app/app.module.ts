@@ -24,6 +24,8 @@ import { ContactComponent } from './components/contact/contact.component';
 import { ContactsService } from './services/contacts.service';
 import { ContactsTableComponent } from './components/contacts-table/contacts-table.component';
 import { TsImmutableComponent } from './components/ts-immutable/ts-immutable.component';
+import { ContactsObsServComponent } from './components/contacts-obs-serv/contacts-obs-serv.component';
+import { ContactsStore } from './store/contacts';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { TsImmutableComponent } from './components/ts-immutable/ts-immutable.com
     ContactsComponent,
     ContactComponent,
     ContactsTableComponent,
-    TsImmutableComponent
+    TsImmutableComponent,
+    ContactsObsServComponent
   ],
   imports: [
     BrowserModule,
@@ -63,6 +66,7 @@ import { TsImmutableComponent } from './components/ts-immutable/ts-immutable.com
     RouterModule.forRoot([
       // routes
       { path: '', pathMatch: 'full', redirectTo: 'contacts' },
+      { path: 'contacts-obs', pathMatch: 'full', component: ContactsObsServComponent },
       { path: 'ts-immutable', pathMatch: 'full', component: TsImmutableComponent },
       { path: 'truncate-tooltip', pathMatch: 'full', component: TruncateTooltipTestComponent },
       { path: 'contacts', component: ContactsComponent },
@@ -91,7 +95,8 @@ import { TsImmutableComponent } from './components/ts-immutable/ts-immutable.com
     BrowserAnimationsModule,
     SlicePipe,
     ContactsEffects,
-    ContactsService
+    ContactsService,
+    ContactsStore
   ],
   bootstrap: [AppComponent]
 })
