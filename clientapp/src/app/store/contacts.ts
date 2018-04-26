@@ -3,7 +3,7 @@ import { ContactsService } from '../services/contacts.service';
 import { IContact, IContactsState } from '../models/contacts';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import { BehaviorSubject } from 'rxjs/Rx';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class ContactsStore {
@@ -20,7 +20,7 @@ export class ContactsStore {
 
   loadInitialData() {
     this.contactsService.findContacts().subscribe(res => this._contacts.next(res.contacts),
-      err => console.log("Error retrieving Contacts")
+      err => console.log('Error retrieving Contacts')
     );
   }
 

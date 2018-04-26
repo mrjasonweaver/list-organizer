@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactsStore } from '../../store/contacts';
 import { IContact } from '../../models/contacts';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 
