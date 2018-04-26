@@ -131,6 +131,6 @@ export class ContactsComponent implements OnInit, OnDestroy {
    * @return Router navigates to /contacts?page={this.page}.
    */
   routeToContactList(page: number) {
-    return this.router.navigate(['/contacts'], { queryParams: { page } });
+    return this.router.navigate(['/contacts'], { queryParams: { page: this.page } });
   }
 }
