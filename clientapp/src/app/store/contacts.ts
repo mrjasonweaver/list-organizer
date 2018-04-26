@@ -19,14 +19,9 @@ export class ContactsStore {
   }
 
   loadInitialData() {
-    this.contactsService.findContacts(1)
-      .subscribe( res => { 
-        let contacts = res.contacts;
-        this._contacts.next(contacts);
-      },
-        err => console.log("Error retrieving Todos")
-      );
-
+    this.contactsService.findContacts().subscribe(res => this._contacts.next(res.contacts),
+      err => console.log("Error retrieving Contacts")
+    );
   }
 
 }

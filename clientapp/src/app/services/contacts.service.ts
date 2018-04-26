@@ -10,7 +10,7 @@ export class ContactsService {
 
   constructor(private http: HttpClient) {}
 
-  findContacts(page: number): Observable<IContactsState> {
+  findContacts(page: number = 1): Observable<IContactsState> {
     const options = page ? { params: new HttpParams().set('page', page.toString()) } : {};
     const contacts = this.http.get<IContactsState>(`${this.url}/contacts`, options);
     return contacts;
