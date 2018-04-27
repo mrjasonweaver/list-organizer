@@ -83,6 +83,38 @@
         <h3>Output</h3>
         <pre> {{ newColorAdded | json }} </pre>
       </mat-expansion-panel>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>Add a new color to Jeep colors array</mat-expansion-panel-header>
+        <h3>Code</h3>
+        <pre>
+  const carsObj = {{ '{ ...theCars }' }}; // transform cars array into object with object keys
+  const {{ '{ "4": jeep, ...withoutJeep }' }} = carsObj; // jeep and the rest assignment
+  const withoutJeepArray = Object.keys(withoutJeep).map(x => withoutJeep[x]); // turn back into array
+  const jeepWithArmyGreen =  {{ '{ ...jeep, colors: [ ...jeep.colors, "army green" ] }' }}; // new jeep object with army green color addded
+  const carsWithNewJeepColor = [ ...withoutJeepArray, jeepWithArmyGreen ]; // merge new cars array
+  const addNewJeepColor = {{ '{ ...this.initialPayload, cars: carsWithNewJeepColor }' }}; // add new cars array
+        </pre>
+        <h3>Output</h3>
+        <pre> {{ newJeepColorAdded | json }} </pre>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>Replace 'red' with 'saphire' in Ford Fiesta colors array</mat-expansion-panel-header>
+        <h3>Code</h3>
+        <pre>
+  const fordArray = theCars.filter(x => x.make === 'Ford'); // array with ford car object
+  const withoutFordArray = theCars.filter(x => x.make !== 'Ford');
+  const {{ '{ [0]: ford }' }} = fordArray; // pull out ford object
+  const {{ '{ colors }' }} = ford; // pull out colors array
+  const withoutRed = colors.filter(x => x !== 'red'); // make new colors array without 'red'
+  const withNewSaphireColor = {{ '{ ...ford, colors: ["saphire", ...withoutRed] }' }}; // add new 'saphire' color
+  const carsWithNewFordColor = [ ...withoutFordArray, withNewSaphireColor ]; // merge new cars array
+  const addNewFordColor = {{ '{ ...this.initialPayload, cars: carsWithNewFordColor }' }}; // add new cars array
+        </pre>
+        <h3>Output</h3>
+        <pre> {{ newFordColorAdded | json }} </pre>
+      </mat-expansion-panel>
   
   </mat-accordion>
 </div>
