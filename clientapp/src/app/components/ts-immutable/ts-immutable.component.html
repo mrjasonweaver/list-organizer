@@ -69,6 +69,20 @@
         <h3>Output</h3>
         <pre> {{ newChangedToCarBrands | json }} </pre>
       </mat-expansion-panel>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>Add a new color to BMW colors array</mat-expansion-panel-header>
+        <h3>Code</h3>
+        <pre>
+  const {{ '{ cars: theCars }' }} = this.initialPayload; // grab cars array
+  const [ bmw, ...withoutBmw ] = theCars; // bmw and the rest assignment
+  const bmwWithBlue =  {{ '{ ...bmw, colors: [ ...bmw.colors, "blue" ] }' }}; // new bmw object with blue color addded
+  const newCars [ bmwWithBlue, ...withoutBmw ]; // merge new cars array
+  const addNewColor = {{ '{ ...this.initialPayload, cars: newCars }' }}; // add new cars array
+        </pre>
+        <h3>Output</h3>
+        <pre> {{ newColorAdded | json }} </pre>
+      </mat-expansion-panel>
   
   </mat-accordion>
 </div>
