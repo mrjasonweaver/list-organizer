@@ -57,16 +57,18 @@
       <pre> {{ newBrandAdded | json }} </pre>
     </mat-expansion-panel>
 
-      <!-- <mat-expansion-panel>
-        <mat-expansion-panel-header>Add 'Audi' to brands</mat-expansion-panel-header>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>Change 'brands' property to 'carBrands'</mat-expansion-panel-header>
         <h3>Code</h3>
         <pre>
-  // use object and array spread to add a new array item to an array nested in an object
-  const addNewBrand = {{ '{ ...this.initialPayload, brands: [ ...this.initialPayload.brands, this.newBrand ] }' }};
+  // first, add new 'carBrands' object and copy the array from 'brands'
+  const addCarBrands = {{ '{ ...this.initialPayload, carBrands: [ ...this.initialPayload.brands ] }' }};
+  // second, pull out brands and assign the rest to allExceptBrands
+  const {{ '{ brands: theBrands, ...allExceptBrands ' }} = addCarBrands;
         </pre>
         <h3>Output</h3>
-        <pre> {{ newBrandAdded | json }} </pre>
-      </mat-expansion-panel> -->
+        <pre> {{ newChangedToCarBrands | json }} </pre>
+      </mat-expansion-panel>
   
   </mat-accordion>
 </div>
