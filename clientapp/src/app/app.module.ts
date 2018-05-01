@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, RouterEvent } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule, MatCheckboxModule, MatTooltipModule, MatCardModule, MatSnackBarModule,
         MatInputModule, MatTableModule, MatPaginatorModule, MatIconModule, MatProgressBarModule,
@@ -89,7 +89,7 @@ import { ContactsStore } from './store/contacts';
     MatDividerModule,
     MatExpansionModule,
     MatProgressBarModule,
-    MatSnackBarModule,
+    MatSnackBarModule
   ],
   providers: [
     BrowserAnimationsModule,

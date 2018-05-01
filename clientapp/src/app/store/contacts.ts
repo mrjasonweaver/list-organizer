@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router, ActivatedRoute, RouterEvent, Event, NavigationEnd } from '@angular/router';
 import { ContactsService } from '../services/contacts.service';
 import { IContact, IContactsState } from '../models/contacts';
 import { Observable } from 'rxjs/Observable';
@@ -10,8 +11,13 @@ export class ContactsStore {
 
   private _contacts: BehaviorSubject<any> = new BehaviorSubject([]);
 
-  constructor(private contactsService: ContactsService) {
+  constructor(private contactsService: ContactsService, private router: Router, private events: RouterEvent) {
     this.loadInitialData();
+    router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        console.log('NavigationEnd:', event);
+      }
+    });
   }
 
   get contacts$() {
