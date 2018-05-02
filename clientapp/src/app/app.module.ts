@@ -26,6 +26,7 @@ import { ContactsTableComponent } from './components/contacts-table/contacts-tab
 import { TsImmutableComponent } from './components/ts-immutable/ts-immutable.component';
 import { ContactsObsServComponent } from './components/contacts-obs-serv/contacts-obs-serv.component';
 import { ContactsStore } from './store/contacts';
+import { UsersComponent } from './components/users/users.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ContactsStore } from './store/contacts';
     ContactComponent,
     ContactsTableComponent,
     TsImmutableComponent,
-    ContactsObsServComponent
+    ContactsObsServComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
