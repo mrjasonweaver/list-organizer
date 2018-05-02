@@ -27,6 +27,7 @@ import { TsImmutableComponent } from './components/ts-immutable/ts-immutable.com
 import { ContactsObsServComponent } from './components/contacts-obs-serv/contacts-obs-serv.component';
 import { ContactsStore } from './store/contacts';
 import { UsersComponent } from './components/users/users.component';
+import { UsersStore } from './store/users';
 
 @NgModule({
   declarations: [
@@ -98,7 +99,8 @@ import { UsersComponent } from './components/users/users.component';
     SlicePipe,
     ContactsEffects,
     ContactsService,
-    ContactsStore
+    ContactsStore,
+    UsersStore
   ],
   bootstrap: [AppComponent]
 })

@@ -7,7 +7,7 @@ import { Subject } from 'rxjs/Subject';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
-export class ContactsStore {
+export class UsersStore {
 
   private users: BehaviorSubject<any> = new BehaviorSubject([]);
 
