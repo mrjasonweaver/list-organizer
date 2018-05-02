@@ -28,6 +28,7 @@ import { ContactsObsServComponent } from './components/contacts-obs-serv/contact
 import { ContactsStore } from './store/contacts';
 import { UsersComponent } from './components/users/users.component';
 import { UsersStore } from './store/users';
+import { UsersService } from './services/users.service';
 
 @NgModule({
   declarations: [
@@ -101,6 +102,7 @@ import { UsersStore } from './store/users';
     ContactsEffects,
     ContactsService,
     ContactsStore,
+    UsersService,
     UsersStore
   ],
   bootstrap: [AppComponent]
