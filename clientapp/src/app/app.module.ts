@@ -73,6 +73,7 @@ import { UsersStore } from './store/users';
       { path: 'ts-immutable', pathMatch: 'full', component: TsImmutableComponent },
       { path: 'truncate-tooltip', pathMatch: 'full', component: TruncateTooltipTestComponent },
       { path: 'contacts', component: ContactsComponent },
+      { path: 'users', pathMatch: 'full', component: UsersComponent },
     ], {useHash: true}),
     EffectsModule.forRoot([
       ContactsEffects
