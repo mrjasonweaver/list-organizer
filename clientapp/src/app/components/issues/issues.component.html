@@ -1,0 +1,3 @@
+<ul *ngIf="(issuesStore.users$ | async) as issues">
+  <li *ngFor="let issue of issues">{{ issue.name }}</li>
+</ul>

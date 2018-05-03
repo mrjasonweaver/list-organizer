@@ -29,6 +29,7 @@ import { ContactsStore } from './store/contacts';
 import { UsersComponent } from './components/users/users.component';
 import { UsersStore } from './store/users';
 import { UsersService } from './services/users.service';
+import { IssuesComponent } from './components/issues/issues.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { UsersService } from './services/users.service';
     ContactsTableComponent,
     TsImmutableComponent,
     ContactsObsServComponent,
-    UsersComponent
+    UsersComponent,
+    IssuesComponent
   ],
   imports: [
     BrowserModule,
