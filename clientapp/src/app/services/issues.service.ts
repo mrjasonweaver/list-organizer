@@ -12,7 +12,7 @@ export class IssuesService {
 
   constructor(private http: HttpClient) {}
 
-  getUsers(): Observable<IIssue[]> {
+  getIssues(): Observable<IIssue[]> {
     return this.http.get<IIssue[]>(`${this.url}/repos/${this.username}/${this.repo}/issues`);
   }
 
