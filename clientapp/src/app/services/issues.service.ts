@@ -6,8 +6,8 @@ import { IIssue } from '../models/issues';
 @Injectable()
 export class IssuesService {
   private url = 'https://api.github.com';
-  username: string;
-  repo: string;
+  username: string = 'angular';
+  repo: string = 'angular';
 
   constructor(private http: HttpClient) {}
 
