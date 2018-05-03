@@ -30,6 +30,8 @@ import { UsersComponent } from './components/users/users.component';
 import { UsersStore } from './store/users';
 import { UsersService } from './services/users.service';
 import { IssuesComponent } from './components/issues/issues.component';
+import { IssuesStore } from './store/issues';
+import { IssuesService } from './services/issues.service';
 
 @NgModule({
   declarations: [
@@ -77,6 +79,7 @@ import { IssuesComponent } from './components/issues/issues.component';
       { path: 'truncate-tooltip', pathMatch: 'full', component: TruncateTooltipTestComponent },
       { path: 'contacts', component: ContactsComponent },
       { path: 'users', pathMatch: 'full', component: UsersComponent },
+      { path: 'issues', pathMatch: 'full', component: IssuesComponent },
     ], {useHash: true}),
     EffectsModule.forRoot([
       ContactsEffects
@@ -105,7 +108,9 @@ import { IssuesComponent } from './components/issues/issues.component';
     ContactsService,
     ContactsStore,
     UsersService,
-    UsersStore
+    UsersStore,
+    IssuesService,
+    IssuesStore
   ],
   bootstrap: [AppComponent]
 })
