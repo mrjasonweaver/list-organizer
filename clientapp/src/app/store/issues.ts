@@ -11,10 +11,10 @@ export class IssuesStore {
 
   private _issues: BehaviorSubject<any> = new BehaviorSubject([]);
   public readonly issues: Observable<IIssue[]> = this._issues.asObservable();
-  username: string = 'angular';
-  repo: string = 'angular';
-  page: number = 1;
-  perPage: number = 10;
+  username = 'angular';
+  repo = 'angular';
+  page = 1;
+  perPage = 10;
 
   constructor(private issuesService: IssuesService) {
     this.loadInitialData();
