@@ -1,6 +1,6 @@
 .mat-column-number,
-.mat-column-state {
-  max-width: 80px;
+.mat-column-date {
+  max-width: 90px;
 }
 .mat-column-user {
   max-width: 140px;

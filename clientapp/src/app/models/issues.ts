@@ -17,6 +17,7 @@ export interface IIssue {
     url: string;
     html_url: string;
   };
+  created_at: string;
 }
 
 export interface IParams {
