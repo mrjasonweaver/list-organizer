@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { IIssue } from '../models/issues';
+import { IIssue, IParams } from '../models/issues';
 
 @Injectable()
 export class IssuesService {
@@ -9,8 +9,8 @@ export class IssuesService {
 
   constructor(private http: HttpClient) {}
 
-  getIssues(username: string, repo: string, page: number, perPage: number): Observable<IIssue[]> {
-    return this.http.get<IIssue[]>(`${this.url}/repos/${username}/${repo}/issues?page=${+page}&per_page=${+perPage}`);
+  getIssues(params: IParams): Observable<IIssue[]> {
+    return this.http.get<IIssue[]>(`${this.url}/repos/${params.username}/${params.repo}/issues?page=${params.page}&per_page=${params.perPage}`);
   }
 
 }

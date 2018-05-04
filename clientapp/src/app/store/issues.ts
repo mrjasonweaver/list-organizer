@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { IssuesService } from '../services/issues.service';
-import { IIssue } from '../models/issues';
+import { IIssue, IParams, initialParams } from '../models/issues';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -11,10 +11,9 @@ export class IssuesStore {
 
   private _issues: BehaviorSubject<any> = new BehaviorSubject([]);
   public readonly issues: Observable<IIssue[]> = this._issues.asObservable();
-  username = 'angular';
-  repo = 'angular';
-  page = 1;
-  perPage = 10;
+
+  private _username: BehaviorSubject<string> = new BehaviorSubject('angular');
+  public readonly username: Observable<string> = this._username.asObservable();
 
   constructor(private issuesService: IssuesService) {
     this.loadInitialData();
@@ -25,9 +24,10 @@ export class IssuesStore {
   }
 
   loadInitialData() {
-    this.issuesService.getIssues(this.username, this.repo, this.page, this.perPage).subscribe(res => this._issues.next(res),
-      err => console.log('Error retrieving users')
-    );
+    this.issuesService.getIssues(initialParams)
+      .subscribe(res => this._issues.next(res),
+        err => console.log('Error retrieving users')
+      );
   }
 
 }

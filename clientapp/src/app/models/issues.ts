@@ -18,3 +18,17 @@ export interface IIssue {
     html_url: string;
   };
 }
+
+export interface IParams {
+  username: string;
+  repo: string;
+  page: number;
+  perPage: number;
+}
+
+export const initialParams: IParams = {
+  username: 'angular',
+  repo: 'angular',
+  page: 1,
+  perPage: 10
+}
