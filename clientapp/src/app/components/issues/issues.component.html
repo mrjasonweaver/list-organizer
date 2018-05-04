@@ -1,7 +1,6 @@
 <div class="app-container">
   <mat-card style="margin-bottom: 30px;">
     <mat-card-title>Issues and Pull Requests</mat-card-title>
-    <!-- <button mat-raised-button (click)="onPageChange(pageEvent.pageIndex)">Next page</button> -->
     <mat-card>
         <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
       <mat-table #table [dataSource]="issues" *ngIf="(issuesStore.issues$ | async) as issues; else loading">

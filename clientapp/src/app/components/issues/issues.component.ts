@@ -21,7 +21,6 @@ export class IssuesComponent implements OnInit {
   }
 
   onPageChange(event) {
-    console.log(event);
     const page = event.pageIndex + 1;
     this.issuesStore.reloadIssues({...this.userParamOptions, page });
   }
