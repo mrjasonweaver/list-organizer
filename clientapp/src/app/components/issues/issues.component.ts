@@ -8,7 +8,7 @@ import { IssuesStore } from '../../store/issues';
 })
 export class IssuesComponent implements OnInit {
 
-  displayedColumns = ['number', 'title', 'state', 'user'];
+  displayedColumns = ['number', 'user', 'title', 'state'];
 
   constructor(private issuesStore: IssuesStore) { }
 
