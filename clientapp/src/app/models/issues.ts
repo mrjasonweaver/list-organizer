@@ -26,7 +26,7 @@ export interface IParams {
   perPage: number;
 }
 
-export const initialParams: IParams = {
+export const params: IParams = {
   username: 'angular',
   repo: 'angular',
   page: 1,
