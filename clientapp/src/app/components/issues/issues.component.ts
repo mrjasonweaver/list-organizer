@@ -8,6 +8,8 @@ import { IssuesStore } from '../../store/issues';
 })
 export class IssuesComponent implements OnInit {
 
+  displayedColumns = ['number', 'title', 'state', 'user'];
+
   constructor(private issuesStore: IssuesStore) { }
 
   ngOnInit() {

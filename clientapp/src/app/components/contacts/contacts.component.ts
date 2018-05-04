@@ -10,7 +10,6 @@ import * as contactsSelector from '../../selectors/contacts';
 import { PageEvent } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs/Subscription';
-import 'rxjs/add/operator/do';
 
 @Component({
   selector: 'app-contacts',

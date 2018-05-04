@@ -1,3 +1,39 @@
-<ul *ngIf="(issuesStore.issues$ | async) as issues">
-  <li *ngFor="let issue of issues">{{ issue.title }}</li>
-</ul>
+<div class="app-container">
+  <mat-card style="margin-bottom: 30px;">
+    <mat-card-title>Issues and Pull Requests</mat-card-title>
+    <mat-card>
+      <mat-table #table [dataSource]="issues" *ngIf="(issuesStore.issues$ | async) as issues">
+        <ng-container matColumnDef="lastName">
+          <mat-header-cell *matHeaderCellDef> Number </mat-header-cell>
+          <mat-cell *matCellDef="let issue"> {{issue.number}} </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="firstName">
+          <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+          <mat-cell *matCellDef="let issue"> {{issue.title}} </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="role">
+          <mat-header-cell *matHeaderCellDef> State </mat-header-cell>
+          <mat-cell *matCellDef="let issue"> {{issue.state}} </mat-cell>
+        </ng-container>
+      
+        <ng-container matColumnDef="organization">
+          <mat-header-cell *matHeaderCellDef> User </mat-header-cell>
+          <mat-cell *matCellDef="let issue"> {{issue.user.login}} </mat-cell>
+        </ng-container>
+    
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    
+      </mat-table>
+    
+      <mat-paginator 
+        (page)="1"
+        [length]="30"
+        [pageSize]="30">
+      </mat-paginator>
+    
+    </mat-card>
+  </mat-card>
+</div>
