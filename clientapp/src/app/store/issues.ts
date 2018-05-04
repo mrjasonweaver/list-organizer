@@ -16,8 +16,11 @@ export class IssuesStore {
     this.loadInitialIssues();
   }
 
-  get issuesObject$() {
-    return this._issuesObject;
+  get issues$() {
+    return this._issuesObject.map(res => res.items);
+  }
+  get issuesCount$() {
+    return this._issuesObject.map(res => res.total_count);
   }
 
   loadInitialIssues() {

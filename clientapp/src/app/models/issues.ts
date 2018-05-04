@@ -25,6 +25,11 @@ export interface IIssuesObject {
   items: IIssue[];
 }
 
+export const issuesObject: IIssuesObject = {
+  total_count: 100,
+  items: []
+}
+
 export interface IParams {
   username: string;
   repo: string;

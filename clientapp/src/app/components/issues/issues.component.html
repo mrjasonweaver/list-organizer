@@ -32,7 +32,7 @@
     
       <mat-paginator 
         (page)="onPageChange($event)"
-        [length]="pageEvent.length"
+        [length]="issuesStore.issuesCount$ | async"
         [pageSize]="pageEvent.pageSize">
       </mat-paginator>
     

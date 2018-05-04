@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IssuesStore } from '../../store/issues';
 import { PageEvent } from '@angular/material/paginator';
-import { IIssue, IParams, params } from '../../models/issues';
+import { IIssuesObject, issuesObject, IIssue, IParams, params } from '../../models/issues';
 
 @Component({
   selector: 'app-issues',
@@ -12,7 +12,8 @@ export class IssuesComponent implements OnInit {
 
   displayedColumns = ['number', 'user', 'title', 'date'];
   userParamOptions: IParams = params;
-  pageEvent: PageEvent = { pageSize: this.userParamOptions.perPage, pageIndex: this.userParamOptions.page, length: 100 };
+  issuesParent: IIssuesObject = issuesObject;
+  pageEvent: PageEvent = { pageSize: this.userParamOptions.perPage, pageIndex: this.userParamOptions.page, length: this.issuesParent.total_count };
 
   constructor(private issuesStore: IssuesStore) { }
 
