@@ -10,7 +10,9 @@ export class IssuesService {
   constructor(private http: HttpClient) {}
 
   getIssues(params: IParams): Observable<IIssue[]> {
-    return this.http.get<IIssue[]>(`${this.url}/repos/${params.username}/${params.repo}/issues?page=${params.page}&per_page=${params.perPage}`);
+    const unRepoSegments = `repos/${params.username}/${params.repo}/issues`;
+    const queryParamsSegments = `page=${params.page}&per_page=${params.perPage}`;
+    return this.http.get<IIssue[]>(`${this.url}/${unRepoSegments}?${queryParamsSegments}`);
   }
 
 }

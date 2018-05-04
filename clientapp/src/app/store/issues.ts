@@ -26,7 +26,7 @@ export class IssuesStore {
         err => console.log('Error retrieving issues')
       );
   }
-  loadIssues(userParams) {
+  reloadIssues(userParams) {
     this.issuesService.getIssues(userParams)
       .subscribe(res => this._issues.next(res),
         err => console.log('Error retrieving issues')
