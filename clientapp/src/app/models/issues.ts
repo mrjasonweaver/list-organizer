@@ -20,16 +20,25 @@ export interface IIssue {
   created_at: string;
 }
 
+export interface IIssuesObject {
+  total_count: number;
+  items: IIssue[];
+}
+
 export interface IParams {
   username: string;
   repo: string;
   page: number;
   perPage: number;
+  sort: string;
+  order: string;
 }
 
 export const params: IParams = {
   username: 'angular',
   repo: 'angular',
   page: 1,
-  perPage: 10
+  perPage: 10,
+  sort: 'created',
+  order: 'desc'
 }

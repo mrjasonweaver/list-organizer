@@ -1,18 +1,18 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { IIssue, IParams } from '../models/issues';
+import { IIssuesObject, IIssue, IParams } from '../models/issues';
 
 @Injectable()
 export class IssuesService {
-  private url = 'https://api.github.com';
+  private url = 'https://api.github.com/search/issues';
 
   constructor(private http: HttpClient) {}
 
-  getIssues(params: IParams): Observable<IIssue[]> {
-    const unRepoSegments = `repos/${params.username}/${params.repo}/issues`;
+  getIssues(params: IParams): Observable<IIssuesObject> {
+    const unRepoSegments = `?q=repo:${params.username}/${params.repo}&sort=${params.sort}&order=${params.order}`;
     const queryParamsSegments = `page=${params.page}&per_page=${params.perPage}`;
-    return this.http.get<IIssue[]>(`${this.url}/${unRepoSegments}?${queryParamsSegments}`);
+    return this.http.get<IIssuesObject>(`${this.url}${unRepoSegments}&${queryParamsSegments}`);
   }
 
 }
