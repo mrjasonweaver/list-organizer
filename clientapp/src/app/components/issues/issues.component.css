@@ -1,0 +1,7 @@
+.mat-column-number,
+.mat-column-state {
+  max-width: 80px;
+}
+.mat-column-user {
+  max-width: 120px;
+}
