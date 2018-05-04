@@ -6,7 +6,7 @@ export interface IIssue {
   comments_url: string;
   events_url: string;
   html_url: string;
-  number: number
+  number: number;
   state: string;
   title: string;
   body: string;
@@ -16,5 +16,5 @@ export interface IIssue {
     avatar_url: string;
     url: string;
     html_url: string;
-  },
+  };
 }
