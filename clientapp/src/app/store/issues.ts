@@ -11,6 +11,10 @@ export class IssuesStore {
 
   private _issues: BehaviorSubject<any> = new BehaviorSubject([]);
   public readonly issues: Observable<IIssue[]> = this._issues.asObservable();
+  username: string = 'angular';
+  repo: string = 'angular';
+  page: number = 1;
+  perPage: number = 10;
 
   constructor(private issuesService: IssuesService) {
     this.loadInitialData();
@@ -21,7 +25,7 @@ export class IssuesStore {
   }
 
   loadInitialData() {
-    this.issuesService.getIssues().subscribe(res => this._issues.next(res),
+    this.issuesService.getIssues(this.username, this.repo, this.page, this.perPage).subscribe(res => this._issues.next(res),
       err => console.log('Error retrieving users')
     );
   }
