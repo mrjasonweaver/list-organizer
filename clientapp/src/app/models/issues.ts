@@ -28,7 +28,7 @@ export interface IIssuesObject {
 export const issuesObject: IIssuesObject = {
   total_count: 100,
   items: []
-}
+};
 
 export interface IParams {
   username: string;
@@ -46,4 +46,4 @@ export const params: IParams = {
   perPage: 10,
   sort: 'created',
   order: 'desc'
-}
+};

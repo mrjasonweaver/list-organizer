@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { IssuesStore } from '../../store/issues';
 import { PageEvent } from '@angular/material/paginator';
 import { IIssuesObject, issuesObject, IIssue, IParams, params } from '../../models/issues';
@@ -8,17 +8,18 @@ import { IIssuesObject, issuesObject, IIssue, IParams, params } from '../../mode
   templateUrl: './issues.component.html',
   styleUrls: ['./issues.component.css']
 })
-export class IssuesComponent implements OnInit {
+export class IssuesComponent {
 
   displayedColumns = ['number', 'user', 'title', 'date'];
   userParamOptions: IParams = params;
   issuesParent: IIssuesObject = issuesObject;
-  pageEvent: PageEvent = { pageSize: this.userParamOptions.perPage, pageIndex: this.userParamOptions.page, length: this.issuesParent.total_count };
+  pageEvent: PageEvent = {
+    pageSize: this.userParamOptions.perPage,
+    pageIndex: this.userParamOptions.page,
+    length: this.issuesParent.total_count
+  };
 
   constructor(private issuesStore: IssuesStore) { }
-
-  ngOnInit() {
-  }
 
   onPageChange(event) {
     const page = event.pageIndex + 1;
