@@ -7,7 +7,7 @@ import { Subject } from 'rxjs/Subject';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
-export class IssuesStore {
+export class UiStateStore {
 
   private _uiState: BehaviorSubject<any> = new BehaviorSubject(initialUiState);
   public readonly uiState: Observable<IUiState> = this._uiState.asObservable();
@@ -16,14 +16,16 @@ export class IssuesStore {
     return this._uiState;
   }
 
-  startBackendAction(message: string) {
+  startAction(message: string) {
+    console.log(message);
     this._uiState.next({
         actionOngoing: true,
         message
     });
   }
 
-  endBackendAction(message: string) {
+  endAction(message: string) {
+    console.log(message);
       this._uiState.next({
           actionOngoing: false,
           message

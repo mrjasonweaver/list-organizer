@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IssuesStore } from '../../store/issues';
+import { UiStateStore } from '../../store/ui-state';
 import { PageEvent } from '@angular/material/paginator';
 import { IIssuesObject, issuesObject, IIssue, IParams, params } from '../../models/issues';
 
@@ -19,7 +20,7 @@ export class IssuesComponent {
     length: this.issuesParent.total_count
   };
 
-  constructor(private issuesStore: IssuesStore) { }
+  constructor(private issuesStore: IssuesStore, public uiStateStore: UiStateStore) { }
 
   onPageChange(event) {
     const page = event.pageIndex + 1;

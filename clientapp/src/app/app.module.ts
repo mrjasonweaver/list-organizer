@@ -32,6 +32,7 @@ import { UsersService } from './services/users.service';
 import { IssuesComponent } from './components/issues/issues.component';
 import { IssuesStore } from './store/issues';
 import { IssuesService } from './services/issues.service';
+import { UiStateStore } from './store/ui-state';
 
 @NgModule({
   declarations: [
@@ -110,7 +111,8 @@ import { IssuesService } from './services/issues.service';
     UsersService,
     UsersStore,
     IssuesService,
-    IssuesStore
+    IssuesStore,
+    UiStateStore
   ],
   bootstrap: [AppComponent]
 })
