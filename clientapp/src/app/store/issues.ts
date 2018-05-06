@@ -25,8 +25,12 @@ export class IssuesStore {
   }
 
   loadInitialIssues() {
+    this.uiStateStore.startAction('Retrieving issues...');
     this.issuesService.getIssues(params)
-      .subscribe(res => this._issuesObject.next(res),
+      .subscribe(res => {
+        this._issuesObject.next(res);
+        this.uiStateStore.endAction('Issues retrieved');
+      },
         err => console.log('Error retrieving issues')
       );
   }
