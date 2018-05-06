@@ -5,3 +5,17 @@
 .mat-column-user {
   max-width: 140px;
 }
+.mat-card {
+  position: relative;
+}
+.mat-progress-bar {
+  position: absolute;
+  width: 100%;
+  height: 5px;
+  left: 0;
+  top: 0;
+}
+
+.loading {
+  opacity: 0.5;
+}

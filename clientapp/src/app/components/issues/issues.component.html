@@ -1,10 +1,9 @@
 <div class="app-container">
   <mat-card style="margin-bottom: 30px;">
     <mat-card-title>Issues and Pull Requests</mat-card-title>
-    <mat-card>
-      <div *ngIf="(uiStateStore.uiState$ | async) as uiState">
-        <mat-progress-bar *ngIf="uiState.actionOngoing" mode="indeterminate"></mat-progress-bar>
-      </div>
+    <mat-card *ngIf="(uiStateStore.uiState$ | async) as uiState">
+      <mat-progress-bar *ngIf="uiState.actionOngoing" mode="indeterminate"></mat-progress-bar>
+      {{ uiState.message }}
       <mat-table #table [dataSource]="issues" *ngIf="(issuesStore.issues$ | async) as issues">
         <ng-container matColumnDef="number">
           <mat-header-cell *matHeaderCellDef> Number </mat-header-cell>
@@ -27,7 +26,7 @@
         </ng-container>
     
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'loading' : uiState.actionOngoing}"></mat-row>
     
       </mat-table>
     

@@ -31,7 +31,9 @@ export class IssuesStore {
         this._issuesObject.next(res);
         this.uiStateStore.endAction('Issues retrieved');
       },
-        err => console.log('Error retrieving issues')
+        err => {
+          this.uiStateStore.endAction('Error retrieving issues');
+        }
       );
   }
   reloadIssues(userParams) {
@@ -41,7 +43,9 @@ export class IssuesStore {
         this._issuesObject.next(res);
         this.uiStateStore.endAction('Issues retrieved');
       },
-        err => console.log('Error retrieving issues')
+        err =>  {
+          this.uiStateStore.endAction('Error retrieving issues');
+        }
       );
   }
 
