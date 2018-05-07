@@ -13,7 +13,7 @@ export class IssuesStore {
   public readonly issuesObject: Observable<IIssuesObject> = this._issuesObject.asObservable();
 
   constructor(private issuesService: IssuesService, public uiStateStore: UiStateStore) {
-    this.loadInitialIssues();
+    this.navigate();
   }
 
   get issues$() {
@@ -23,19 +23,13 @@ export class IssuesStore {
     return this._issuesObject.map(res => res.total_count);
   }
 
-  loadInitialIssues() {
-    this.uiStateStore.startAction('Retrieving issues...');
-    this.issuesService.getIssues(params)
-      .subscribe(res => {
-        this._issuesObject.next(res);
-        this.uiStateStore.endAction('Issues retrieved');
-      },
-        err => {
-          this.uiStateStore.endAction('Error retrieving issues');
-        }
-      );
+  navigate() {
+    this.uiStateStore.routeQueryParams$.subscribe(x => {
+      this.loadIssues({...params, page: x.get('page')});
+    })
   }
-  reloadIssues(userParams) {
+
+  loadIssues(userParams) {
     this.uiStateStore.startAction('Retrieving issues...');
     this.issuesService.getIssues(userParams)
       .subscribe(res => {

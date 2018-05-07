@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { IssuesStore } from '../../store/issues';
 import { UiStateStore } from '../../store/ui-state';
 import { PageEvent } from '@angular/material/paginator';
@@ -20,26 +21,26 @@ export class IssuesComponent {
     pageIndex: this.userParamOptions.page,
     length: this.issuesParent.total_count
   };
-  sortEvent = {
-    active: this.userParamOptions.sort,
-    direction: this.userParamOptions.order
-  }
 
-  constructor(private issuesStore: IssuesStore, public uiStateStore: UiStateStore) {}
+  constructor(
+    private issuesStore: IssuesStore,
+    public uiStateStore: UiStateStore,
+    private router: Router
+  ) {}
 
   onPageChange(event) {
     const page = event.pageIndex + 1;
-    const { active: sort, direction: order} = this.sortEvent;
-    const pageEvent = { ...this.userParamOptions, pageIndex: page };
-    this.issuesStore.reloadIssues({ ...this.userParamOptions, sort, order, page });
+    // const pageEvent = { ...this.userParamOptions, pageIndex: page };
+    // this.issuesStore.reloadIssues({ ...this.userParamOptions, page });
+    return this.router.navigate(['/issues'], { queryParams: { page } });
   }
 
   onSortData(event) {
-    console.log(event);
-    const { active: sort, direction: order } = event;
-    const page = this.pageEvent.pageIndex + 1;
-    const sortEvent = { ...this.userParamOptions, sort, order };
-    this.issuesStore.reloadIssues({...this.userParamOptions, sort, order, page });
+    // console.log(event);
+    // const { active: sort, direction: order } = event;
+    // const page = this.pageEvent.pageIndex + 1;
+    // const sortEvent = { ...this.userParamOptions, sort, order };
+    // this.issuesStore.reloadIssues({...this.userParamOptions, sort, order, page });
   }
 
 }

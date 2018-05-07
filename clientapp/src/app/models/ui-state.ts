@@ -1,7 +1,7 @@
 export interface IUiState {
   actionOngoing: boolean;
   message: string;
-  page: number;
+  page: string;
   sort: string;
   order: string;
 }
@@ -9,7 +9,7 @@ export interface IUiState {
 export const initialUiState: IUiState = {
   actionOngoing: false,
   message: '',
-  page: 1,
+  page: '1',
   sort: 'created',
   order: 'desc'
 };
