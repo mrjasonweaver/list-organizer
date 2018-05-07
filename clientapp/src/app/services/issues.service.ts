@@ -12,6 +12,7 @@ export class IssuesService {
   getIssues(params: IParams): Observable<IIssuesObject> {
     const unRepoSegments = `?q=repo:${params.username}/${params.repo}&sort=${params.sort}&order=${params.order}`;
     const queryParamsSegments = `page=${params.page}&per_page=${params.perPage}`;
+    console.log(`${this.url}${unRepoSegments}&${queryParamsSegments}`);
     return this.http.get<IIssuesObject>(`${this.url}${unRepoSegments}&${queryParamsSegments}`);
   }
 

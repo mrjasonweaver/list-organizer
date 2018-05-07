@@ -11,7 +11,7 @@ import { IIssuesObject, issuesObject, IIssue, IParams, params } from '../../mode
 })
 export class IssuesComponent {
 
-  displayedColumns = ['number', 'user', 'title', 'date'];
+  displayedColumns = ['number', 'user', 'title', 'created'];
   userParamOptions: IParams = params;
   issuesParent: IIssuesObject = issuesObject;
   pageEvent: PageEvent = {
