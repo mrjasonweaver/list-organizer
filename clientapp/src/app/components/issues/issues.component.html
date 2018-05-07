@@ -2,7 +2,7 @@
   <mat-card style="margin-bottom: 30px;">
     <mat-card-title>Issues and Pull Requests</mat-card-title>
     <mat-card *ngIf="(uiStateStore.uiState$ | async) as uiState">
-        {{ route | async | json }}
+        {{ uiStateStore.route | json }}
       <mat-progress-bar *ngIf="uiState.actionOngoing" mode="indeterminate"></mat-progress-bar>
       <mat-table #table matSort (matSortChange)="onSortData($event)" [dataSource]="issues" *ngIf="(issuesStore.issues$ | async) as issues">
         <ng-container matColumnDef="number">

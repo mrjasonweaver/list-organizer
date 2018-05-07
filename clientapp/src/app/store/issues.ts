@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { IssuesService } from '../services/issues.service';
 import { IIssuesObject, IIssue, IParams, params } from '../models/issues';
 import { Observable } from 'rxjs/Observable';
