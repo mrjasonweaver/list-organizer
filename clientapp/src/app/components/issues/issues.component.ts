@@ -29,6 +29,8 @@ export class IssuesComponent {
 
   onSortData(event) {
     console.log(event);
+    const { active: sort, direction: order } = event;
+    this.issuesStore.reloadIssues({...this.userParamOptions, sort, order });
   }
 
 }
