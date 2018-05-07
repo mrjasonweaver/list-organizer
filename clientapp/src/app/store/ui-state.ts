@@ -26,17 +26,16 @@ export class UiStateStore {
 
   startAction(message: string) {
     this._uiState.next({
-        actionOngoing: true,
-        message,
-        page: this._currentPage
+      actionOngoing: true,
+      message
     });
   }
 
   endAction(message: string) {
-      this._uiState.next({
-          actionOngoing: false,
-          message
-      });
+    this._uiState.next({
+      actionOngoing: false,
+      message
+    });
   }
 
 }

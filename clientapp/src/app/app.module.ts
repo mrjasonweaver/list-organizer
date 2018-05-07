@@ -1,12 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgModule } from '@angular/core';
+import { NgModule, ChangeDetectorRef } from '@angular/core';
 import { RouterModule, RouterEvent } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule, MatCheckboxModule, MatTooltipModule, MatCardModule, MatSnackBarModule,
         MatInputModule, MatTableModule, MatPaginatorModule, MatIconModule, MatProgressBarModule,
-        MatSidenavModule, MatSlideToggleModule, MatDividerModule, MatExpansionModule, MatSortModule } from '@angular/material';
+        MatSidenavModule, MatSlideToggleModule, MatDividerModule, MatExpansionModule, MatSortModule, MatPaginator } from '@angular/material';
 import { SlicePipe } from '@angular/common';
 import { AppComponent } from './app.component';
 import { TruncatePipe } from './pipes/truncate-pipe/truncate.pipe';
@@ -114,7 +114,8 @@ import { UiStateStore } from './store/ui-state';
     UsersStore,
     IssuesService,
     IssuesStore,
-    UiStateStore
+    UiStateStore,
+    MatPaginator
   ],
   bootstrap: [AppComponent]
 })
