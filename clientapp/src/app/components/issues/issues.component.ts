@@ -19,18 +19,26 @@ export class IssuesComponent {
     pageIndex: this.userParamOptions.page,
     length: this.issuesParent.total_count
   };
+  sortEvent = {
+    active: this.userParamOptions.sort,
+    direction: this.userParamOptions.order
+  }
 
   constructor(private issuesStore: IssuesStore, public uiStateStore: UiStateStore) { }
 
   onPageChange(event) {
     const page = event.pageIndex + 1;
-    this.issuesStore.reloadIssues({...this.userParamOptions, page });
+    const { active: sort, direction: order} = this.sortEvent;
+    const pageEvent = { ...this.userParamOptions, pageIndex: page };
+    this.issuesStore.reloadIssues({ ...this.userParamOptions, sort, order, page });
   }
 
   onSortData(event) {
     console.log(event);
     const { active: sort, direction: order } = event;
-    this.issuesStore.reloadIssues({...this.userParamOptions, sort, order });
+    const page = this.pageEvent.pageIndex + 1;
+    const sortEvent = { ...this.userParamOptions, sort, order };
+    this.issuesStore.reloadIssues({...this.userParamOptions, sort, order, page });
   }
 
 }
