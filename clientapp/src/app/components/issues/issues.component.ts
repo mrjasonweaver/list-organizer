@@ -27,4 +27,8 @@ export class IssuesComponent {
     this.issuesStore.reloadIssues({...this.userParamOptions, page });
   }
 
+  onSortData(event) {
+    console.log(event);
+  }
+
 }

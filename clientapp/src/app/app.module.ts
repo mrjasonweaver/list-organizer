@@ -6,7 +6,7 @@ import { RouterModule, RouterEvent } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule, MatCheckboxModule, MatTooltipModule, MatCardModule, MatSnackBarModule,
         MatInputModule, MatTableModule, MatPaginatorModule, MatIconModule, MatProgressBarModule,
-        MatSidenavModule, MatSlideToggleModule, MatDividerModule, MatExpansionModule } from '@angular/material';
+        MatSidenavModule, MatSlideToggleModule, MatDividerModule, MatExpansionModule, MatSortModule } from '@angular/material';
 import { SlicePipe } from '@angular/common';
 import { AppComponent } from './app.component';
 import { TruncatePipe } from './pipes/truncate-pipe/truncate.pipe';
@@ -67,6 +67,7 @@ import { UiStateStore } from './store/ui-state';
     MatExpansionModule,
     MatProgressBarModule,
     MatSnackBarModule,
+    MatSortModule,
     StoreModule.forRoot(<any>appReducer, { initialState }),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
@@ -100,7 +101,8 @@ import { UiStateStore } from './store/ui-state';
     MatDividerModule,
     MatExpansionModule,
     MatProgressBarModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSortModule
   ],
   providers: [
     BrowserAnimationsModule,
