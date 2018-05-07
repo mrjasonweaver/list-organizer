@@ -17,7 +17,6 @@ export class UiStateStore {
   }
 
   startAction(message: string) {
-    console.log(message);
     this._uiState.next({
         actionOngoing: true,
         message
@@ -25,7 +24,6 @@ export class UiStateStore {
   }
 
   endAction(message: string) {
-    console.log(message);
       this._uiState.next({
           actionOngoing: false,
           message

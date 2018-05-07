@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { IssuesStore } from '../../store/issues';
 import { UiStateStore } from '../../store/ui-state';
 import { PageEvent } from '@angular/material/paginator';
 import { IIssuesObject, issuesObject, IIssue, IParams, params } from '../../models/issues';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-issues',
@@ -23,8 +25,11 @@ export class IssuesComponent {
     active: this.userParamOptions.sort,
     direction: this.userParamOptions.order
   }
+  route: Observable<any>;
 
-  constructor(private issuesStore: IssuesStore, public uiStateStore: UiStateStore) { }
+  constructor(private issuesStore: IssuesStore, public uiStateStore: UiStateStore, private r: ActivatedRoute) {
+    this.route = r.queryParamMap;
+  }
 
   onPageChange(event) {
     const page = event.pageIndex + 1;
