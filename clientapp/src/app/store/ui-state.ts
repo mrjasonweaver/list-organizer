@@ -11,7 +11,6 @@ export class UiStateStore {
   private _uiState: BehaviorSubject<any> = new BehaviorSubject(initialUiState);
   public readonly uiState: Observable<IUiState> = this._uiState.asObservable();
   private _routeQueryParams: Observable<ParamMap>;
-  private _currentPage;
 
   constructor(private r: ActivatedRoute) {
     this._routeQueryParams = r.queryParamMap;

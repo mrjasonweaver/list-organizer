@@ -2,9 +2,6 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { IssuesStore } from '../../store/issues';
 import { UiStateStore } from '../../store/ui-state';
-import { PageEvent, MatPaginator, MatTableDataSource } from '@angular/material';
-import { IIssuesObject, issuesObject, IIssue, IParams, params } from '../../models/issues';
-import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-issues',
@@ -14,8 +11,6 @@ import { Observable } from 'rxjs/Observable';
 export class IssuesComponent {
 
   displayedColumns = ['number', 'user', 'title', 'created', 'comments'];
-  userParamOptions: IParams = params;
-  issuesParent: IIssuesObject = issuesObject;
 
   constructor(
     private issuesStore: IssuesStore,
