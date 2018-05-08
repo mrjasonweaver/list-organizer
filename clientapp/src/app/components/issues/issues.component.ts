@@ -13,7 +13,7 @@ export class IssuesComponent {
   displayedColumns = ['number', 'user', 'title', 'created', 'comments'];
 
   constructor(
-    private issuesStore: IssuesStore,
+    public issuesStore: IssuesStore,
     public uiStateStore: UiStateStore,
     private router: Router
   ) {}
@@ -25,8 +25,7 @@ export class IssuesComponent {
   }
 
   onSortData(event, routeQueryParams) {
-    const order = event.direction;
-    const sort = event.active;
+    const { active: sort, direction: order } = event;
     const { page } = routeQueryParams;
     return this.router.navigate(['/issues'], { queryParams: { sort, order, page } });
   }
