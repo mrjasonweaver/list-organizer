@@ -26,7 +26,7 @@ export class IssuesStore {
   navigate() {
     this.uiStateStore.routeQueryParams$.subscribe(x => {
       this.loadIssues({...params, sort: x.get('sort'), order: x.get('order'), page: x.get('page') });
-    })
+    });
   }
 
   loadIssues(userParams) {

@@ -6,7 +6,8 @@ import { RouterModule, RouterEvent } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule, MatCheckboxModule, MatTooltipModule, MatCardModule, MatSnackBarModule,
         MatInputModule, MatTableModule, MatPaginatorModule, MatIconModule, MatProgressBarModule,
-        MatSidenavModule, MatSlideToggleModule, MatDividerModule, MatExpansionModule, MatSortModule, MatPaginator } from '@angular/material';
+        MatSidenavModule, MatSlideToggleModule, MatDividerModule, MatExpansionModule,
+        MatSortModule, MatPaginator } from '@angular/material';
 import { SlicePipe } from '@angular/common';
 import { AppComponent } from './app.component';
 import { TruncatePipe } from './pipes/truncate-pipe/truncate.pipe';
