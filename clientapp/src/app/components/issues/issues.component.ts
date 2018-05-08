@@ -29,7 +29,12 @@ export class IssuesComponent {
     return this.router.navigate(['/issues'], { queryParams: { sort, order, page } });
   }
 
-  onSortData(event) {
+  onSortData(event, routeQueryParams) {
+    console.log(event);
+    const order = event.direction;
+    const sort = event.active;
+    const { page } = routeQueryParams;
+    return this.router.navigate(['/issues'], { queryParams: { sort, order, page } });
   }
 
 }
