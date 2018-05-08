@@ -30,7 +30,6 @@ export class IssuesComponent {
   }
 
   onSortData(event, routeQueryParams) {
-    console.log(event);
     const order = event.direction;
     const sort = event.active;
     const { page } = routeQueryParams;
