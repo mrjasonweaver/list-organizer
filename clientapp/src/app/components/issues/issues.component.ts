@@ -13,7 +13,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class IssuesComponent {
 
-  displayedColumns = ['number', 'user', 'title', 'created'];
+  displayedColumns = ['number', 'user', 'title', 'created', 'comments'];
   userParamOptions: IParams = params;
   issuesParent: IIssuesObject = issuesObject;
 
