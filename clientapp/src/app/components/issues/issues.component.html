@@ -31,7 +31,7 @@
       </mat-table>
     
       <mat-paginator *ngIf="(issuesStore.issuesCount$ | async) as issuesCount"
-        (page)="onPageChange($event)"
+        (page)="onPageChange($event, routeQueryParams.params)"
         [length]="issuesCount"
         [pageIndex]="routeQueryParams.params.page - 1"
         [pageSize]="'10'">

@@ -23,9 +23,10 @@ export class IssuesComponent {
     private router: Router
   ) {}
 
-  onPageChange(event) {
+  onPageChange(event, routeQueryParams) {
     const page = event.pageIndex + 1;
-    return this.router.navigate(['/issues'], { queryParams: { page } });
+    const { sort, order } = routeQueryParams;
+    return this.router.navigate(['/issues'], { queryParams: { sort, order, page } });
   }
 
   onSortData(event) {
