@@ -5,7 +5,7 @@ import { IIssuesObject, IIssue, IParams } from '../models/issues';
 
 @Injectable()
 export class IssuesService {
-  private url = 'https://api.github.com/search/issues';
+  url = 'https://api.github.com/search/issues';
 
   constructor(private http: HttpClient) {}
 
