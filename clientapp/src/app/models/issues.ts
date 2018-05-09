@@ -67,3 +67,6 @@ export const mockIssuesObject: IIssuesObject = {
     }
   ]
 }
+
+export const unRepoSegments = `?q=repo:${params.username}/${params.repo}&sort=${params.sort}&order=${params.order}`;
+export const queryParamsSegments = `&page=${params.page}&per_page=${params.perPage}`;
