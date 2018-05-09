@@ -38,3 +38,32 @@ export const params: IParams = {
   sort: 'created',
   order: 'desc'
 };
+
+export const mockIssuesObject: IIssuesObject = {
+  total_count: 1000,
+  items: [ 
+    {
+      id: 1,
+      url: 'http://github.com',
+      comments: 1,
+      number: 1,
+      title: 'This is a title',
+      body: 'This is an issue',
+      user: {
+        login: 'bobby1',
+      },
+      created_at: '2018-05-09T14:39:24Z'
+    }, {
+      id: 2,
+      url: 'http://github.com',
+      comments: 2,
+      number: 2,
+      title: 'This is a title2',
+      body: 'This is an issue2',
+      user: {
+        login: 'bobby2',
+      },
+      created_at: '2018-05-09T14:40:24Z'
+    }
+  ]
+}
