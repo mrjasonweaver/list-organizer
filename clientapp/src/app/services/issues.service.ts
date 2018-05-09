@@ -1,11 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { IIssuesObject,
-        IIssue,
-        IParams,
-        unRepoSegments,
-        queryParamsSegments } from '../models/issues';
+import { IIssuesObject, IIssue, IParams } from '../models/issues';
 
 @Injectable()
 export class IssuesService {
@@ -14,6 +10,8 @@ export class IssuesService {
   constructor(private http: HttpClient) {}
 
   getIssues(params: IParams): Observable<IIssuesObject> {
+    const unRepoSegments = `?q=repo:${params.username}/${params.repo}&sort=${params.sort}&order=${params.order}`;
+    const queryParamsSegments = `&page=${params.page}&per_page=${params.perPage}`;
     return this.http.get<IIssuesObject>(`${this.url}${unRepoSegments}${queryParamsSegments}`);
   }
 

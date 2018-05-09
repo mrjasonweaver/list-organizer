@@ -39,10 +39,6 @@ export const params: IParams = {
   order: 'desc'
 };
 
-export const unRepoSegments = `?q=repo:${params.username}/${params.repo}&sort=${params.sort}&order=${params.order}`;
-
-export const queryParamsSegments = `&page=${params.page}&per_page=${params.perPage}`;
-
 export const mockIssuesObject: IIssuesObject = {
   total_count: 1000,
   items: [
