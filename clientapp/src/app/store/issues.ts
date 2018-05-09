@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { UiStateStore } from './ui-state';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class IssuesStore {
@@ -17,10 +18,10 @@ export class IssuesStore {
   }
 
   get issues$() {
-    return this._issuesObject.map(res => res.items);
+    return this._issuesObject.pipe(map(res => res.items));
   }
   get issuesCount$() {
-    return this._issuesObject.map(res => res.total_count);
+    return this._issuesObject.pipe(map(res => res.total_count));
   }
 
   navigate() {
