@@ -39,9 +39,13 @@ export const params: IParams = {
   order: 'desc'
 };
 
+export const unRepoSegments = `?q=repo:${params.username}/${params.repo}&sort=${params.sort}&order=${params.order}`;
+
+export const queryParamsSegments = `&page=${params.page}&per_page=${params.perPage}`;
+
 export const mockIssuesObject: IIssuesObject = {
   total_count: 1000,
-  items: [ 
+  items: [
     {
       id: 1,
       url: 'http://github.com',
@@ -66,7 +70,4 @@ export const mockIssuesObject: IIssuesObject = {
       created_at: '2018-05-09T14:40:24Z'
     }
   ]
-}
-
-export const unRepoSegments = `?q=repo:${params.username}/${params.repo}&sort=${params.sort}&order=${params.order}`;
-export const queryParamsSegments = `&page=${params.page}&per_page=${params.perPage}`;
+};
