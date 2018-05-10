@@ -9,6 +9,10 @@ export class IssuesService {
 
   constructor(private http: HttpClient) {}
 
+  /**
+   * 
+   * @param params object of pagination and sorting parameters
+   */
   getIssues(params: IParams): Observable<IIssuesObject> {
     const unRepoSegments = `?q=repo:${params.username}/${params.repo}&sort=${params.sort}&order=${params.order}`;
     const queryParamsSegments = `&page=${params.page}&per_page=${params.perPage}`;
