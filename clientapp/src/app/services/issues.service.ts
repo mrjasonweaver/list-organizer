@@ -10,7 +10,6 @@ export class IssuesService {
   constructor(private http: HttpClient) {}
 
   /**
-   * 
    * @param params object of pagination and sorting parameters
    */
   getIssues(params: IParams): Observable<IIssuesObject> {
