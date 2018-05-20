@@ -1,2 +1,6 @@
-<input mat-input (keyup)="onValueChange($event.target.value)">
-{{ streamValue | async }}
+<mat-card>
+  <mat-form-field>
+    <input matInput (keyup)="onValueChange($event.target.value)">
+  </mat-form-field>
+  <p>{{ streamValue | async }}</p>
+</mat-card>

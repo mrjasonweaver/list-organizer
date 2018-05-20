@@ -8,8 +8,6 @@ import { Observable, BehaviorSubject } from 'rxjs';
 export class ObsInputComponent {
   public inputValue: BehaviorSubject<any> = new BehaviorSubject('');
 
-  constructor() { }
-
   get streamValue() {
     return this.inputValue;
   }
