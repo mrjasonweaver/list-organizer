@@ -1,3 +1,7 @@
-<ul *ngIf="(userStore.users$ | async) as users">
-  <li *ngFor="let user of users">{{ user.name }}</li>
-</ul>
+<div class="app-container">
+  <app-obs-input></app-obs-input>
+
+  <ul *ngIf="(userStore.users$ | async) as users">
+    <li *ngFor="let user of users">{{ user.name }}</li>
+  </ul>
+</div>

@@ -34,6 +34,7 @@ import { IssuesComponent } from './components/issues/issues.component';
 import { IssuesStore } from './store/issues';
 import { IssuesService } from './services/issues.service';
 import { UiStateStore } from './store/ui-state';
+import { ObsInputComponent } from './components/obs-input/obs-input.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { UiStateStore } from './store/ui-state';
     TsImmutableComponent,
     ContactsObsServComponent,
     UsersComponent,
-    IssuesComponent
+    IssuesComponent,
+    ObsInputComponent
   ],
   imports: [
     BrowserModule,
